@@ -1,0 +1,26 @@
+# Local and private files
+.env
+.env.*
+!.env.example
+credentials.json
+*.pem
+*.key
+*.sqlite
+*.db
+
+# Private FieldWorks records
+receipts-private/
+email-private/
+procurement-private/
+private/
+
+# Local agent files
+CLAUDE.md
+.claude/
+.cursorrules
+.aiderignore
+
+# System files
+.DS_Store
+desktop.ini
+Thumbs.db
