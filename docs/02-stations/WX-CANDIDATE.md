@@ -4,6 +4,7 @@ Status: candidate
 Owner: Johan Marcial Gonzalez / decision owner unassigned
 Updated: 2026-07-27
 Evidence: `Instrument Cost.pdf`, `Station Possible Variables.pdf`, and `Suggestions and Problems.pdf`
+Spec sheets: [candidate instrument index](../03-hardware/spec-sheet-index.md#design-candidates)
 
 ## Purpose
 

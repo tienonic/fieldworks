@@ -5,7 +5,7 @@ Owner: unassigned
 Updated: 2026-07-27
 Evidence: manufacturer documentation and FieldWorks compatibility analysis
 
-Exact electrical, mechanical, network, and candidate values are maintained in [Component Specifications](specifications.md) and [component-specifications.csv](component-specifications.csv).
+Exact electrical, mechanical, network, and candidate values are maintained in [Component Specifications](specifications.md), the [manufacturer spec sheet index](spec-sheet-index.md), and [component-specifications.csv](component-specifications.csv).
 
 ## Phase I instruments
 

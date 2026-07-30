@@ -7,6 +7,8 @@ Evidence: manufacturer documentation, ENTS hardware documentation, and FieldWork
 
 Use a specification only when the exact physical model matches it. Recheck every value marked `design gate` against the physical label and final selected model.
 
+Open the [manufacturer spec sheet index](spec-sheet-index.md) for direct product pages, manuals, and unresolved model gaps.
+
 ## ENTS node
 
 | Field | Specification |

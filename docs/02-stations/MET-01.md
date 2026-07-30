@@ -4,6 +4,7 @@ Status: blocked
 Owner: Johan Marcial Gonzalez; technical owner unassigned
 Updated: 2026-07-27
 Evidence: April 19 ENTS compatibility matrix; later Paw U inventory correspondence; Johan design documents
+Spec sheets: [baseline instrument index](../03-hardware/spec-sheet-index.md#met-01-baseline)
 
 ## Purpose
 

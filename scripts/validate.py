@@ -16,6 +16,7 @@ REQUIRED = [
     "docs/01-architecture/network-overview.mmd",
     "docs/01-architecture/network-overview.svg",
     "docs/03-hardware/specifications.md",
+    "docs/03-hardware/spec-sheet-index.md",
     "docs/03-hardware/component-specifications.csv",
     "docs/03-hardware/connection-matrix.csv",
     "docs/03-hardware/station-bom.csv",
@@ -50,6 +51,8 @@ for station in STATIONS:
                 ERRORS.append("WX-CANDIDATE must state that no data stream is approved")
         elif "Data expected" not in station_text:
             ERRORS.append(f"station document lacks expected-data interface: {station}")
+        if "spec-sheet-index.md" not in station_text:
+            ERRORS.append(f"station document lacks spec-sheet index link: {station}")
 
 dictionary_path = ROOT / "docs" / "02-stations" / "data-dictionary.csv"
 if dictionary_path.is_file():
@@ -59,6 +62,18 @@ if dictionary_path.is_file():
         matching = [row for row in dictionary_rows if station in row.get("applies_to", "").split()]
         if len(matching) < 5:
             ERRORS.append(f"data dictionary has too few fields for {station}: {len(matching)}")
+
+spec_path = ROOT / "docs" / "03-hardware" / "component-specifications.csv"
+if spec_path.is_file():
+    with spec_path.open(newline="", encoding="utf-8-sig") as handle:
+        spec_rows = list(csv.DictReader(handle))
+    for row in spec_rows:
+        component = row.get("component_id", "unknown")
+        source = row.get("spec_sheet_url", "").strip()
+        if not source:
+            ERRORS.append(f"component lacks spec-sheet source or pending marker: {component}")
+        elif "http" not in source and not source.startswith("pending_"):
+            ERRORS.append(f"invalid spec-sheet source: {component} -> {source}")
 
 for path in ROOT.rglob("*.csv"):
     with path.open(newline="", encoding="utf-8-sig") as handle:
