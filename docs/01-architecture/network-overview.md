@@ -1,4 +1,4 @@
-# Network Architecture
+# Network architecture
 
 Status: working
 Owner: unassigned
@@ -9,15 +9,15 @@ Evidence: Green Grid proposal, compatibility grid, NodeFlow/ENTS documentation
 
 ## Field nodes
 
-Each station uses an ENTS board with an STM32WLE5/Wio-E5 radio. Sensor signals enter through ADC, GPIO, or SPI paths described in the station documents. Firmware converts raw signals into engineering units and encodes a compact payload.
+Each station uses an ENTS board with an STM32WLE5/Wio-E5 radio. Sensor signals enter through ADC, GPIO, or SPI paths documented by station. Firmware converts raw signals to engineering units and encodes a compact payload.
 
 ## Radio network
 
 - Region: US915 only
-- Intended node class: Class A for low-power sensing
+- Node class: Class A for low-power sensing
 - Possible irrigation command mode: Class C only if the power and control design supports it
-- Sub-band: must match the gateway; sub-band 2 is the current working assumption, not a locked setting
-- Gateway: US915 unit planned after the location, backhaul, and owner are settled
+- Sub-band: match the gateway; test sub-band 2 before locking the configuration
+- Gateway: US915 unit planned after location, backhaul, and owner are settled
 
 ## Data path
 
@@ -28,8 +28,8 @@ Each station uses an ENTS board with an STM32WLE5/Wio-E5 radio. Sensor signals e
 5. MQTT carries decoded observations to InfluxDB.
 6. Grafana and REST/CSV access expose reviewed data.
 
-The cloud/API plan is an intended architecture. Hosting and production deployment are not yet verified.
+Hosting and production deployment remain open work.
 
 ## External systems
 
-Four existing Sensus iPERL meters and a HOBO MX1104 logger remain separate. The SCADAmetrics Signalizer request is held behind a register/cable compatibility check and is not part of the core network diagram.
+Four existing Sensus iPERL meters and a HOBO MX1104 logger operate separately. The SCADAmetrics Signalizer remains on hold pending a register and cable compatibility check.

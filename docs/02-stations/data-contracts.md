@@ -1,15 +1,15 @@
-# Data Contracts
+# Data contracts
 
 Status: working
 Owner: firmware and data owners unassigned
 Updated: 2026-07-27
 Evidence: station signal paths and proposed decoded data model
 
-These examples show the shape users should receive after LoRaWAN decoding. They are not live measurements. Raw values remain beside converted values so a bad calibration can be diagnosed later.
+These schema examples show the decoded LoRaWAN payload. Raw values stay beside converted values so calibration errors can be diagnosed.
 
 ## Common envelope
 
-Every record should include:
+Every record includes:
 
 | Field | Meaning |
 |---|---|
@@ -51,7 +51,7 @@ Every record should include:
 }
 ```
 
-Interpretation: 1,042 gallons have been counted since the preserved counter epoch, recent flow is 8.0 gpm, line pressure is 63.8 psi, and the controller last commanded the valve open. The record does not prove the valve physically moved because no position sensor is included.
+In this example, the counter shows 1,042 gallons, recent flow is 8.0 gpm, line pressure is 63.8 psi, and the controller last commanded the valve open. `valve_command` records the request; the station has no position sensor.
 
 ## Soil-profile record
 
@@ -85,7 +85,7 @@ Interpretation: 1,042 gallons have been counted since the preserved counter epoc
 }
 ```
 
-Interpretation: the profile is drier with depth in this illustrative record. The depth values remain null until the Student Farm approves the installation plan.
+The illustrative record gets drier with depth. Depth values stay null until the Student Farm approves the installation plan.
 
 ## MET-01 record
 
@@ -104,14 +104,14 @@ Interpretation: the profile is drier with depth in this illustrative record. The
 }
 ```
 
-Do not publish plausible numbers for MET-01 until the physical instruments and conversions are verified.
+Publish MET-01 values only after verifying the physical instruments and conversions.
 
 ## Quality behavior
 
 - Preserve raw values with engineering-unit values.
-- Use `null` plus a quality flag for unavailable readings; do not silently use zero.
+- Use `null` plus a quality flag for unavailable readings. Reserve zero for measured zero.
 - Mark counter resets and preserve a counter epoch.
-- Never present `valve_command` as measured valve position.
+- Label `valve_command` as a controller command.
 - Store sensor depths and installation metadata separately from time-series values.
 - Reject impossible values at presentation time, but retain the raw record for diagnosis.
 

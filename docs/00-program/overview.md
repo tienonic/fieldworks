@@ -1,4 +1,4 @@
-# Program Overview
+# Program overview
 
 Status: working
 Owner: Nicholas Melnichenko
@@ -24,13 +24,13 @@ Six ENTS field stations: `IH-01`, `IH-02`, and `SM-01` through `SM-04`.
 
 ### Phase II: meteorological sandbox
 
-`MET-01` uses the seventh ENTS board and loaned Biometeorology instruments after exact physical models are verified. It is not one of the six Phase I field nodes.
+`MET-01` uses the seventh ENTS board and loaned Biometeorology instruments after exact physical models are verified. It is separate from the six Phase I field nodes.
 
 ### Design candidate
 
-`WX-CANDIDATE` records Johan's later high-end and 9-in-1 concepts. These components are not assigned to a funded station.
+`WX-CANDIDATE` records Johan's later high-end and 9-in-1 concepts outside the funded station set.
 
-## What remains unsettled
+## Open items
 
 - Student Farm site names, coordinates, and mounting positions
 - proof that completed requests were delivered and accepted
@@ -42,4 +42,4 @@ Six ENTS field stations: `IH-01`, `IH-02`, and `SM-01` through `SM-04`.
 
 ## Operating boundary
 
-This repository prepares the technical record. Student Farm staff approve locations and installation constraints. The responsible university staff approve purchases. No repository status may bypass those gates.
+This repository holds the technical record. Student Farm staff approve locations and installation constraints. Responsible university staff approve purchases. Repository status cannot bypass those gates.

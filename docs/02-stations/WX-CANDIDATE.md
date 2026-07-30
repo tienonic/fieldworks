@@ -1,4 +1,4 @@
-# WX-CANDIDATE — Johan Weather-Station Concept
+# WX-CANDIDATE: Johan weather-station concept
 
 Status: candidate
 Owner: Johan Marcial Gonzalez / decision owner unassigned
@@ -7,13 +7,13 @@ Evidence: `Instrument Cost.pdf`, `Station Possible Variables.pdf`, and `Suggesti
 
 ## Purpose
 
-Preserve Johan's proposed station concept without treating it as approved hardware, assigned inventory, or a purchasing authorization.
+Record Johan's station concept in one place while approval, inventory, and purchasing remain open.
 
 ## Interface state
 
-This record is not a station card yet. Nothing is approved, installed, or assigned to a node, so it has no valid data contract. Potential outputs such as temperature, humidity, wind, PAR, heat flux, radiation, and pollutant data remain questions until exact models and scientific requirements are selected.
+Status: concept only. Hardware, node assignment, and data contract await approval. Potential outputs include temperature, humidity, wind, PAR, heat flux, radiation, and pollutant data. Exact models and scientific requirements remain open.
 
-The interface should show `no approved stream`, not blank charts or synthetic example values.
+Show `no approved stream` until approval.
 
 ## Proposed instruments
 
@@ -26,13 +26,13 @@ The interface should show `no approved stream`, not blank charts or synthetic ex
 | PAR | Apogee quantum/PAR sensor, exact model absent | 1 | unselected | unknown |
 | soil heat flux | manufacturer/model absent | 1 | unselected | unknown |
 | net radiation | Onset S-LIB-M003 pyranometer | 2 | proposed | Onset smart-sensor interface; ENTS path unresolved |
-| integrated weather | ultrasonic 9-in-1 RS485 sensor, vendor/model absent | 1 | suggested alternative | RS485/likely Modbus; power and register map unresolved |
+| integrated weather | ultrasonic 9-in-1 RS485 sensor, vendor/model absent | 1 | suggested alternative | RS485; Modbus unverified; power and register map unresolved |
 
 ## Important correction
 
-Two pyranometers do not automatically produce four-stream net radiation. The intended longwave-down, longwave-up, shortwave-down, and shortwave-up measurements require an instrument architecture that measures all four components or a documented alternative calculation.
+Two pyranometers alone cannot produce four-stream net radiation. Measuring longwave down, longwave up, shortwave down, and shortwave up requires a four-component instrument or a documented calculation.
 
-The 9-in-1 description includes wind, temperature, RH, pressure, light, noise, PM2.5, and PM10, but the source does not give a vendor, model, datasheet, accuracy, supply voltage, Modbus register map, ingress rating, or calibration evidence.
+The 9-in-1 description includes wind, temperature, RH, pressure, light, noise, PM2.5, and PM10. The source gives no vendor, model, datasheet, accuracy, supply voltage, Modbus register map, ingress rating, or calibration evidence.
 
 ## Decision gate
 
@@ -46,4 +46,4 @@ For each proposed instrument, record:
 6. mounting, calibration, maintenance, and return terms;
 7. overlap with Phase I or loaned MET-01 instruments.
 
-Until that record exists, these sensors remain a concept and are not allocated to a station.
+Complete this record before assigning sensors to a station.

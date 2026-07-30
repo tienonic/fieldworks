@@ -1,20 +1,20 @@
 # Equipment status
 
-This page keeps the public record simple. It does not publish purchase dates, order numbers, receipts, costs, or internal request IDs.
+This public page omits purchase dates, order numbers, receipts, costs, and internal request IDs.
 
 ## On hand
 
 - Seven ENTS / NodeFlow boards are physically on hand.
 - The boards still need serial-to-station assignments and bench checks.
 
-## Needs inventory confirmation
+## Inventory confirmation needed
 
 - the first irrigation package for `IH-01`;
 - the first soil-sensor package for `SM-01`;
 - shared enclosures, power parts, and electronics;
 - the exact valve, driver, and fitting set for the irrigation reference build.
 
-These parts are not treated as ready until someone checks the physical items against the station design.
+Treat these parts as unready until someone checks the physical items against the station design.
 
 ## Planned later
 
@@ -24,4 +24,4 @@ These parts are not treated as ready until someone checks the physical items aga
 - one US915 LoRaWAN gateway;
 - optional external meter and weather integrations.
 
-`Planned later` means the project may need the item after the reference builds pass. It does not mean the item has been ordered or purchased.
+`planned later` marks a design-stage need unlocked by a passing reference build.

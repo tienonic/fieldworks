@@ -1,10 +1,10 @@
-# FieldWorks Documentation Standard
+# FieldWorks documentation standard
 
-Use this format for every maintained document in this repository.
+Use this format for every maintained document in the repository.
 
 ## Required header
 
-Every operating document starts with:
+Every operating document begins with:
 
 - Status: `verified`, `working`, `blocked`, `historical`, or `candidate`
 - Owner: accountable person or `unassigned`
@@ -17,12 +17,12 @@ Every operating document starts with:
 2. Separate facts, assumptions, proposals, and decisions.
 3. Use one term for each object. Use `ENTS node`, `irrigation head station`, `soil monitoring station`, and `gateway` consistently.
 4. Give every station and hardware item a stable ID.
-5. Name the exact electrical path: connector, voltage, signal type, adapter, board input, firmware conversion, and transmitted unit.
-6. Never use `ordered`, `received`, or `working` without the matching evidence.
+5. Name the full electrical path: connector, voltage, signal type, adapter, board input, firmware conversion, and transmitted unit.
+6. Use `ordered`, `received`, and `working` only with matching evidence.
 7. Put unresolved choices in an `Open decisions` section with an owner and acceptance test.
 8. Link to repository-relative documents. Keep machine-local paths in the private source index only.
-9. Do not commit raw email bodies, receipts, tax or account data, credentials, personal addresses, or secure links.
-10. Keep tables narrow. Move long explanations below the table.
+9. Keep raw email, receipts, tax or account data, credentials, personal addresses, and secure links out of Git.
+10. Keep tables narrow. Put long explanations below the table.
 
 ## Station document order
 
@@ -37,17 +37,17 @@ Every operating document starts with:
 9. Bench acceptance tests
 10. Installation gates and open decisions
 
-Do not lead a station page with purchasing history. A reader should first understand what the physical package is and what information it produces.
+Explain the physical package and its data before showing purchasing history.
 
 ## Data representation rules
 
 - Show engineering units beside every expected measurement.
 - Preserve raw diagnostic values beside converted values.
-- Use `null` and a quality flag for unavailable values, not zero.
-- Call valve output `valve_command`; do not imply physical position feedback.
+- Use `null` and a quality flag for unavailable values. Reserve zero for measured zero.
+- Call valve output `valve_command` and label it as a controller command.
 - Keep station ID stable. Store site alias, coordinates, and probe depths as metadata.
-- Mark illustrative payloads as examples, never live readings.
-- If a model is unverified, show `no approved stream` or null fields rather than plausible data.
+- Label illustrative payloads as examples.
+- For an unverified model, show `no approved stream` or null fields.
 
 ## Status vocabulary
 
@@ -56,5 +56,5 @@ Do not lead a station page with purchasing history. A reader should first unders
 | verified | Supported by a current primary source or physical inspection |
 | working | Current design or operating state with named open checks |
 | blocked | Cannot proceed until a stated dependency is resolved |
-| candidate | Proposed but not approved or assigned |
-| historical | Preserved context; not current execution truth |
+| candidate | Concept awaiting approval and assignment |
+| historical | Preserved context from an earlier state |

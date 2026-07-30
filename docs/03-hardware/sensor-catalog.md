@@ -1,4 +1,4 @@
-# Sensor and Interface Catalog
+# Sensor and interface catalog
 
 Status: working
 Owner: unassigned
@@ -16,30 +16,30 @@ Exact electrical, mechanical, network, and candidate values are maintained in [C
 - Rate: one pulse per gallon in the selected configuration
 - ENTS path: GPIO interrupt with pull-up
 - Power: none for the contact
-- Mechanical gate: exact NPT size and installation orientation
+- Mechanical gate: confirm exact NPT size and installation orientation
 
 ### DFRobot SEN0257
 
 - Function: water pressure
 - Supply: 5 V
-- Output: 0.5–4.5 V analog
-- ENTS path: 22 kΩ/47 kΩ divider to ADC, producing about 0.34–3.07 V
+- Output: 0.5-4.5 V analog
+- ENTS path: 22 kΩ/47 kΩ divider to ADC, producing about 0.34-3.07 V
 - Mechanical gate: G1/4 BSP to NPT adapter
-- Firmware: restore divider ratio, subtract sensor offset, scale to pressure
+- Firmware: restore divider ratio, subtract sensor offset, and scale to pressure
 
 ### Watermark 200SS-15 and 200TS through 200SS-VA3
 
 - Function: three soil-tension depths plus soil temperature
-- Adapter output: four independent 0–3 V analog channels
+- Adapter output: four independent 0-3 V analog channels
 - ENTS path: four ADC channels
 - Firmware gate: expose a fourth channel without silently losing required battery/peripheral functions
 
 ### DC latching valve assembly
 
 - Function: irrigation shutoff/control hardware path
-- Supply: boosted pulse, nominally 6–12 V depending on exact solenoid
+- Supply: boosted pulse, nominally 6-12 V depending on the exact solenoid
 - ENTS path: GPIO to a driver stage
-- Critical gate: confirm the driver reverses polarity or otherwise supports both latch directions. A simple single relay may not be enough.
+- Critical gate: confirm bidirectional latch control. A single relay works only if the complete circuit supports both directions.
 
 ## Node and power
 

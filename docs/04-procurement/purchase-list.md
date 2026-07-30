@@ -1,11 +1,11 @@
 # Future hardware plan
 
-Status: planning only. This document does not authorize a purchase and does not claim that planned items have been ordered.
+Status: planning only. Purchasing authority: none.
 
 ## Before adding hardware
 
 1. Inventory the seven ENTS boards and assign each one to a station.
-2. Check every physical part intended for `IH-01` and `SM-01`.
+2. Check every physical part assigned to `IH-01` and `SM-01`.
 3. Freeze the irrigation plumbing, valve-driver, soil ADC, enclosure, and power designs.
 4. Bench test both reference stations.
 5. Set the remaining quantity from the tested designs and physical inventory.
@@ -25,6 +25,6 @@ After the reference builds pass:
 
 ## Keep on hold
 
-Do not add optional meter gateways, cloud plans, Signalizer hardware, or candidate weather instruments until the interface and data-access questions are answered.
+Hold optional meter gateways, cloud plans, Signalizer hardware, and candidate weather instruments until the interface and data-access questions are answered.
 
 Every released item still needs an exact model, quantity, owner, fit check, acceptance test, and receiving plan in the private purchasing record.

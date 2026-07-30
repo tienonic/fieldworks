@@ -1,13 +1,13 @@
-# Station Index
+# Station index
 
 Status: working
 Owner: Nicholas Melnichenko
 Updated: 2026-07-27
 Evidence: proposal architecture, compatibility grid, OPP/Gmail evidence, Johan source documents
 
-## Start with the visual interface
+## Start with the station atlas
 
-[Open the Station Atlas](station-atlas.md) for one card per physical station: what is inside, what data should come out, what question it answers, and what blocks deployment.
+[Open the Station Atlas](station-atlas.md) for each station package, its expected data, its field question, and its deployment blockers.
 
 - [Data contracts and example records](data-contracts.md)
 - [Machine-readable data dictionary](data-dictionary.csv)
@@ -16,12 +16,12 @@ Evidence: proposal architecture, compatibility grid, OPP/Gmail evidence, Johan s
 
 | ID | Purpose | Site | Lifecycle |
 |---|---|---|---|
-| [IH-01](IH-01.md) | Irrigation flow, pressure, and valve-control path | Not assigned | bench build blocked on inventory/delivery proof |
-| [IH-02](IH-02.md) | Second irrigation head | Not assigned | procurement requests pending |
-| [SM-01](SM-01.md) | Soil tension at three depths plus temperature | Not assigned | bench build blocked on inventory/delivery proof |
-| [SM-02](SM-02.md) | Soil tension at three depths plus temperature | Not assigned | procurement request pending |
-| [SM-03](SM-03.md) | Soil tension at three depths plus temperature | Not assigned | procurement request pending |
-| [SM-04](SM-04.md) | Soil tension at three depths plus temperature | Not assigned | procurement request pending |
+| [IH-01](IH-01.md) | Irrigation flow, pressure, and valve-control path | Unassigned | bench build blocked on inventory/delivery proof |
+| [IH-02](IH-02.md) | Second irrigation head | Unassigned | procurement requests pending |
+| [SM-01](SM-01.md) | Soil tension at three depths plus temperature | Unassigned | bench build blocked on inventory/delivery proof |
+| [SM-02](SM-02.md) | Soil tension at three depths plus temperature | Unassigned | procurement request pending |
+| [SM-03](SM-03.md) | Soil tension at three depths plus temperature | Unassigned | procurement request pending |
+| [SM-04](SM-04.md) | Soil tension at three depths plus temperature | Unassigned | procurement request pending |
 
 ## Phase II and proposals
 
@@ -32,4 +32,4 @@ Evidence: proposal architecture, compatibility grid, OPP/Gmail evidence, Johan s
 
 ## Numbering rule
 
-Station IDs describe function, not location. Add a site alias only after Student Farm approval. Never renumber a station after physical inventory, firmware identity, or data history exists.
+Station IDs describe function. Add the approved site as metadata, and keep the station ID fixed across inventory, firmware, and data history.

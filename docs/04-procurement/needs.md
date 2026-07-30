@@ -1,12 +1,12 @@
 # What we need
 
-The project has enough ENTS boards for six field stations and one meteorological sandbox. It does not yet have a verified, bench-ready set of parts for a complete station.
+The project has enough ENTS boards for six field stations and one meteorological sandbox. A complete bench-ready station parts set still needs verification.
 
-The immediate job is to inventory what is actually on hand, finish `IH-01` and `SM-01`, and use those two builds to settle the repeatable design.
+The immediate work is to inventory what is on hand, finish `IH-01` and `SM-01`, and use those builds to settle the repeatable design.
 
 ## First irrigation station
 
-`IH-01` still needs:
+`IH-01` gaps:
 
 - a verified meter, pulse switch, pressure sensor, valve, and solenoid set;
 - the correct pressure fitting and safe voltage-divider circuit;
@@ -16,21 +16,21 @@ The immediate job is to inventory what is actually on hand, finish `IH-01` and `
 
 ## First soil station
 
-`SM-01` still needs:
+`SM-01` gaps:
 
 - a verified three-depth soil-tension and temperature set;
 - a frozen four-channel ADC map;
 - a weatherproof enclosure and field-power package;
 - dry/wet and temperature reference tests.
 
-## Planned after the reference builds
+## After the reference builds
 
 - one more irrigation package for `IH-02`;
 - three more soil packages for `SM-02` through `SM-04`;
 - the remaining enclosures and field-power parts;
 - one US915 LoRaWAN gateway.
 
-These are later needs, not current purchases.
+Schedule these after the reference builds pass:
 
 ## Other open needs
 
@@ -39,4 +39,4 @@ These are later needs, not current purchases.
 - assign owners for assembly, firmware, gateway, data, and maintenance;
 - prove the complete data path from field packet to dashboard and export.
 
-The final hardware list should come from the tested reference builds and a physical inventory, not from old request records.
+Build the final hardware list from tested reference builds and physical inventory.
