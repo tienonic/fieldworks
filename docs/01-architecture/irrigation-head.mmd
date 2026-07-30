@@ -1,0 +1,8 @@
+flowchart LR
+  SOLAR["6 V nominal solar panel"] --> CHG["ENTS BQ24210 charger\nbarrel input ≤18 V"]
+  CHG --> BAT["3.7 V LiPo\nJST-PH + BMS"] --> ENTS["ENTS node\n3.3 V logic + Wio-E5"]
+  D10["D10 + D10-C-SRS\ndry contact, 1 pulse/gal"] -->|"2-wire closure"| GPIO["GPIO interrupt\npull-up"] --> ENTS
+  PRESS["SEN0257\n5 V, 0.5–4.5 V"] --> DIV["22 kΩ / 47 kΩ divider\n0.34–3.07 V"] --> ADC["ADC + pressure scaling"] --> ENTS
+  BAT --> BOOST["3.7 V → 9 V boost"] --> DRIVER["reversing pulse driver\ntopology TBD"] --> VALVE["DC latching solenoid + valve"]
+  ENTS -->|"open/close pulse command"| DRIVER
+  ENTS -->|"LoRaWAN US915"| GW["GW-01"]

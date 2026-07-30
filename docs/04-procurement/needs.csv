@@ -1,0 +1,13 @@
+scope,item,working_quantity,state,blocks,next_action
+IH-01,complete irrigation reference package,1 set,inventory_unverified,reference build,inspect physical parts and freeze the tested BOM
+IH-01 and IH-02,pressure fitting and divider circuit,2 sets,design_unresolved,pressure integration,finish IH-01 plumbing and ADC test first
+IH-01 and IH-02,bidirectional valve driver and boost stage,2 sets,design_unresolved,valve actuation,identify the exact solenoid and bench test one circuit
+SM-01,complete soil reference package,1 set,inventory_unverified,reference build,inspect physical parts and run the four-channel test
+SM-02 through SM-04,soil replication packages,3 sets,planned_later,replication,release only after SM-01 passes
+IH-02,irrigation replication package,1 set,planned_later,replication,release only after IH-01 passes
+all nodes,weatherproof enclosures and field power,7 working sets,inventory_unverified,field deployment,count compatible parts before setting the deficit
+GW-01,US915 LoRaWAN gateway,1,planned_later,network test,confirm model location backhaul and owner
+MET-01,loaned instrument inventory,1 set,model_unverified,meteorological design,record exact models interfaces condition and owner
+network,ChirpStack MQTT InfluxDB and Grafana path,1 stack,not_deployed,end-to-end data,assign owner and run a repeatable test
+installation,approved sites and mounting plan,6 sites,unresolved,field installation,complete Student Farm site review
+operations,assembly firmware gateway data and maintenance owners,5 roles,unresolved,sustained operation,assign one accountable owner per role

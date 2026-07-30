@@ -1,0 +1,11 @@
+stage,target,item,quantity,action_state,release_gate,acceptance_test
+reference,IH-01,irrigation fittings and interface parts,verified deficit,inventory_then_fill_gap,physical inventory and frozen plumbing design,leak pressure pulse and valve-cycle tests
+reference,IH-01,enclosure and field power,1 set,inventory_then_fill_gap,compatible parts and final enclosure layout,fit polarity charge and runtime test
+reference,SM-01,enclosure and field power,1 set,inventory_then_fill_gap,compatible parts and final enclosure layout,fit polarity charge and runtime test
+reference,SM-01,soil sensor test setup,1 setup,borrow_or_fill_gap,defined reference method,four channels respond and temperature matches reference
+later,IH-02,irrigation replication package,1 set,planned_later,IH-01 passes and repeatable BOM is frozen,repeat the IH-01 acceptance test
+later,SM-02 SM-03 SM-04,soil replication packages,3 sets,planned_later,SM-01 passes and repeatable BOM is frozen,repeat the SM-01 acceptance test
+later,remaining nodes,enclosures and field power,verified deficit,planned_later,physical inventory and station allocation,fit ingress charge and runtime tests
+later,GW-01,US915 LoRaWAN gateway,1,planned_later,model location backhaul and owner are confirmed,all nodes join uplink and reconnect
+hold,MET-01,conditional interface and mounting parts,verified deficit,on_hold,physical instrument models and site are approved,model-specific bench and field tests
+hold,external systems,optional meter and cloud integrations,1 pilot each,on_hold,compatibility and read-only data access are proven,end-to-end data test

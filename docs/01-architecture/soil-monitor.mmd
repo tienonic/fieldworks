@@ -1,0 +1,15 @@
+flowchart LR
+  S1["Watermark 200SS\nshallow"] --> VA3["200SS-VA3 adapter"]
+  S2["Watermark 200SS\nmid-depth"] --> VA3
+  S3["Watermark 200SS\ndeep"] --> VA3
+  ST["Watermark 200TS\nsoil temperature"] --> VA3
+  VA3 -->|"0–3 V channel 1"| A1["ENTS ADC"]
+  VA3 -->|"0–3 V channel 2"| A2["ENTS ADC"]
+  VA3 -->|"0–3 V channel 3"| A3["ENTS ADC"]
+  VA3 -->|"0–3 V channel 4\npin exposure required"| A4["ENTS ADC"]
+  A1 --> ENTS["ENTS node + Wio-E5"]
+  A2 --> ENTS
+  A3 --> ENTS
+  A4 --> ENTS
+  SOLAR["6 V nominal solar panel"] --> CHG["BQ24210 charger"] --> BAT["3.7 V LiPo"] --> ENTS
+  ENTS -->|"LoRaWAN US915"| GW["GW-01"]

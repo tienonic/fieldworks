@@ -1,0 +1,18 @@
+station_id,station_type,sensor_role,manufacturer_model,quantity,sensor_output,power,adapter_or_conditioner,ents_interface,firmware_conversion,status
+IH-01,irrigation_head,flow,D10 + D10-C-SRS,1,dry contact 1 pulse per gallon,passive,pull-up,GPIO interrupt,pulse count to gallons,delivery_unverified
+IH-01,irrigation_head,pressure,DFRobot SEN0257,1,0.5-4.5 V analog,5 V,22k/47k divider,ADC,divider correction to pressure,delivery_unverified
+IH-01,irrigation_head,valve,CP075 + latching solenoid path,1,reversing momentary actuation,6-12 V pulse,boost plus reversing driver,GPIO output,open/close pulse and state,exact_received_model_unverified
+IH-02,irrigation_head,flow,D10 + D10-C-SRS,1,dry contact 1 pulse per gallon,passive,pull-up,GPIO interrupt,pulse count to gallons,submitted_not_ordered
+IH-02,irrigation_head,pressure,DFRobot SEN0257,1,0.5-4.5 V analog,5 V,22k/47k divider,ADC,divider correction to pressure,submitted_not_ordered
+IH-02,irrigation_head,valve,DIG 305DC-075 assembly,1,reversing momentary actuation,verify exact unit,boost plus reversing driver,GPIO output,open/close pulse and state,submitted_not_ordered
+SM-01,soil_monitor,soil tension shallow,Watermark 200SS-15,1,resistive,VA3 excitation,200SS-VA3,ADC channel 1,voltage to tension,delivery_unverified
+SM-01,soil_monitor,soil tension middle,Watermark 200SS-15,1,resistive,VA3 excitation,200SS-VA3,ADC channel 2,voltage to tension,delivery_unverified
+SM-01,soil_monitor,soil tension deep,Watermark 200SS-15,1,resistive,VA3 excitation,200SS-VA3,ADC channel 3,voltage to tension,delivery_unverified
+SM-01,soil_monitor,soil temperature,Watermark 200TS,1,thermistor,VA3 excitation,200SS-VA3,ADC channel 4,voltage to Celsius,delivery_unverified
+SM-02,soil_monitor,soil profile,3x 200SS-15 + 200TS + VA3,1 set,four 0-3 V channels,node power,200SS-VA3,4 ADC channels,tension and temperature,submitted_not_ordered
+SM-03,soil_monitor,soil profile,3x 200SS-15 + 200TS + VA3,1 set,four 0-3 V channels,node power,200SS-VA3,4 ADC channels,tension and temperature,submitted_not_ordered
+SM-04,soil_monitor,soil profile,3x 200SS-15 + 200TS + VA3,1 set,four 0-3 V channels,node power,200SS-VA3,4 ADC channels,tension and temperature,submitted_not_ordered
+MET-01,met_sandbox,temperature and RH,EE181-L baseline / physical model unverified,1,two 0-1 V analog channels,7-30 V,filtered 12 V boost,2 ADC channels,voltage to Celsius and RH,model_gate
+MET-01,met_sandbox,wind speed and direction,05103 baseline / later Met One evidence,1,pulse plus analog direction,5 V excitation,terminal and shield path,GPIO + ADC,frequency to speed and ratio to direction,model_conflict
+MET-01,met_sandbox,cup anemometer,014A-L baseline / later Met One evidence,1,pulse,passive,conditioner if required,GPIO interrupt,frequency to speed,model_conflict
+MET-01,met_sandbox,soil temperature,TD0030 PT100 baseline / later thermistor evidence,1,3-wire resistance,passive,MAX31865 only if PT100,SPI + CS,resistance to Celsius,model_conflict

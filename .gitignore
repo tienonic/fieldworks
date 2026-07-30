@@ -1,26 +1,27 @@
-# Local and private files
-.env
-.env.*
-!.env.example
-credentials.json
-*.pem
-*.key
-*.sqlite
-*.db
-
-# Private FieldWorks records
+# Private evidence
 receipts-private/
 email-private/
-procurement-private/
-private/
+financial-private/
+*.eml
+*.msg
+*.pst
+*.mbox
+*.xlsx
+*.xls
+*.pdf
 
-# Local agent files
-CLAUDE.md
-.claude/
-.cursorrules
-.aiderignore
+# Secrets and local configuration
+.env
+.env.*
+*.pem
+*.key
+credentials*.json
+token*.json
 
-# System files
+# Generated/local state
+__pycache__/
+*.pyc
 .DS_Store
-desktop.ini
 Thumbs.db
+.cache/
+tmp/

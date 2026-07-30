@@ -1,0 +1,9 @@
+category,station_scope,public_status,next_check
+ENTS boards,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04 MET-01,on_hand,assign board serials and bench test
+irrigation reference package,IH-01,inventory_unverified,match physical parts to the reference design
+soil reference package,SM-01,inventory_unverified,match physical parts and run the four-channel test
+shared enclosure and power parts,reference stations,inventory_unverified,count and verify compatible parts
+irrigation replication package,IH-02,planned_later,release only after IH-01 passes
+soil replication packages,SM-02 SM-03 SM-04,planned_later,release only after SM-01 passes
+LoRaWAN gateway,GW-01,planned_later,confirm US915 model location and backhaul first
+external integrations,external systems,on_hold,prove compatibility and data access first

@@ -1,0 +1,23 @@
+station_id,item,model_or_spec,quantity,procurement_state,allocation_confidence,acceptance_evidence_needed
+IH-01,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
+IH-01,flow meter,D10 + D10-C-SRS,1,opp_complete,high,receipt delivery and pulse test
+IH-01,pressure sensor,DFRobot SEN0257,1,opp_complete,high,receipt delivery divider and calibration test
+IH-01,valve and solenoid,CP075 + recorded replacement solenoid,1,opp_complete,medium,exact received SKUs and bidirectional latch test
+IH-01,enclosure and power,Polycase + solar + LiPo,1 set,opp_complete,low,exact SKUs fit polarity and charging test
+IH-02,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
+IH-02,flow meter,D10 + D10-C-SRS,1,submitted_approver,high,vendor order receipt and pulse test
+IH-02,pressure sensor,DFRobot SEN0257,1,submitted_approver,high,vendor order receipt divider and calibration test
+IH-02,valve assembly,DIG 305DC-075,1,submitted_approver,high,vendor order receipt and bidirectional latch test
+IH-02,enclosure and power,remaining-station requests,1 set,submitted_approver,low,allocation exact SKUs and fit test
+SM-01,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
+SM-01,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,opp_complete,high,receipt delivery and four-channel test
+SM-01,enclosure and power,remaining hardware path,1 set,mixed,low,allocation and charging test
+SM-02,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
+SM-02,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,submitted_approver,medium,vendor order receipt and four-channel test
+SM-03,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
+SM-03,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,submitted_approver,medium,vendor order receipt and four-channel test
+SM-04,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
+SM-04,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,submitted_approver,medium,vendor order receipt and four-channel test
+MET-01,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
+MET-01,loaned instrument set,physical models unresolved,1 set,loan_unverified,low,labels serials cables calibration loan and return record
+GW-01,LoRaWAN gateway,RAKwireless US915,1,submitted_approver,high,vendor order US915 label and packet-forward test

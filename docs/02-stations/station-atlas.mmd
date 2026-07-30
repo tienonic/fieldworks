@@ -1,0 +1,46 @@
+flowchart TB
+  FIELD["Student Farm\nexact sites not assigned"]
+
+  subgraph IRR["Irrigation heads"]
+    direction LR
+    IH1["IH-01 · reference head<br/>D10 + pressure + valve<br/><b>gallons · GPM · psi · valve command</b><br/>VERIFY RECEIVING"]
+    IH2["IH-02 · second head<br/>D10 + pressure + valve<br/><b>gallons · GPM · psi · valve command</b><br/>REQUESTS PENDING"]
+  end
+
+  subgraph SOIL["Soil profiles"]
+    direction LR
+    SM1["SM-01 · reference profile<br/>3 tension depths + temperature<br/><b>kPa shallow/mid/deep · °C</b><br/>VERIFY RECEIVING"]
+    SM2["SM-02 · second profile<br/>3 tension depths + temperature<br/><b>kPa shallow/mid/deep · °C</b><br/>REQUEST PENDING"]
+    SM3["SM-03 · third profile<br/>3 tension depths + temperature<br/><b>kPa shallow/mid/deep · °C</b><br/>REQUEST PENDING"]
+    SM4["SM-04 · fourth profile<br/>3 tension depths + temperature<br/><b>kPa shallow/mid/deep · °C</b><br/>REQUEST PENDING"]
+  end
+
+  MET["MET-01 · Phase II bench<br/>loaned weather instruments<br/><b>°C · RH% · m/s · degrees</b><br/>model gate open"]
+  GW["GW-01 · US915 gateway<br/>all records → dashboard/API"]
+
+  FIELD --> IH1
+  FIELD --> IH2
+  FIELD --> SM1
+  FIELD --> SM2
+  FIELD --> SM3
+  FIELD --> SM4
+  FIELD -. Phase II .-> MET
+
+  IH1 --> GW
+  IH2 --> GW
+  SM1 --> GW
+  SM2 --> GW
+  SM3 --> GW
+  SM4 --> GW
+  MET -.-> GW
+
+  classDef field fill:#f3f4f6,stroke:#374151,color:#111827
+  classDef irrigation fill:#dbeafe,stroke:#1d4ed8,color:#111827
+  classDef soil fill:#dcfce7,stroke:#15803d,color:#111827
+  classDef met fill:#fef3c7,stroke:#b45309,color:#111827
+  classDef gateway fill:#ede9fe,stroke:#6d28d9,color:#111827
+  class FIELD field
+  class IH1,IH2 irrigation
+  class SM1,SM2,SM3,SM4 soil
+  class MET met
+  class GW gateway
