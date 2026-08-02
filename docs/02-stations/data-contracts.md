@@ -2,10 +2,10 @@
 
 Status: working
 Owner: firmware and data owners unassigned
-Updated: 2026-07-27
+Updated: 2026-08-02
 Evidence: station signal paths and proposed decoded data model
 
-These schema examples show the decoded LoRaWAN payload. Raw values stay beside converted values so calibration errors can be diagnosed.
+These schema examples show the normalized station payloads. Raw values stay beside converted values where the acquisition path exposes them so calibration and ingestion errors can be diagnosed.
 
 ## Common envelope
 
@@ -16,10 +16,9 @@ Every record includes:
 | `station_id` | stable hardware/data identity such as `IH-01` |
 | `station_type` | `irrigation_head`, `soil_profile`, or `met_sandbox` |
 | `observed_at` | UTC timestamp in ISO-8601 format |
-| `firmware_version` | decoder and field-behavior traceability |
-| `battery_v` | node battery voltage when supported by the final pin map |
-| `rssi_dbm`, `snr_db` | LoRaWAN link quality from gateway metadata |
-| `quality_flags` | explicit warnings such as `uncalibrated`, `stale`, `counter_reset`, or `model_unverified` |
+| `quality_flags` | explicit warnings such as `uncalibrated`, `stale`, `counter_reset`, or `receiver_offline` |
+
+ENTS records may additionally include `firmware_version`, `battery_v`, `rssi_dbm`, and `snr_db`. MET-01 is acquired through the Davis/WeatherLink path rather than ENTS/LoRaWAN, so those ENTS-specific fields are not required for MET-01.
 
 ## Irrigation-head record
 
@@ -93,26 +92,31 @@ The illustrative record gets drier with depth. Depth values stay null until the 
 {
   "station_id": "MET-01",
   "station_type": "met_sandbox",
+  "source_system": "weatherlink",
   "observed_at": "2026-08-01T18:00:00Z",
+  "received_at": "2026-08-01T18:00:04Z",
   "air_temp_c": null,
   "relative_humidity_pct": null,
   "wind_speed_ms": null,
   "wind_direction_deg": null,
-  "cup_wind_speed_ms": null,
-  "soil_temp_c": null,
-  "quality_flags": ["model_unverified", "bench_only", "example_not_live"]
+  "rain_mm": null,
+  "rain_rate_mm_hr": null,
+  "solar_radiation_wm2": null,
+  "uv_index": null,
+  "quality_flags": ["bench_only", "example_not_live"]
 }
 ```
 
-Publish MET-01 values only after verifying the physical instruments and conversions.
+MET-01 is the Davis Vantage Pro2 Plus 6162 weather path. Publish the weather fields after the 6162 is paired with WeatherLink Live 6100 and the corresponding channels are verified. Preserve the Davis observation timestamp as `observed_at`; `received_at` records when Green Grid ingested the observation.
 
 ## Quality behavior
 
-- Preserve raw values with engineering-unit values.
+- Preserve raw values with engineering-unit values where the source exposes useful raw telemetry.
 - Use `null` plus a quality flag for unavailable readings. Reserve zero for measured zero.
 - Mark counter resets and preserve a counter epoch.
 - Label `valve_command` as a controller command.
 - Store sensor depths and installation metadata separately from time-series values.
-- Reject impossible values at presentation time, but retain the raw record for diagnosis.
+- Preserve the original Davis/WeatherLink observation timestamp for MET-01.
+- Reject impossible values at presentation time, but retain the source record for diagnosis.
 
 The complete field list is in [data-dictionary.csv](data-dictionary.csv).
