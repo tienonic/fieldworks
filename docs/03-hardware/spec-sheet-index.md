@@ -2,7 +2,7 @@
 
 Status: working
 Owner: unassigned
-Updated: 2026-07-30
+Updated: 2026-08-02
 
 Match every sheet to the physical label before using its values.
 
@@ -23,18 +23,20 @@ Match every sheet to the physical label before using its values.
 | DIG 305DC-075 valve | [DC valve sheet PDF](https://www.digcorp.com/wp-content/uploads/2020/06/DC_Valves_031621.pdf), [product page](https://www.digcorp.com/professional-irrigation-products/300dc-3-4-and-1-vdc-valves/) | Requested model; verify received label |
 | DIG S-305DC solenoid | [solenoid sheet PDF](https://www.digcorp.com/wp-content/uploads/digcorp/S-305DC.pdf) | Use only if the physical solenoid matches |
 | Polycase WQ-44 | [product page](https://www.polycase.com/wq-44), [print template PDF](https://www.polycase.com/media/catalog/product/file/WQ-44S-PrintTemplate.pdf) | Working enclosure baseline; received SKU remains open |
-| MAX31865 RTD converter | [Analog Devices datasheet PDF](https://www.analog.com/media/en/technical-documentation/data-sheets/MAX31865.pdf) | Applies only if MET-01 uses a PT100 sensor |
 
 ## MET-01 baseline
 
-These links support the April 19 baseline. Physical labels and later loan records conflict with parts of that baseline.
+The physical MET-01 transmitter is identified as a **Davis Vantage Pro2 Plus wireless weather station, product number 6162**. The Sensor Interface Module has the `TEMP HUM`, `WIND`, `RAIN`, `SUN`, and `UV` ports populated.
 
 | Baseline model | Manufacturer document | Status |
 |---|---|---|
-| Campbell EE181-L | [manual PDF](https://s.campbellsci.com/documents/us/manuals/ee181.pdf) | Verify label suffix and cable |
-| Campbell 05103 | [manual PDF](https://s.campbellsci.com/documents/us/manuals/05103.pdf) | Later evidence mentions Met One sensors |
-| Campbell 014A-L | [manual PDF](https://s.campbellsci.com/documents/us/manuals/014a.pdf) | Later evidence mentions a Met One cup sensor |
-| T-PRO TD0030 PT100 | [manufacturer PT100 family page](https://tprosensor.com/products/pt100) | Exact TD0030 sheet still needed; later evidence mentions thermistors |
+| Davis Vantage Pro2 Plus 6162 | [Davis Vantage Pro2 support/manual index](https://support.davisinstruments.com/category/2adgkl7szt-vantage-pro-2) | Existing in-kind wireless station; product number physically verified |
+| Vantage Pro2 temperature/RH assembly | [Davis Vantage Pro2 support/manual index](https://support.davisinstruments.com/category/2adgkl7szt-vantage-pro-2) | Installed at `TEMP HUM`; exact internal board revision remains to verify |
+| Davis Vantage Pro2 anemometer / wind vane; current replacement SKU 6410 | [Davis 6410 product page](https://www.davisinstruments.com/products/anemometer-for-vantage-pro2-vantage-pro) | Installed at `WIND`; verify physical condition and alignment |
+| 6162-generation Davis rain collector | [Davis Vantage Pro2 support/manual index](https://support.davisinstruments.com/category/2adgkl7szt-vantage-pro-2) | Installed at `RAIN`; exact collector assembly revision remains to verify |
+| Davis Solar Radiation Sensor 6450 | [Davis 6450 product page](https://www.davisinstruments.com/products/solar-radiation-sensor) | Installed at `SUN` |
+| Davis UV Sensor 6490 | [Davis 6490 product page](https://www.davisinstruments.com/products/uv-sensor) | Installed at `UV` |
+| Davis WeatherLink Live 6100 | [WeatherLink Live product page](https://www.davisinstruments.com/pages/weatherlink-live), [Local API documentation](https://weatherlink.github.io/weatherlink-live-local-api/) | Required receiver/network bridge; not yet recorded as purchased |
 
 ## Design candidates
 
@@ -43,10 +45,10 @@ These links support the April 19 baseline. Physical labels and later loan record
 | Onset S-LIB-M003 | [manual PDF](https://www.onsetcomp.com/sites/default/files/resources-documents/6708-G%20S-LIB%20Manual.pdf) | Model named in Johan's concept; interface remains open |
 | Campbell TRH probe | None yet | Exact model required |
 | Davis soil-moisture probe | None yet | Exact model required |
-| Davis 2D sonic anemometer | None yet | Exact model required |
+| Davis 2D sonic anemometer | None yet | Exact variant, output, power, environmental rating required |
 | McMaster bolt-on thermocouple | None yet | Thermocouple type and part number required |
-| Apogee PAR sensor | None yet | Exact model required |
-| Soil heat-flux sensor | None yet | Manufacturer and model required |
+| Apogee PAR sensor | None yet | Exact model, analog/digital output, calibration required |
+| Soil heat-flux sensor | None yet | Manufacturer, model, output, installation method required |
 | Ultrasonic 9-in-1 RS485 sensor | None yet | Vendor, model, datasheet, power, and register map required |
 | US915 LoRaWAN gateway | None yet | Select the exact RAKwireless model first |
 | Solar panel | None yet | Verify the received SKU first |
