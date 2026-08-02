@@ -1,19 +1,21 @@
 flowchart TB
   subgraph FIELD["Student Farm field layer"]
-    IH1["IH-01\nflow + pressure + valve"]
-    IH2["IH-02\nflow + pressure + valve"]
-    SM1["SM-01\n3 tension depths + soil temp"]
-    SM2["SM-02\n3 tension depths + soil temp"]
-    SM3["SM-03\n3 tension depths + soil temp"]
-    SM4["SM-04\n3 tension depths + soil temp"]
-    MET["MET-01\nPhase II sandbox"]
+    IH1["IH-01 - flow pressure valve"]
+    IH2["IH-02 - flow pressure valve"]
+    SM1["SM-01 - 3 tension depths and soil temperature"]
+    SM2["SM-02 - 3 tension depths and soil temperature"]
+    SM3["SM-03 - 3 tension depths and soil temperature"]
+    SM4["SM-04 - 3 tension depths and soil temperature"]
+    MET["MET-01 - Davis Vantage Pro2 Plus 6162"]
   end
 
-  GW["GW-01\nUS915 LoRaWAN gateway"]
-  CS["ChirpStack\ndevice registry + decoder"]
-  MQ["MQTT\ningestion"]
-  DB["InfluxDB\ntime-series storage"]
-  UI["Grafana + REST/CSV\nreview and access"]
+  GW["GW-01 - US915 LoRaWAN gateway"]
+  CS["ChirpStack - device registry and decoder"]
+  WLL["WeatherLink Live 6100"]
+  DAVIS["Green Grid WeatherLink adapter"]
+  MQ["MQTT - common ingestion"]
+  DB["InfluxDB - time-series storage"]
+  UI["Grafana REST CSV - review and access"]
 
   IH1 -->|"LoRaWAN US915"| GW
   IH2 -->|"LoRaWAN US915"| GW
@@ -21,14 +23,12 @@ flowchart TB
   SM2 -->|"LoRaWAN US915"| GW
   SM3 -->|"LoRaWAN US915"| GW
   SM4 -->|"LoRaWAN US915"| GW
-  MET -. "Phase II" .-> GW
-  GW --> CS --> MQ --> DB --> UI
+  GW --> CS
+  CS --> MQ
 
-  classDef irrigation fill:#dbeafe,stroke:#1d4ed8,color:#111827
-  classDef soil fill:#dcfce7,stroke:#15803d,color:#111827
-  classDef met fill:#fef3c7,stroke:#b45309,color:#111827
-  classDef infra fill:#f3f4f6,stroke:#374151,color:#111827
-  class IH1,IH2 irrigation
-  class SM1,SM2,SM3,SM4 soil
-  class MET met
-  class GW,CS,MQ,DB,UI infra
+  MET -->|"Davis wireless RF"| WLL
+  WLL -->|"Ethernet or Wi-Fi"| DAVIS
+  DAVIS --> MQ
+
+  MQ --> DB
+  DB --> UI
