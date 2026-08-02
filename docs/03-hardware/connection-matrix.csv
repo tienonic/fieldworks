@@ -12,7 +12,9 @@ SM-01,soil_monitor,soil temperature,Watermark 200TS,1,thermistor,VA3 excitation,
 SM-02,soil_monitor,soil profile,3x 200SS-15 + 200TS + VA3,1 set,four 0-3 V channels,node power,200SS-VA3,4 ADC channels,tension and temperature,submitted_not_ordered
 SM-03,soil_monitor,soil profile,3x 200SS-15 + 200TS + VA3,1 set,four 0-3 V channels,node power,200SS-VA3,4 ADC channels,tension and temperature,submitted_not_ordered
 SM-04,soil_monitor,soil profile,3x 200SS-15 + 200TS + VA3,1 set,four 0-3 V channels,node power,200SS-VA3,4 ADC channels,tension and temperature,submitted_not_ordered
-MET-01,met_sandbox,temperature and RH,EE181-L baseline / physical model unverified,1,two 0-1 V analog channels,7-30 V,filtered 12 V boost,2 ADC channels,voltage to Celsius and RH,model_gate
-MET-01,met_sandbox,wind speed and direction,05103 baseline / later Met One evidence,1,pulse plus analog direction,5 V excitation,terminal and shield path,GPIO + ADC,frequency to speed and ratio to direction,model_conflict
-MET-01,met_sandbox,cup anemometer,014A-L baseline / later Met One evidence,1,pulse,passive,conditioner if required,GPIO interrupt,frequency to speed,model_conflict
-MET-01,met_sandbox,soil temperature,TD0030 PT100 baseline / later thermistor evidence,1,3-wire resistance,passive,MAX31865 only if PT100,SPI + CS,resistance to Celsius,model_conflict
+MET-01,met_sandbox,temperature and RH,Davis Vantage Pro2 Plus 6162 integrated T/RH assembly,1,Davis dedicated TEMP HUM sensor interface,ISS powered,Davis Sensor Interface Module,not_applicable,WeatherLink normalized to Celsius and RH,installed_verify_reading
+MET-01,met_sandbox,wind speed and direction,Davis Vantage Pro2 anemometer; current replacement SKU 6410,1,Davis dedicated WIND sensor interface,ISS powered,Davis Sensor Interface Module,not_applicable,WeatherLink normalized to speed and direction,installed_verify_alignment
+MET-01,met_sandbox,rainfall,Davis 6162-generation rain collector exact revision pending,1,Davis dedicated RAIN sensor interface,ISS powered,Davis Sensor Interface Module,not_applicable,WeatherLink rainfall and rain-rate mapping,installed_verify_tip
+MET-01,met_sandbox,solar radiation,Davis 6450,1,Davis dedicated SUN sensor interface,ISS powered,Davis Sensor Interface Module,not_applicable,WeatherLink normalized to W/m2,installed_verify_channel
+MET-01,met_sandbox,UV,Davis 6490,1,Davis dedicated UV sensor interface,ISS powered,Davis Sensor Interface Module,not_applicable,WeatherLink UV index/irradiance mapping,installed_verify_channel
+MET-01,met_sandbox,receiver,Davis WeatherLink Live 6100,1,Davis wireless RF plus Ethernet/Wi-Fi,AC plus optional 4x AA backup,none,not_applicable,HTTP JSON to Green Grid adapter,required_not_purchased
