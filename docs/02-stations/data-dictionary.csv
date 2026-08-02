@@ -19,16 +19,20 @@ soil_profile,SM-01 SM-02 SM-03 SM-04,tension_deep_raw_v,Deep raw voltage,volt,VA
 soil_profile,SM-01 SM-02 SM-03 SM-04,tension_deep_kpa,Deep soil tension,kPa,200SS deep,manufacturer conversion plus calibration,yes,working,centibar numerically equals kPa
 soil_profile,SM-01 SM-02 SM-03 SM-04,soil_temp_raw_v,Soil temperature raw voltage,volt,VA3 channel 4,ADC conversion,yes,high,fourth ADC resource gate remains open
 soil_profile,SM-01 SM-02 SM-03 SM-04,soil_temp_c,Soil temperature,degree Celsius,200TS,manufacturer conversion plus calibration,yes,working,compare against reference thermometer
-met_sandbox,MET-01,station_id,Station ID,text,firmware configuration,none,yes,high,stable identity
-met_sandbox,MET-01,observed_at,Observed at,ISO-8601 UTC,node clock or server timestamp,normalize to UTC,yes,working,time synchronization method not frozen
-met_sandbox,MET-01,air_temp_c,Air temperature,degree Celsius,EE181-L baseline,model-specific analog conversion,conditional,low,physical model gate open
-met_sandbox,MET-01,relative_humidity_pct,Relative humidity,percent,EE181-L baseline,model-specific analog conversion,conditional,low,physical model gate open
-met_sandbox,MET-01,wind_speed_ms,Wind speed,meter/second,05103 baseline,pulse frequency conversion,conditional,low,physical model conflict
-met_sandbox,MET-01,wind_direction_deg,Wind direction,degree,05103 baseline,ratiometric analog conversion and orientation offset,conditional,low,physical model conflict
-met_sandbox,MET-01,cup_wind_speed_ms,Cup wind speed,meter/second,014A-L baseline,pulse frequency conversion,conditional,low,physical model conflict
-met_sandbox,MET-01,soil_temp_c,Soil temperature,degree Celsius,TD0030 PT100 baseline,MAX31865 RTD conversion,conditional,low,PT100 versus thermistor conflict
-all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04 MET-01,firmware_version,Firmware version,text,node firmware,none,yes,working,needed for traceability
-all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04 MET-01,battery_v,Battery voltage,volt,ENTS power telemetry,ADC conversion,conditional,working,publish if pin map and firmware expose it
-all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04 MET-01,rssi_dbm,Radio signal strength,dBm,LoRaWAN metadata,none,yes,high,gateway/network metadata
-all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04 MET-01,snr_db,Radio signal-to-noise ratio,dB,LoRaWAN metadata,none,yes,high,gateway/network metadata
-all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04 MET-01,quality_flags,Quality flags,array,decoder and validation rules,combine missing range stale reset and calibration flags,yes,working,do not silently discard suspect data
+met_sandbox,MET-01,station_id,Station ID,text,Green Grid configuration,none,yes,high,stable identity for Davis meteorological path
+met_sandbox,MET-01,source_system,Source system,text,WeatherLink,none,yes,high,identifies Davis/WeatherLink acquisition path
+met_sandbox,MET-01,observed_at,Observed at,ISO-8601 UTC,WeatherLink observation timestamp,normalize to UTC,yes,high,preserve source observation time
+met_sandbox,MET-01,received_at,Received at,ISO-8601 UTC,Green Grid ingestion service,normalize to UTC,yes,working,records ingestion time separately from observation time
+met_sandbox,MET-01,air_temp_c,Air temperature,degree Celsius,Davis Vantage Pro2 Plus 6162 T/RH assembly,WeatherLink mapping,yes,high,verify against reference before field acceptance
+met_sandbox,MET-01,relative_humidity_pct,Relative humidity,percent,Davis Vantage Pro2 Plus 6162 T/RH assembly,WeatherLink mapping,yes,high,verify against reference before field acceptance
+met_sandbox,MET-01,wind_speed_ms,Wind speed,meter/second,Davis Vantage Pro2 anemometer,WeatherLink mapping and unit normalization,yes,high,verify mechanical condition
+met_sandbox,MET-01,wind_direction_deg,Wind direction,degree,Davis Vantage Pro2 wind vane,WeatherLink mapping plus north alignment,yes,high,verify orientation after mounting
+met_sandbox,MET-01,rain_mm,Rainfall,millimeter,Davis 6162-generation rain collector,WeatherLink mapping and unit normalization,yes,high,verify level and tip behavior
+met_sandbox,MET-01,rain_rate_mm_hr,Rain rate,millimeter/hour,Davis 6162-generation rain collector,WeatherLink mapping and unit normalization,yes,working,verify exact WeatherLink field mapping
+met_sandbox,MET-01,solar_radiation_wm2,Solar radiation,watt/meter^2,Davis 6450,WeatherLink mapping,yes,high,sensor installed at SUN port
+met_sandbox,MET-01,uv_index,UV index,index,Davis 6490,WeatherLink mapping,yes,high,sensor installed at UV port
+all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04,firmware_version,Firmware version,text,node firmware,none,yes,working,ENTS station traceability
+all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04,battery_v,Battery voltage,volt,ENTS power telemetry,ADC conversion,conditional,working,publish if pin map and firmware expose it
+all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04,rssi_dbm,Radio signal strength,dBm,LoRaWAN metadata,none,yes,high,gateway/network metadata
+all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04,snr_db,Radio signal-to-noise ratio,dB,LoRaWAN metadata,none,yes,high,gateway/network metadata
+all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04 MET-01,quality_flags,Quality flags,array,decoder and validation rules,combine missing range stale reset calibration and receiver flags,yes,working,do not silently discard suspect data
