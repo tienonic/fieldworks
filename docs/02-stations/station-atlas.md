@@ -43,13 +43,13 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Package:** an IH-01 replica at a second approved irrigation head.
 
-**Inside and attached:** the same functional package as IH-01, with the second D10, second SEN0257, and complete valve assembly added after the IH-01 design passes.
+**Inside and attached:** the same functional package as IH-01, with the second D10, second SEN0257, and complete valve assembly.
 
 **Data expected:** the IH-01 volume, flow, pressure, valve-command, diagnostic, power, and radio fields with station ID `IH-02`.
 
 **Question:** How does a second irrigation head perform compared with IH-01?
 
-**Current state:** planned later; replication starts after IH-01 passes.
+**Current state:** procurement requests submitted; bench build awaits receiving and IH-01 reference verification.
 
 [Open the complete IH-02 record](IH-02.md)
 
@@ -90,7 +90,7 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Question:** How does the second location's root-zone water profile compare with SM-01?
 
-**Current state:** planned later, after the reference build passes.
+**Current state:** procurement request submitted; build awaits receiving and SM-01 reference verification.
 
 [Open the complete SM-02 record](SM-02.md)
 
@@ -104,7 +104,7 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Question:** How does the third location differ in drying rate and depth distribution?
 
-**Current state:** planned later, after the reference build passes.
+**Current state:** procurement request submitted; build awaits receiving and SM-01 reference verification.
 
 [Open the complete SM-03 record](SM-03.md)
 
@@ -118,7 +118,7 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Question:** How does the fourth location differ, and does the four-station pattern show meaningful spatial variation?
 
-**Current state:** planned later, after the reference build passes.
+**Current state:** procurement request submitted; build awaits receiving and SM-01 reference verification.
 
 [Open the complete SM-04 record](SM-04.md)
 
@@ -126,23 +126,32 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 ### MET-01: meteorological integration sandbox
 
-**Package:** the seventh ENTS board on a bench, connected one instrument at a time before any field mast is approved.
+**Package:** existing wireless Davis Vantage Pro2 Plus 6162 sensor suite plus one WeatherLink Live 6100 receiver/network bridge.
 
-**Candidate instruments:** temperature/RH probe, wind speed/direction monitor, cup anemometer, and soil-temperature sensor. Exact physical models remain disputed.
+**Installed sensors and ports:**
 
-**Data expected if the April 19 baseline is verified:**
+- temperature/RH assembly -> `TEMP HUM`
+- Vantage Pro2 anemometer/wind vane -> `WIND`
+- Davis rain collector -> `RAIN`
+- Davis 6450 Solar Radiation Sensor -> `SUN`
+- Davis 6490 UV Sensor -> `UV`
+
+**Data expected:**
 
 - air temperature in °C
 - relative humidity in percent
 - wind speed in m/s
 - wind direction in degrees
-- second/cup wind-speed channel in m/s
-- soil temperature in °C
-- raw analog, pulse, and RTD values plus station-health fields
+- rainfall and rain rate
+- solar radiation in W/m²
+- UV index
+- source/ingestion timestamps and quality flags
 
-**Question:** Can the loaned meteorological instruments be powered, read, calibrated, and sent through ENTS without buying a separate station?
+**Question:** Can the existing wireless Davis station provide stable, traceable meteorological observations through WeatherLink and into the common Green Grid backend?
 
-**Current state:** blocked until every physical model and cable is identified.
+**Compatibility:** the five weather sensors connect directly to the Davis 6162 Sensor Interface Module. MET-01 does not require ENTS ADC/GPIO channels and does not use the Green Grid LoRaWAN gateway. WeatherLink Live receives Davis wireless RF and exposes the observations to the software/backend layer.
+
+**Current state:** Davis 6162 and populated sensor ports verified; WeatherLink Live 6100, network/API test, reference comparison, and field siting remain open.
 
 [Open the complete MET-01 record](MET-01.md)
 
