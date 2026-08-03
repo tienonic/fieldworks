@@ -126,15 +126,15 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 ### MET-01: meteorological integration sandbox
 
-**Package:** existing wireless Davis Vantage Pro2 Plus 6162 sensor suite plus one WeatherLink Live 6100 receiver/network bridge.
+**Package:** reported existing wireless Davis Vantage Pro2 Plus 6162 sensor suite plus one matching-region WeatherLink Live receiver/network bridge.
 
-**Installed sensors and ports:**
+**Reported sensors and ports:**
 
 - temperature/RH assembly -> `TEMP HUM`
 - Vantage Pro2 anemometer/wind vane -> `WIND`
 - Davis rain collector -> `RAIN`
-- Davis 6450 Solar Radiation Sensor -> `SUN`
-- Davis 6490 UV Sensor -> `UV`
+- Davis-compatible solar radiation sensor, exact SKU pending -> `SUN`
+- Davis-compatible UV sensor, exact SKU pending -> `UV`
 
 **Data expected:**
 
@@ -147,11 +147,11 @@ Use this page as the network index. Each station has one stable ID, one physical
 - UV index
 - source/ingestion timestamps and quality flags
 
-**Question:** Can the existing wireless Davis station provide stable, traceable meteorological observations through WeatherLink and into the common Green Grid backend?
+**Question:** Can the reported wireless Davis station provide stable, traceable meteorological observations through WeatherLink and into the common Green Grid backend?
 
-**Compatibility:** the five weather sensors connect directly to the Davis 6162 Sensor Interface Module. MET-01 does not require ENTS ADC/GPIO channels and does not use the Green Grid LoRaWAN gateway. WeatherLink Live receives Davis wireless RF and exposes the observations to the software/backend layer.
+**Compatibility:** the five weather sensors connect directly to the Davis 6162 Sensor Interface Module. MET-01 does not require ENTS ADC/GPIO channels and does not use the Green Grid LoRaWAN gateway. A WeatherLink Live receiver with the matching radio region receives Davis wireless RF and exposes observations to a same-LAN adapter. The adapter converts source units before publishing to the backend.
 
-**Current state:** Davis 6162 and populated sensor ports verified; WeatherLink Live 6100, network/API test, reference comparison, and field siting remain open.
+**Current state:** collaborator reports a Davis 6162 and populated sensor ports. Dated inventory evidence, exact sensor labels, matching WeatherLink receiver, network/API test, reference comparison, and field siting remain open.
 
 [Open the complete MET-01 record](MET-01.md)
 

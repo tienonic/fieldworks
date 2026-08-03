@@ -21,16 +21,16 @@ soil_profile,SM-01 SM-02 SM-03 SM-04,soil_temp_raw_v,Soil temperature raw voltag
 soil_profile,SM-01 SM-02 SM-03 SM-04,soil_temp_c,Soil temperature,degree Celsius,200TS,manufacturer conversion plus calibration,yes,working,compare against reference thermometer
 met_sandbox,MET-01,station_id,Station ID,text,Green Grid configuration,none,yes,high,stable identity for Davis meteorological path
 met_sandbox,MET-01,source_system,Source system,text,WeatherLink,none,yes,high,identifies Davis/WeatherLink acquisition path
-met_sandbox,MET-01,observed_at,Observed at,ISO-8601 UTC,WeatherLink observation timestamp,normalize to UTC,yes,high,preserve source observation time
+met_sandbox,MET-01,observed_at,Observed at,ISO-8601 UTC,WeatherLink Live Local API response ts,Unix response timestamp to ISO-8601 UTC,yes,working,response timestamp not a per-sensor sample time; set quality flag
 met_sandbox,MET-01,received_at,Received at,ISO-8601 UTC,Green Grid ingestion service,normalize to UTC,yes,working,records ingestion time separately from observation time
-met_sandbox,MET-01,air_temp_c,Air temperature,degree Celsius,Davis Vantage Pro2 Plus 6162 T/RH assembly,WeatherLink mapping,yes,high,verify against reference before field acceptance
+met_sandbox,MET-01,air_temp_c,Air temperature,degree Celsius,WeatherLink Local API temp in °F,(temp_f - 32) multiplied by 5/9,yes,working,retain source temp_f; verify sensor identity and reference
 met_sandbox,MET-01,relative_humidity_pct,Relative humidity,percent,Davis Vantage Pro2 Plus 6162 T/RH assembly,WeatherLink mapping,yes,high,verify against reference before field acceptance
-met_sandbox,MET-01,wind_speed_ms,Wind speed,meter/second,Davis Vantage Pro2 anemometer,WeatherLink mapping and unit normalization,yes,high,verify mechanical condition
+met_sandbox,MET-01,wind_speed_ms,Wind speed,meter/second,WeatherLink Local API wind speed in mph,mph multiplied by 0.44704,yes,working,retain source mph; verify mechanical condition
 met_sandbox,MET-01,wind_direction_deg,Wind direction,degree,Davis Vantage Pro2 wind vane,WeatherLink mapping plus north alignment,yes,high,verify orientation after mounting
-met_sandbox,MET-01,rain_mm,Rainfall,millimeter,Davis 6162-generation rain collector,WeatherLink mapping and unit normalization,yes,high,verify level and tip behavior
-met_sandbox,MET-01,rain_rate_mm_hr,Rain rate,millimeter/hour,Davis 6162-generation rain collector,WeatherLink mapping and unit normalization,yes,working,verify exact WeatherLink field mapping
-met_sandbox,MET-01,solar_radiation_wm2,Solar radiation,watt/meter^2,Davis 6450,WeatherLink mapping,yes,high,sensor installed at SUN port
-met_sandbox,MET-01,uv_index,UV index,index,Davis 6490,WeatherLink mapping,yes,high,sensor installed at UV port
+met_sandbox,MET-01,rainfall_daily_mm,Daily rainfall,millimeter since local midnight,WeatherLink Local API rainfall_daily count plus rain_size,counts multiplied by collector increment selected by rain_size,yes,working,retain counts and rain_size; verify collector and local-midnight boundary
+met_sandbox,MET-01,rain_rate_mm_hr,Rain rate,millimeter/hour,WeatherLink Local API rain_rate_last counts/hour plus rain_size,counts/hour multiplied by collector increment selected by rain_size,yes,working,retain counts/hour and rain_size; verify exact field and tip behavior
+met_sandbox,MET-01,solar_radiation_wm2,Solar radiation,watt/meter^2,Davis-compatible sensor at SUN; exact SKU pending,WeatherLink mapping,yes,working,port reported populated; verify physical label and WeatherLink channel
+met_sandbox,MET-01,uv_index,UV index,index,Davis-compatible sensor at UV; exact SKU pending,WeatherLink mapping,yes,working,port reported populated; verify physical label and WeatherLink channel
 all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04,firmware_version,Firmware version,text,node firmware,none,yes,working,ENTS station traceability
 all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04,battery_v,Battery voltage,volt,ENTS power telemetry,ADC conversion,conditional,working,publish if pin map and firmware expose it
 all,IH-01 IH-02 SM-01 SM-02 SM-03 SM-04,rssi_dbm,Radio signal strength,dBm,LoRaWAN metadata,none,yes,high,gateway/network metadata

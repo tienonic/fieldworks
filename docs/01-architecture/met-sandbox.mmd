@@ -2,11 +2,11 @@ flowchart LR
   TRH["Vantage Pro2 temperature and RH sensor"] -->|"TEMP HUM"| SIM["Davis Vantage Pro2 Plus 6162 Sensor Interface Module"]
   WIND["Davis Vantage Pro2 anemometer and wind vane - current replacement SKU 6410"] -->|"WIND"| SIM
   RAIN["Vantage Pro2 rain collector"] -->|"RAIN"| SIM
-  SOLAR["Davis 6450 solar radiation sensor"] -->|"SUN"| SIM
-  UV["Davis 6490 UV sensor"] -->|"UV"| SIM
-  SIM -->|"Davis wireless RF"| WLL["WeatherLink Live 6100"]
-  WLL -->|"Ethernet or Wi-Fi"| API["WeatherLink HTTP JSON interface"]
-  API --> ADAPTER["Green Grid WeatherLink adapter"]
+  SOLAR["Davis-compatible solar sensor - exact SKU pending"] -->|"SUN"| SIM
+  UV["Davis-compatible UV sensor - exact SKU pending"] -->|"UV"| SIM
+  SIM -->|"Davis wireless RF - matching region"| WLL["WeatherLink Live receiver"]
+  WLL -->|"same-LAN Ethernet or Wi-Fi"| API["WeatherLink Live Local API - HTTP JSON"]
+  API --> ADAPTER["Green Grid adapter - timestamp and unit normalization"]
   ADAPTER --> MQTT["MQTT"]
   MQTT --> DB["InfluxDB"]
   DB --> UI["Grafana REST CSV"]

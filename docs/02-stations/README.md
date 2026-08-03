@@ -27,7 +27,7 @@ Evidence: proposal architecture, compatibility grid, procurement evidence, physi
 
 | ID | Purpose | Lifecycle |
 |---|---|---|
-| [MET-01](MET-01.md) | Davis Vantage Pro2 Plus 6162 meteorological integration through WeatherLink | existing station verified; WeatherLink Live/network/bench verification pending |
+| [MET-01](MET-01.md) | Davis Vantage Pro2 Plus 6162 meteorological integration through WeatherLink | station reported existing; inventory evidence, matching receiver, network and bench verification pending |
 | [WX-CANDIDATE](WX-CANDIDATE.md) | Johan's other proposed weather-station concepts | candidate only |
 
 ## Numbering rule

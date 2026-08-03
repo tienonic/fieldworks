@@ -16,7 +16,7 @@ Start with the [visual station atlas](docs/02-stations/station-atlas.md). Each e
 | [SM-02](docs/02-stations/SM-02.md) | second soil-profile package | same fields as SM-01 with identity `SM-02` | procurement submitted; receiving pending |
 | [SM-03](docs/02-stations/SM-03.md) | third soil-profile package | same fields as SM-01 with identity `SM-03` | procurement submitted; receiving pending |
 | [SM-04](docs/02-stations/SM-04.md) | fourth soil-profile package | same fields as SM-01 with identity `SM-04` | procurement submitted; receiving pending |
-| [MET-01](docs/02-stations/MET-01.md) | wireless Davis Vantage Pro2 Plus 6162 with temp/RH, wind, rain, solar and UV; WeatherLink Live 6100 network bridge | air °C, RH%, wind, rainfall, solar W/m², UV index | 6162 hardware identified; WeatherLink Live/network/bench verification pending |
+| [MET-01](docs/02-stations/MET-01.md) | reported wireless Davis Vantage Pro2 Plus 6162 with temp/RH, wind, rain, solar and UV; matching-region WeatherLink Live receiver required | air °C, RH%, wind, rainfall, solar W/m², UV index | inventory evidence, exact sensor labels, receiver, network and bench verification pending |
 | [WX-CANDIDATE](docs/02-stations/WX-CANDIDATE.md) | no approved or deployed hardware | no approved stream | concept only |
 
 The six Phase I ENTS stations exclude the Student Farm's four existing Sensus iPERL meters and HOBO MX1104 logger. The SCADAmetrics Signalizer remains on hold pending a compatibility check.
@@ -25,7 +25,7 @@ The six Phase I ENTS stations exclude the Student Farm's four existing Sensus iP
 
 ![Network architecture](docs/01-architecture/network-overview.svg)
 
-The six Phase I field nodes use ENTS boards with Wio-E5 LoRa radios. They send US915 LoRaWAN packets through the Student Farm gateway to ChirpStack and MQTT. MET-01 is a separate Davis acquisition path: the 6162 sends Davis wireless RF to WeatherLink Live 6100, and a Green Grid adapter sends normalized observations to the common backend. The two paths converge at MQTT/InfluxDB/Grafana rather than at the field radio layer.
+The six Phase I field nodes use ENTS boards with Wio-E5 LoRa radios. They send US915 LoRaWAN packets through the Student Farm gateway to ChirpStack and MQTT. MET-01 is a separate Davis acquisition path: the reported 6162 sends Davis wireless RF to a matching-region WeatherLink Live receiver, and a same-LAN Green Grid adapter converts source units and sends normalized records to the common backend. The two paths converge at MQTT/InfluxDB/Grafana rather than at the field radio layer.
 
 ## Read in this order
 

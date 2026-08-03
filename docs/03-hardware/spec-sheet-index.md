@@ -26,17 +26,17 @@ Match every sheet to the physical label before using its values.
 
 ## MET-01 baseline
 
-The physical MET-01 transmitter is identified as a **Davis Vantage Pro2 Plus wireless weather station, product number 6162**. The Sensor Interface Module has the `TEMP HUM`, `WIND`, `RAIN`, `SUN`, and `UV` ports populated.
+The collaborator's inspection report identifies MET-01 as a **Davis Vantage Pro2 Plus wireless weather station, product number 6162** and reports the `TEMP HUM`, `WIND`, `RAIN`, `SUN`, and `UV` ports as populated. A dated inventory artifact and exact sensor labels remain required before treating the model details as independently verified.
 
 | Baseline model | Manufacturer document | Status |
 |---|---|---|
-| Davis Vantage Pro2 Plus 6162 | [Davis Vantage Pro2 support/manual index](https://support.davisinstruments.com/category/2adgkl7szt-vantage-pro-2) | Existing in-kind wireless station; product number physically verified |
-| Vantage Pro2 temperature/RH assembly | [Davis Vantage Pro2 support/manual index](https://support.davisinstruments.com/category/2adgkl7szt-vantage-pro-2) | Installed at `TEMP HUM`; exact internal board revision remains to verify |
-| Davis Vantage Pro2 anemometer / wind vane; current replacement SKU 6410 | [Davis 6410 product page](https://www.davisinstruments.com/products/anemometer-for-vantage-pro2-vantage-pro) | Installed at `WIND`; verify physical condition and alignment |
-| 6162-generation Davis rain collector | [Davis Vantage Pro2 support/manual index](https://support.davisinstruments.com/category/2adgkl7szt-vantage-pro-2) | Installed at `RAIN`; exact collector assembly revision remains to verify |
-| Davis Solar Radiation Sensor 6450 | [Davis 6450 product page](https://www.davisinstruments.com/products/solar-radiation-sensor) | Installed at `SUN` |
-| Davis UV Sensor 6490 | [Davis 6490 product page](https://www.davisinstruments.com/products/uv-sensor) | Installed at `UV` |
-| Davis WeatherLink Live 6100 | [WeatherLink Live product page](https://www.davisinstruments.com/pages/weatherlink-live), [Local API documentation](https://weatherlink.github.io/weatherlink-live-local-api/) | Required receiver/network bridge; not yet recorded as purchased |
+| Davis Vantage Pro2 Plus 6162 | [Davis Vantage Pro2 support/manual index](https://support.davisinstruments.com/category/2adgkl7szt-vantage-pro-2) | Reported existing in-kind station; dated inventory artifact and transmitter ID pending |
+| Vantage Pro2 temperature/RH assembly | [Davis Vantage Pro2 support/manual index](https://support.davisinstruments.com/category/2adgkl7szt-vantage-pro-2) | `TEMP HUM` reported populated; exact internal board revision remains to verify |
+| Davis Vantage Pro2 anemometer / wind vane; current replacement SKU 6410 | [Davis 6410 product page](https://www.davisinstruments.com/products/anemometer-for-vantage-pro2-vantage-pro) | `WIND` reported populated; exact installed revision, condition and alignment pending |
+| 6162-generation Davis rain collector | [Davis Vantage Pro2 support/manual index](https://support.davisinstruments.com/category/2adgkl7szt-vantage-pro-2) | `RAIN` reported populated; exact collector assembly and `rain_size` remain to verify |
+| Davis-compatible solar radiation sensor; exact SKU pending | [Davis 6450 product page](https://www.davisinstruments.com/products/solar-radiation-sensor) | `SUN` reported populated; do not call it 6450 until its label is checked |
+| Davis-compatible UV sensor; exact SKU pending | [Davis 6490 product page](https://www.davisinstruments.com/products/uv-sensor) | `UV` reported populated; do not call it 6490 until its label is checked |
+| Davis WeatherLink Live receiver | [WeatherLink Live product page](https://www.davisinstruments.com/pages/weatherlink-live), [Local API documentation](https://weatherlink.github.io/weatherlink-live-local-api/) | Required receiver/network bridge; exact regional SKU must match the transmitter and is not recorded as purchased |
 
 ## Design candidates
 

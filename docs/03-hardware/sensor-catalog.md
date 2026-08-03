@@ -56,8 +56,8 @@ Exact electrical, mechanical, network, and candidate values are maintained in [C
 ### Davis Vantage Pro2 Plus 6162
 
 - Function: complete wireless meteorological sensor suite for `MET-01`
-- Physical identity: transmitter label verified as Davis Vantage Pro2 Plus product number `6162`
-- Installed Sensor Interface Module ports: `TEMP HUM`, `WIND`, `RAIN`, `SUN`, `UV`
+- Physical identity: collaborator reports a transmitter label for Davis Vantage Pro2 Plus product number `6162`; dated inventory artifact pending
+- Reported populated Sensor Interface Module ports: `TEMP HUM`, `WIND`, `RAIN`, `SUN`, `UV`
 - Measurements: air temperature, relative humidity, wind speed, wind direction, rainfall, solar radiation, UV
 - Outdoor power: integrated solar-powered ISS with backup battery
 - Transport: Davis wireless RF to a compatible Davis receiver
@@ -67,7 +67,7 @@ Exact electrical, mechanical, network, and candidate values are maintained in [C
 
 - Function: air temperature and relative humidity
 - Port: `TEMP HUM`
-- Status: installed
+- Status: reported installed; physical evidence and exact revision pending
 - Exact replaceable sensor-board revision: verify from physical hardware before ordering replacement parts
 
 ### Davis Vantage Pro2 anemometer / wind vane
@@ -75,39 +75,39 @@ Exact electrical, mechanical, network, and candidate values are maintained in [C
 - Function: wind speed and direction
 - Port: `WIND`
 - Current Davis replacement model: `6410`
-- Status: installed; inspect cups, vane, bearings, cable, and north alignment
+- Status: reported installed; verify exact revision, cups, vane, bearings, cable, and north alignment
 - Manufacturer: [Davis 6410](https://www.davisinstruments.com/products/anemometer-for-vantage-pro2-vantage-pro)
 
 ### Davis rain collector
 
 - Function: rainfall and rain rate
 - Port: `RAIN`
-- Status: installed as part of the 6162 suite
+- Status: reported installed as part of the 6162 suite
 - Exact legacy collector assembly/revision: verify physically before replacement procurement
 - Acceptance: level the collector and perform a controlled tip test
 
-### Davis 6450 Solar Radiation Sensor
+### Davis-compatible solar radiation sensor
 
 - Function: solar radiation
 - Port: `SUN`
-- Status: installed
-- Manufacturer: [Davis 6450](https://www.davisinstruments.com/products/solar-radiation-sensor)
+- Status: `SUN` port reported populated; exact installed SKU unverified
+- Candidate reference: [Davis 6450](https://www.davisinstruments.com/products/solar-radiation-sensor)
 - Acceptance: verify level, cleanliness, and WeatherLink channel output
 
-### Davis 6490 UV Sensor
+### Davis-compatible UV sensor
 
 - Function: global solar UV irradiance / UV index
 - Port: `UV`
-- Status: installed
-- Manufacturer: [Davis 6490](https://www.davisinstruments.com/products/uv-sensor)
+- Status: `UV` port reported populated; exact installed SKU unverified
+- Candidate reference: [Davis 6490](https://www.davisinstruments.com/products/uv-sensor)
 - Acceptance: verify level, cleanliness, and WeatherLink channel output
 
-### Davis WeatherLink Live 6100
+### Davis WeatherLink Live receiver
 
-- Function: receive the wireless 6162 station and bridge its observations to the network/software layer
+- Function: receive the wireless 6162 station and bridge its observations to the network/software layer; receiver radio region must match the transmitter
 - Input: Davis wireless RF
 - Network: Ethernet or 2.4 GHz Wi-Fi
-- Local interface: HTTP/JSON WeatherLink Live Local API; real-time UDP is also available
+- Local interface: same-LAN HTTP/JSON WeatherLink Live Local API; real-time UDP is also available
 - ENTS path: none
 - Status: required for the MET-01 network path; procurement/receiving evidence still needed
 - Manufacturer: [WeatherLink Live](https://www.davisinstruments.com/pages/weatherlink-live)
