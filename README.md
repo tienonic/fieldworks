@@ -1,8 +1,8 @@
 # FieldWorks Green Grid station network
 
-Station-by-station design record for the FieldWorks Green Grid deployment at the UC Davis Student Farm. It covers each station, its sensors, its ENTS connection, its data path, and its open tests and decisions.
+Station-by-station design record for the FieldWorks Green Grid deployment at the UC Davis Student Farm. It covers each station, its sensors, its connection path, its data path, and its open tests and decisions.
 
-> Current design basis: TGIF project `S26-214`, six Phase I field stations, one Phase II meteorological sandbox node, and one LoRaWAN gateway. Site locations await Student Farm approval.
+> Current design basis: TGIF project `S26-214`, six Phase I ENTS field stations, one Phase II Davis Vantage Pro2 Plus meteorological subsystem, and one LoRaWAN gateway. Site locations await Student Farm approval.
 
 ## Pick a station
 
@@ -11,12 +11,12 @@ Start with the [visual station atlas](docs/02-stations/station-atlas.md). Each e
 | Station | Physical package | Expected data | Readiness |
 |---|---|---|---|
 | [IH-01](docs/02-stations/IH-01.md) | D10 meter, pressure sensor, controlled-valve path, ENTS box | total gallons, GPM, psi/MPa, valve command, health | reference build; inventory check and bench test needed |
-| [IH-02](docs/02-stations/IH-02.md) | second irrigation package | same fields as IH-01 with identity `IH-02` | planned after IH-01 passes |
+| [IH-02](docs/02-stations/IH-02.md) | second irrigation package | same fields as IH-01 with identity `IH-02` | procurement submitted; receiving and bench verification pending |
 | [SM-01](docs/02-stations/SM-01.md) | three tension depths, soil temperature, VA3, ENTS box | shallow/middle/deep kPa, soil °C, health | reference build; inventory check and ADC map needed |
-| [SM-02](docs/02-stations/SM-02.md) | second soil-profile package | same fields as SM-01 with identity `SM-02` | planned after SM-01 passes |
-| [SM-03](docs/02-stations/SM-03.md) | third soil-profile package | same fields as SM-01 with identity `SM-03` | planned after SM-01 passes |
-| [SM-04](docs/02-stations/SM-04.md) | fourth soil-profile package | same fields as SM-01 with identity `SM-04` | planned after SM-01 passes |
-| [MET-01](docs/02-stations/MET-01.md) | loaned weather instruments connected to a seventh ENTS board | air °C, RH%, wind m/s and direction, soil °C if models verify | bench sandbox; model gate open |
+| [SM-02](docs/02-stations/SM-02.md) | second soil-profile package | same fields as SM-01 with identity `SM-02` | procurement submitted; receiving pending |
+| [SM-03](docs/02-stations/SM-03.md) | third soil-profile package | same fields as SM-01 with identity `SM-03` | procurement submitted; receiving pending |
+| [SM-04](docs/02-stations/SM-04.md) | fourth soil-profile package | same fields as SM-01 with identity `SM-04` | procurement submitted; receiving pending |
+| [MET-01](docs/02-stations/MET-01.md) | reported wireless Davis Vantage Pro2 Plus 6162 with temp/RH, wind, rain, solar and UV; matching-region WeatherLink Live receiver required | air °C, RH%, wind, rainfall, solar W/m², UV index | inventory evidence, exact sensor labels, receiver, network and bench verification pending |
 | [WX-CANDIDATE](docs/02-stations/WX-CANDIDATE.md) | no approved or deployed hardware | no approved stream | concept only |
 
 The six Phase I ENTS stations exclude the Student Farm's four existing Sensus iPERL meters and HOBO MX1104 logger. The SCADAmetrics Signalizer remains on hold pending a compatibility check.
@@ -25,7 +25,7 @@ The six Phase I ENTS stations exclude the Student Farm's four existing Sensus iP
 
 ![Network architecture](docs/01-architecture/network-overview.svg)
 
-Each field node uses an ENTS board with a Wio-E5 LoRa radio. Nodes send US915 LoRaWAN packets to a Student Farm gateway. The planned path is gateway -> ChirpStack -> MQTT -> InfluxDB -> Grafana and REST/CSV access. The gateway request is pending; hosting and API choices remain open.
+The six Phase I field nodes use ENTS boards with Wio-E5 LoRa radios. They send US915 LoRaWAN packets through the Student Farm gateway to ChirpStack and MQTT. MET-01 is a separate Davis acquisition path: the reported 6162 sends Davis wireless RF to a matching-region WeatherLink Live receiver, and a same-LAN Green Grid adapter converts source units and sends normalized records to the common backend. The two paths converge at MQTT/InfluxDB/Grafana rather than at the field radio layer.
 
 ## Read in this order
 
@@ -53,10 +53,10 @@ Each field node uses an ENTS board with a Wio-E5 LoRa radio. Nodes send US915 Lo
 
 ## Evidence rules
 
-- `planned later` marks a design-stage need unlocked by a passing reference build.
-- Check models marked `unverified` against the physical label and datasheet before wiring.
+- Check models marked `unverified` against the physical label and datasheet before wiring or replacement procurement.
 - Keep raw email, receipts, account data, credentials, and private attachments in protected storage.
 - Keep site names and field coordinates blank until the Student Farm approves them.
+- Distinguish ENTS/LoRaWAN telemetry from Davis/WeatherLink telemetry while using one normalized backend schema.
 
 ## Repository scope
 

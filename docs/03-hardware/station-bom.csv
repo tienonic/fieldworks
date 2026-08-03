@@ -18,6 +18,8 @@ SM-03,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-
 SM-03,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,submitted_approver,medium,vendor order receipt and four-channel test
 SM-04,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
 SM-04,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,submitted_approver,medium,vendor order receipt and four-channel test
-MET-01,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
-MET-01,loaned instrument set,physical models unresolved,1 set,loan_unverified,low,labels serials cables calibration loan and return record
+MET-01,Davis weather station,Davis Vantage Pro2 Plus 6162,1,in_kind_reported_evidence_pending,medium,dated inventory artifact ID transmitter ID exact sensor labels channel check condition record and 24-hour test
+MET-01,weather receiver,Davis WeatherLink Live matching transmitter radio region,1,required_not_purchased,high,purchase receipt regional SKU pairing network API source-unit mapping and restart test
+MET-01,weather mounting,mast clamps alignment and cable protection,1 set,inventory_unverified,medium,site approval physical inventory and installation record
+SPARE-01,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record; retain as spare/development board
 GW-01,LoRaWAN gateway,RAKwireless US915,1,submitted_approver,high,vendor order US915 label and packet-forward test

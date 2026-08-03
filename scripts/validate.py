@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import csv
+import hashlib
 import re
+import struct
 import subprocess
 import sys
 from pathlib import Path
@@ -33,6 +35,23 @@ REQUIRED = [
     "docs/02-stations/data-dictionary.csv",
 ]
 STATIONS = ["IH-01", "IH-02", "SM-01", "SM-02", "SM-03", "SM-04", "MET-01", "WX-CANDIDATE"]
+PNG_SIGNATURE = b"\x89PNG\r\n\x1a\n"
+PNG_KEYWORD = b"mermaid-source-sha256\x00"
+
+
+def png_source_hash(path: Path) -> str | None:
+    data = path.read_bytes()
+    if not data.startswith(PNG_SIGNATURE):
+        return None
+    offset = len(PNG_SIGNATURE)
+    while offset < len(data):
+        length = struct.unpack(">I", data[offset : offset + 4])[0]
+        chunk_type = data[offset + 4 : offset + 8]
+        payload = data[offset + 8 : offset + 8 + length]
+        if chunk_type == b"tEXt" and payload.startswith(PNG_KEYWORD):
+            return payload[len(PNG_KEYWORD) :].decode("ascii", errors="ignore")
+        offset += 12 + length
+    return None
 
 for rel in REQUIRED:
     if not (ROOT / rel).is_file():
@@ -114,6 +133,22 @@ for path in ROOT.rglob("*.mmd"):
         ERRORS.append(f"missing Mermaid render: {svg.relative_to(ROOT)}")
     elif "<svg" not in svg.read_text(encoding="utf-8", errors="ignore"):
         ERRORS.append(f"invalid Mermaid render: {svg.relative_to(ROOT)}")
+    else:
+        svg_text = svg.read_text(encoding="utf-8", errors="ignore")
+        match = re.search(r"mermaid-source-sha256: ([0-9a-f]{64})", svg_text)
+        source_text = path.read_text(encoding="utf-8").replace("\r\n", "\n").replace("\r", "\n")
+        expected = hashlib.sha256(source_text.encode("utf-8")).hexdigest()
+        if not match:
+            ERRORS.append(f"Mermaid render lacks source hash: {svg.relative_to(ROOT)}")
+        elif match.group(1) != expected:
+            ERRORS.append(f"stale Mermaid render: {svg.relative_to(ROOT)}")
+        png = path.with_suffix(".png")
+        if png.is_file():
+            png_hash = png_source_hash(png)
+            if not png_hash:
+                ERRORS.append(f"Mermaid PNG lacks source hash: {png.relative_to(ROOT)}")
+            elif png_hash != expected:
+                ERRORS.append(f"stale Mermaid PNG: {png.relative_to(ROOT)}")
 
 if ERRORS:
     print("VALIDATION FAILED")
