@@ -2,8 +2,8 @@
 
 Status: working
 Owner: Nicholas Melnichenko
-Updated: 2026-07-27
-Evidence: signed TGIF project state, proposal narrative, procurement ledger, technical compatibility work
+Updated: 2026-08-24
+Evidence: signed TGIF project state, proposal narrative, procurement ledger, physical inventory checklist, and technical compatibility work
 
 ## Current objective
 
@@ -11,8 +11,8 @@ Build and document a six-node Phase I irrigation network at the UC Davis Student
 
 - two irrigation head stations that measure flow and pressure and provide the hardware path for valve control;
 - four soil monitoring stations that measure soil water tension at three depths plus soil temperature;
-- one US915 LoRaWAN gateway and an open data path;
-- one additional ENTS node reserved for Phase II meteorological sandbox work.
+- one ordered but unverified US915 LoRaWAN gateway and an open data path;
+- one additional ENTS node retained as a spare or development node.
 
 The station network is a FieldWorks proof-of-work asset and TGIF project `S26-214`. The approved award is $8,749.
 
@@ -24,7 +24,7 @@ Six ENTS field stations: `IH-01`, `IH-02`, and `SM-01` through `SM-04`.
 
 ### Phase II: meteorological sandbox
 
-`MET-01` uses the seventh ENTS board and loaned Biometeorology instruments after exact physical models are verified. It is separate from the six Phase I field nodes.
+`MET-01` is the reported wireless Davis Vantage Pro2 Plus 6162 path. It uses a matching-region WeatherLink Live receiver and does not use an ENTS node, the LoRaWAN gateway, or ChirpStack. The seventh ENTS board remains a spare or development node.
 
 ### Design candidate
 
@@ -33,12 +33,13 @@ Six ENTS field stations: `IH-01`, `IH-02`, and `SM-01` through `SM-04`.
 ## Open items
 
 - Student Farm site names, coordinates, and mounting positions
-- proof that completed requests were delivered and accepted
-- vendor orders for the July 27 requests
-- exact physical identity of the loaned meteorological instruments
+- exact labels, completeness, and station allocation for the partially observed hardware pool
+- delivery and receiving evidence for ordered items not observed in the physical inventory
+- dated physical evidence for the reported Davis 6162 and a matching-region WeatherLink Live receiver
 - latching-solenoid driver topology
-- gateway purchase and final LoRaWAN/network-server deployment
-- final public data host and API surface
+- exact gateway model and final LoRaWAN/network-server deployment
+- MX Gateway/data-plan activation and Signalizer compatibility
+- production data host, secret owner, backup plan, and public API surface
 
 ## Operating boundary
 

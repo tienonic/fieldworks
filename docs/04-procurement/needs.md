@@ -1,42 +1,45 @@
-# What we need
+# What we still need
 
-The project has enough ENTS boards for six field stations and one meteorological sandbox. A complete bench-ready station parts set still needs verification.
+Status: working
+Owner: Nicholas Melnichenko
+Updated: 2026-08-24
+Evidence: station acceptance gates, protected order-state readback, and partial physical inventory
 
-The immediate work is to inventory what is on hand, finish `IH-01` and `SM-01`, and use those builds to settle the repeatable design.
+Do not buy from this page. First identify the shared hardware pool, allocate complete reference kits, and bench-test IH-01 and SM-01. Only a verified deficit can become a new purchase request.
 
-## First irrigation station
+## IH-01 reference build
 
-`IH-01` gaps:
+Before assembly:
 
-- a verified meter, pulse switch, pressure sensor, valve, and solenoid set;
-- the correct pressure fitting and safe voltage-divider circuit;
-- a tested bidirectional valve driver and boost stage;
-- a weatherproof enclosure and field-power package;
-- pressure and measured-volume reference tests.
+- resolve the observed `D10-NSF-050` `5/8 x 1/2` marking against the nominal 3/4-inch plumbing design;
+- identify an exact D10-C-SRS switch and verify pulse resolution;
+- locate and verify one SEN0257 plus the BSP-to-NPT fitting and 22 kOhm/47 kOhm divider;
+- allocate the CP075 body, identify its exact latching solenoid, and select a bidirectional pulse driver;
+- allocate one compatible enclosure, solar panel, protected LiPo, glands, vents, and fittings;
+- pass leak, measured-volume, pressure-reference, valve-cycle, charge, runtime, and telemetry tests.
 
-## First soil station
+## SM-01 reference build
 
-`SM-01` gaps:
+Before assembly:
 
-- a verified three-depth soil-tension and temperature set;
-- a frozen four-channel ADC map;
-- a weatherproof enclosure and field-power package;
-- dry/wet and temperature reference tests.
+- open and identify the bagged soil hardware;
+- prove one complete set contains three 200SS-15 sensors, one 200TS, and one 200SS-VA3;
+- freeze four ENTS ADC inputs without losing another required function;
+- allocate one compatible enclosure, solar panel, protected LiPo, glands, and cable protection;
+- pass independent wet/dry response, temperature-reference, charge, runtime, and telemetry tests.
 
-## After the reference builds
+## Ordered replication hardware
 
-- one more irrigation package for `IH-02`;
-- three more soil packages for `SM-02` through `SM-04`;
-- the remaining enclosures and field-power parts;
-- one US915 LoRaWAN gateway.
+IH-02 and SM-02 through SM-04 hardware was ordered, but the observed pool has no station allocation and is not proven complete. Inventory it now; assemble it only after the matching reference build passes.
 
-Schedule these after the reference builds pass:
+## Network and external paths
 
-## Other open needs
+- Verify the exact delivered US915 gateway, site, backhaul, owner, node sub-band, ChirpStack registration, MQTT path, and reconnect behavior.
+- Acquire a matching-region WeatherLink Live for the reported Davis 6162 and verify the complete MET-01 path.
+- Verify the ordered MX Gateway, plan entitlement, account ownership, MX1104 upload, credentials, sensor-ID map, and bounded API readback.
+- Verify the ordered Signalizer pilot against the selected iPERL register, cable, units, scalar, power, protected logger input, and meter-owner approval.
+- Preserve the passed local InfluxDB and Grafana acceptance receipt, then select a production host, retention policy, backup owner, and recovery test.
 
-- confirm the exact loaned instruments for `MET-01` before choosing interface parts;
-- approve station locations, depths, pipe sizes, mounting, and cable protection;
-- assign owners for assembly, firmware, gateway, data, and maintenance;
-- prove the complete data path from field packet to dashboard and export.
+## Field and operating decisions
 
-Build the final hardware list from tested reference builds and physical inventory.
+Student Farm approval is still required for sites, depths, pipe sizes, fittings, mounts, backflow and safety rules, cable protection, valve-control authority, and maintenance access. Assign accountable owners for assembly, firmware, gateway, data, secrets, backups, and maintenance before deployment.

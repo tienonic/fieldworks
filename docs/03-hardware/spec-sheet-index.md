@@ -2,7 +2,8 @@
 
 Status: working
 Owner: unassigned
-Updated: 2026-08-02
+Updated: 2026-08-24
+Evidence: manufacturer documentation, reported Davis inventory, protected order state, and partial physical inventory
 
 Match every sheet to the physical label before using its values.
 
@@ -13,16 +14,18 @@ Match every sheet to the physical label before using its values.
 | ENTS node | [hardware repository](https://github.com/jlab-sensing/ENTS-node-hardware), [firmware repository](https://github.com/jlab-sensing/ENTS-node-firmware) | Verify board revision and connector polarity |
 | Seeed Wio-E5 module | [module datasheet PDF](https://files.seeedstudio.com/products/317990687/res/LoRa-E5%20module%20datasheet_V1.1.pdf) | Matches the documented radio family; verify module label |
 | TI BQ24210 solar charger | [datasheet PDF](https://www.ti.com/lit/gpn/BQ24210) | ENTS charging baseline |
-| D10 water meter | [datasheet PDF](https://www.flows.com/content/literature/Datasheets/D10_datasheet.pdf), [installation manual PDF](https://www.flows.com/content/literature/Manuals/D10-IOM.pdf) | Verify body size and pulse configuration |
+| D10 water meter | [datasheet PDF](https://www.flows.com/content/literature/Datasheets/D10_datasheet.pdf), [installation manual PDF](https://www.flows.com/content/literature/Manuals/D10-IOM.pdf) | Two `D10-NSF-050` units observed; face says `5/8 x 1/2`; reconcile with nominal 3/4-inch design |
 | D10-C-SRS pulse switch | [product page](https://www.flows.com/pulse-output-switch-for-d10-water-meters/), [D10 installation manual PDF](https://www.flows.com/content/literature/Manuals/D10-IOM.pdf) | Verify switch label and pulse rate |
 | DFRobot SEN0257 | [manufacturer documentation](https://wiki.dfrobot.com/sen0257) | Exact model named |
 | Watermark 200SS-15 | [product page](https://www.irrometer.com/200ss.html), [sensor sheet PDF](https://www.irrometer.com/pdf/403.pdf) | Exact family named; verify 15-foot lead |
 | Watermark 200TS | [temperature sensor sheet PDF](https://irrometer.com/pdf/406.pdf) | Exact model named |
 | Watermark 200SS-VA3 | [adapter sheet PDF](https://irrometer.com/pdf/427.pdf) | Exact model named |
-| Rain Bird CP075 valve body | [manufacturer product page](https://store.rainbird.com/cp075-3-4-in-fpt-inline-irrigation-valve.html) | Valve body named; replacement solenoid model remains open |
+| Rain Bird CP075 valve body | [manufacturer product page](https://store.rainbird.com/cp075-3-4-in-fpt-inline-irrigation-valve.html) | One body observed; allocation and replacement-solenoid model remain open |
 | DIG 305DC-075 valve | [DC valve sheet PDF](https://www.digcorp.com/wp-content/uploads/2020/06/DC_Valves_031621.pdf), [product page](https://www.digcorp.com/professional-irrigation-products/300dc-3-4-and-1-vdc-valves/) | Requested model; verify received label |
 | DIG S-305DC solenoid | [solenoid sheet PDF](https://www.digcorp.com/wp-content/uploads/digcorp/S-305DC.pdf) | Use only if the physical solenoid matches |
-| Polycase WQ-44 | [product page](https://www.polycase.com/wq-44), [print template PDF](https://www.polycase.com/media/catalog/product/file/WQ-44S-PrintTemplate.pdf) | Working enclosure baseline; received SKU remains open |
+| Polycase WQ-44 | [product page](https://www.polycase.com/wq-44), [print template PDF](https://www.polycase.com/media/catalog/product/file/WQ-44S-PrintTemplate.pdf) | Multiple Polycase units observed; exact count and SKU remain open |
+| Onset MXGTW1 | [product page](https://www.onsetcomp.com/products/communications/mxgtw1), [Web Services V3 guide](https://www.onsetcomp.com/resources/documentation/25113-hobolink-web-services-v3-developers-guide) | Ordered; delivery, activation, plan entitlement, and MX1104 readback unverified |
+| SCADAmetrics Signalizer EMP v2 | [Sensus datasheet PDF](https://scadametrics.com/PDF/EMP_v2_SENSUS.pdf) | Ordered pilot; delivery and installed-meter compatibility unverified |
 
 ## MET-01 baseline
 
@@ -50,7 +53,7 @@ The collaborator's inspection report identifies MET-01 as a **Davis Vantage Pro2
 | Apogee PAR sensor | None yet | Exact model, analog/digital output, calibration required |
 | Soil heat-flux sensor | None yet | Manufacturer, model, output, installation method required |
 | Ultrasonic 9-in-1 RS485 sensor | None yet | Vendor, model, datasheet, power, and register map required |
-| US915 LoRaWAN gateway | None yet | Select the exact RAKwireless model first |
+| US915 LoRaWAN gateway | None yet | RAKwireless unit ordered; verify exact delivered model before selecting a sheet |
 | Solar panel | None yet | Verify the received SKU first |
 | 3.7 V LiPo battery | None yet | Verify the received SKU, protection circuit, capacity, and polarity first |
 

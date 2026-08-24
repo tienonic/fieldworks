@@ -10,22 +10,22 @@ Start with the [visual station atlas](docs/02-stations/station-atlas.md). Each e
 
 | Station | Physical package | Expected data | Readiness |
 |---|---|---|---|
-| [IH-01](docs/02-stations/IH-01.md) | D10 meter, pressure sensor, controlled-valve path, ENTS box | total gallons, GPM, psi/MPa, valve command, health | reference build; inventory check and bench test needed |
-| [IH-02](docs/02-stations/IH-02.md) | second irrigation package | same fields as IH-01 with identity `IH-02` | procurement submitted; receiving and bench verification pending |
-| [SM-01](docs/02-stations/SM-01.md) | three tension depths, soil temperature, VA3, ENTS box | shallow/middle/deep kPa, soil °C, health | reference build; inventory check and ADC map needed |
-| [SM-02](docs/02-stations/SM-02.md) | second soil-profile package | same fields as SM-01 with identity `SM-02` | procurement submitted; receiving pending |
-| [SM-03](docs/02-stations/SM-03.md) | third soil-profile package | same fields as SM-01 with identity `SM-03` | procurement submitted; receiving pending |
-| [SM-04](docs/02-stations/SM-04.md) | fourth soil-profile package | same fields as SM-01 with identity `SM-04` | procurement submitted; receiving pending |
+| [IH-01](docs/02-stations/IH-01.md) | D10 meter, pressure sensor, controlled-valve path, ENTS box | total gallons, GPM, psi/MPa, valve command, health | partial pool inventory exists; size, pulse switch, sensor, solenoid, allocation, and bench gates open |
+| [IH-02](docs/02-stations/IH-02.md) | second irrigation package | same fields as IH-01 with identity `IH-02` | ordered; partial pool inventory exists; delivery, allocation, and reference-build gates open |
+| [SM-01](docs/02-stations/SM-01.md) | three tension depths, soil temperature, VA3, ENTS box | shallow/middle/deep kPa, soil °C, health | three bagged assemblies observed in the pool; exact models, completeness, allocation, and ADC map open |
+| [SM-02](docs/02-stations/SM-02.md) | second soil-profile package | same fields as SM-01 with identity `SM-02` | ordered; physical pool is incomplete or unverified; build gated on SM-01 |
+| [SM-03](docs/02-stations/SM-03.md) | third soil-profile package | same fields as SM-01 with identity `SM-03` | ordered; physical pool is incomplete or unverified; build gated on SM-01 |
+| [SM-04](docs/02-stations/SM-04.md) | fourth soil-profile package | same fields as SM-01 with identity `SM-04` | ordered; physical pool is incomplete or unverified; build gated on SM-01 |
 | [MET-01](docs/02-stations/MET-01.md) | reported wireless Davis Vantage Pro2 Plus 6162 with temp/RH, wind, rain, solar and UV; matching-region WeatherLink Live receiver required | air °C, RH%, wind, rainfall, solar W/m², UV index | inventory evidence, exact sensor labels, receiver, network and bench verification pending |
 | [WX-CANDIDATE](docs/02-stations/WX-CANDIDATE.md) | no approved or deployed hardware | no approved stream | concept only |
 
-The six Phase I ENTS stations exclude the Student Farm's four existing Sensus iPERL meters and HOBO MX1104 logger. The SCADAmetrics Signalizer remains on hold pending a compatibility check.
+The six Phase I ENTS stations exclude the Student Farm's four existing Sensus iPERL meters and HOBO MX1104 logger. An MX Gateway, an API-capable data plan, and one Signalizer pilot were ordered, but delivery, activation, physical compatibility, and data access remain unverified.
 
 ## Architecture
 
 ![Network architecture](docs/01-architecture/network-overview.svg)
 
-The six Phase I field nodes use ENTS boards with Wio-E5 LoRa radios. They send US915 LoRaWAN packets through the Student Farm gateway to ChirpStack and MQTT. MET-01 is a separate Davis acquisition path: the reported 6162 sends Davis wireless RF to a matching-region WeatherLink Live receiver, and a same-LAN Green Grid adapter converts source units and sends normalized records to the common backend. The two paths converge at MQTT/InfluxDB/Grafana rather than at the field radio layer.
+The six Phase I field nodes use ENTS boards with Wio-E5 LoRa radios. They send US915 LoRaWAN packets through the planned gateway to ChirpStack and MQTT. A US915 gateway was ordered, but its exact model, delivery, site, backhaul, and configuration are not verified. MET-01 is a separate Davis acquisition path: the reported 6162 sends Davis wireless RF to a matching-region WeatherLink Live receiver, and a same-LAN Green Grid adapter converts source units and sends normalized records to the common backend. The two paths converge at MQTT/InfluxDB/Grafana rather than at the field radio layer.
 
 ## Read in this order
 
@@ -42,14 +42,18 @@ The six Phase I field nodes use ENTS boards with Wio-E5 LoRa radios. They send U
 11. [Station bill of materials](docs/03-hardware/station-bom.csv)
 12. [Equipment status](docs/04-procurement/orders.md)
 13. [Machine-readable equipment status](docs/04-procurement/orders.csv)
-14. [What we need](docs/04-procurement/needs.md)
-15. [Machine-readable needs register](docs/04-procurement/needs.csv)
-16. [Future hardware plan](docs/04-procurement/purchase-list.md)
-17. [Machine-readable future hardware plan](docs/04-procurement/purchase-list.csv)
-18. [Equipment readiness](docs/04-procurement/status.md)
-19. [Assembly and test plan](docs/05-installation/assembly-and-test.md)
-20. [Open decisions](docs/07-decisions/open-decisions.md)
-21. [Source index](docs/08-sources/source-index.md)
+14. [Physical inventory checklist](docs/04-procurement/physical-inventory.md)
+15. [Machine-readable physical inventory](docs/04-procurement/physical-inventory.csv)
+16. [What we still need](docs/04-procurement/needs.md)
+17. [Machine-readable needs register](docs/04-procurement/needs.csv)
+18. [Controlled hardware plan](docs/04-procurement/purchase-list.md)
+19. [Machine-readable controlled hardware plan](docs/04-procurement/purchase-list.csv)
+20. [Equipment readiness](docs/04-procurement/status.md)
+21. [Assembly and test plan](docs/05-installation/assembly-and-test.md)
+22. [Grafana dashboard](docs/09-dashboard/grafana.md)
+23. [Dashboard telemetry schema](docs/09-dashboard/telemetry-schema.md)
+24. [Open decisions](docs/07-decisions/open-decisions.md)
+25. [Source index](docs/08-sources/source-index.md)
 
 ## Evidence rules
 

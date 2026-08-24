@@ -1,8 +1,9 @@
 # Station atlas
 
 Status: working
-
-Evidence: station BOMs, connection matrix, specifications, and proposed data contracts
+Owner: Nicholas Melnichenko
+Updated: 2026-08-24
+Evidence: station BOMs, connection matrix, specifications, partial physical inventory, and data contracts
 
 Use this page as the network index. Each station has one stable ID, one physical package, and one expected data product.
 
@@ -33,7 +34,7 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Question:** How much water passed this head, at what pressure, and what did the controller ask the valve to do?
 
-**Current state:** reference irrigation build; inventory confirmation and bench verification are pending.
+**Current state:** two D10 meters and one CP075 body are observed in a shared pool. Size, pulse-switch identity, pressure sensor, solenoid, station allocation, and bench verification remain open.
 
 [Open the complete IH-01 record](IH-01.md)
 
@@ -49,7 +50,7 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Question:** How does a second irrigation head perform compared with IH-01?
 
-**Current state:** procurement requests submitted; bench build awaits receiving and IH-01 reference verification.
+**Current state:** hardware is ordered and the shared D10 pool is partially observed. Exact delivery, compatibility, station allocation, and IH-01 reference verification remain open.
 
 [Open the complete IH-02 record](IH-02.md)
 
@@ -76,7 +77,7 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Question:** Where is the soil profile drying, how quickly, and at what soil temperature?
 
-**Current state:** reference soil build; inventory confirmation and a frozen four-channel ADC map are pending.
+**Current state:** three bagged soil assemblies are observed in a shared pool. Exact labels, completeness, station allocation, and a frozen four-channel ADC map remain open.
 
 [Open the complete SM-01 record](SM-01.md)
 
@@ -90,7 +91,7 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Question:** How does the second location's root-zone water profile compare with SM-01?
 
-**Current state:** procurement request submitted; build awaits receiving and SM-01 reference verification.
+**Current state:** hardware is ordered. Shared-pool completeness and allocation are unverified; the build remains gated on SM-01.
 
 [Open the complete SM-02 record](SM-02.md)
 
@@ -104,7 +105,7 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Question:** How does the third location differ in drying rate and depth distribution?
 
-**Current state:** procurement request submitted; build awaits receiving and SM-01 reference verification.
+**Current state:** hardware is ordered. Shared-pool completeness and allocation are unverified; the build remains gated on SM-01.
 
 [Open the complete SM-03 record](SM-03.md)
 
@@ -118,7 +119,7 @@ Use this page as the network index. Each station has one stable ID, one physical
 
 **Question:** How does the fourth location differ, and does the four-station pattern show meaningful spatial variation?
 
-**Current state:** procurement request submitted; build awaits receiving and SM-01 reference verification.
+**Current state:** hardware is ordered. Shared-pool completeness and allocation are unverified; the build remains gated on SM-01.
 
 [Open the complete SM-04 record](SM-04.md)
 

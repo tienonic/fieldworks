@@ -1,30 +1,41 @@
-# Future hardware plan
+# Controlled hardware plan
 
-Status: planning only. Purchasing authority: none.
+Status: working
+Owner: Nicholas Melnichenko
+Updated: 2026-08-24
+Evidence: station acceptance gates, protected order-state readback, and partial physical inventory
 
-## Before adding hardware
+Purchasing authority: none. This page records the current order and release state; it does not authorize a purchase. Several later-build items were ordered before the reference builds passed. Keep them unallocated and uninstalled until the gates below pass.
 
-1. Inventory the seven ENTS boards and assign each one to a station.
-2. Check every physical part assigned to `IH-01` and `SM-01`.
-3. Freeze the irrigation plumbing, valve-driver, soil ADC, enclosure, and power designs.
-4. Bench test both reference stations.
-5. Set the remaining quantity from the tested designs and physical inventory.
+## Inventory before any new request
+
+1. Assign serials and revisions to the seven ENTS boards.
+2. Inspect both D10 bodies and ports, identify both pulse switches, and resolve the size mismatch.
+3. Open the soil bags and count exact 200SS-15, 200TS, and 200SS-VA3 items.
+4. Count and identify Polycase units, solar panels, LiPo packs, glands, vents, drivers, fittings, and support hardware.
+5. Allocate only one complete IH-01 kit and one complete SM-01 kit.
+6. Set a deficit only after both reference kits pass.
 
 ## Reference builds
 
-Finish `IH-01` and `SM-01` first. Fill only verified gaps in fittings, driver electronics, enclosures, power, and test equipment.
+For IH-01, fill only verified gaps in the meter interface, pressure plumbing and divider, solenoid driver, enclosure, power, fittings, and test equipment.
 
-## Planned later
+For SM-01, fill only verified gaps in the complete Watermark set, four-channel ADC path, enclosure, power, cable protection, and reference-test equipment.
 
-After the reference builds pass:
+## Ordered hardware held for later builds
 
-- replicate the irrigation design at `IH-02`;
-- replicate the soil design at `SM-02` through `SM-04`;
-- fill the verified deficit in enclosures and field-power parts;
-- add a US915 LoRaWAN gateway after its location, backhaul, and owner are settled.
+- IH-02 irrigation hardware remains held until IH-01 passes and the repeatable BOM is frozen.
+- SM-02 through SM-04 hardware remains held until SM-01 passes and the repeatable BOM is frozen.
+- Shared enclosure and power hardware remains unallocated until exact SKUs and quantities are known.
+- The US915 gateway remains uncommissioned until exact model, site, backhaul, owner, and node sub-band are recorded.
 
-## Keep on hold
+## Ordered pilots held for verification
 
-Hold optional meter gateways, cloud plans, Signalizer hardware, and candidate weather instruments until the interface and data-access questions are answered.
+- The MX Gateway and data plan remain out of production until delivery, account, entitlement, MX1104 upload, API access, and sensor-ID mapping pass.
+- The Signalizer and power adapter remain disconnected until the meter owner approves the pilot and register, cable, power, protected logger interface, scaling, and alarm tests pass.
 
-Every released item still needs an exact model, quantity, owner, fit check, acceptance test, and receiving plan in the private purchasing record.
+## MET-01 conditional item
+
+A matching-region WeatherLink Live receiver is still required for the reported Davis 6162. Select it only after the transmitter region and physical station identity are documented.
+
+Every released item needs an exact model, quantity, owner, physical fit check, electrical check, acceptance test, station allocation, and receiving record in protected storage.
