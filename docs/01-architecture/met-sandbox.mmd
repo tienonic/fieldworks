@@ -1,19 +1,12 @@
 flowchart LR
-  GATE{"Verify physical model labels"}
-  TRH["EE181-L baseline\nmodel unverified"] --> B12["boosted 12 V power"]
-  TRH -->|"temp + RH, 0–1 V"| ADC["2 × ADC"]
-  WIND["05103 baseline\nmodel unverified"] -->|"speed pulse"| GPIO1["GPIO counter"]
-  WIND -->|"direction voltage"| ADC2["ADC"]
-  CUP["014A-L baseline\nmodel unverified"] -->|"pulse"| GPIO2["GPIO counter"]
-  PT["TD0030 PT100 baseline\nmodel disputed"] --> MAX["MAX31865\n3-wire RTD to SPI"]
-  GATE --> TRH
-  GATE --> WIND
-  GATE --> CUP
-  GATE --> PT
-  B12 --> ENTS["ENTS node + Wio-E5"]
-  ADC --> ENTS
-  GPIO1 --> ENTS
-  ADC2 --> ENTS
-  GPIO2 --> ENTS
-  MAX -->|"SPI + CS"| ENTS
-  ENTS -->|"LoRaWAN US915"| GW["GW-01"]
+  TRH["Vantage Pro2 temperature and RH sensor"] -->|"TEMP HUM"| SIM["Davis Vantage Pro2 Plus 6162 Sensor Interface Module"]
+  WIND["Davis Vantage Pro2 anemometer and wind vane - current replacement SKU 6410"] -->|"WIND"| SIM
+  RAIN["Vantage Pro2 rain collector"] -->|"RAIN"| SIM
+  SOLAR["Davis-compatible solar sensor - exact SKU pending"] -->|"SUN"| SIM
+  UV["Davis-compatible UV sensor - exact SKU pending"] -->|"UV"| SIM
+  SIM -->|"Davis wireless RF - matching region"| WLL["WeatherLink Live receiver"]
+  WLL -->|"same-LAN Ethernet or Wi-Fi"| API["WeatherLink Live Local API - HTTP JSON"]
+  API --> ADAPTER["Green Grid adapter - timestamp and unit normalization"]
+  ADAPTER --> MQTT["MQTT"]
+  MQTT --> DB["InfluxDB"]
+  DB --> UI["Grafana REST CSV"]

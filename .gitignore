@@ -11,12 +11,19 @@ financial-private/
 *.pdf
 
 # Secrets and local configuration
+CLAUDE.md
+.claude/
+.cursorrules
+.aiderignore
 .env
 .env.*
+!.env.example
 *.pem
 *.key
 credentials*.json
 token*.json
+*.sqlite
+*.db
 
 # Generated/local state
 __pycache__/

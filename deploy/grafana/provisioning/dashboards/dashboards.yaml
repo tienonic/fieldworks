@@ -1,0 +1,14 @@
+apiVersion: 1
+
+providers:
+  - name: FieldWorks Student Farm
+    orgId: 1
+    folder: FieldWorks
+    folderUid: fieldworks
+    type: file
+    disableDeletion: true
+    editable: false
+    updateIntervalSeconds: 30
+    allowUiUpdates: false
+    options:
+      path: "${GRAFANA_DASHBOARD_PATH}"

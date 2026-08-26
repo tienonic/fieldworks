@@ -2,8 +2,8 @@
 
 Status: working
 Owner: unassigned
-
-Evidence: manufacturer documentation, ENTS hardware documentation, and FieldWorks compatibility analysis
+Updated: 2026-08-24
+Evidence: manufacturer documentation, ENTS hardware documentation, FieldWorks compatibility analysis, protected purchasing state, and partial physical inventory
 
 Use a specification only when the exact physical model matches it. Recheck every value marked `design gate` against the physical label and final selected model.
 
@@ -32,7 +32,9 @@ Sources: [ENTS node hardware](https://github.com/jlab-sensing/ENTS-node-hardware
 | Field | Specification |
 |---|---|
 | Function | irrigation volume |
-| Meter family | D10 vertical-installation NSF water meter |
+| Observed meter | two `D10-NSF-050` units or boxes in the shared hardware pool |
+| Observed face marking | `5/8 x 1/2`; reconcile with the plumbing design before allocation |
+| Meter family | D10 vertical-installation NSF water meter; family match only |
 | Nominal project size | 3/4-inch NPT; final site size is a design gate |
 | Pulse switch | D10-C-SRS, SPST normally open dry contact |
 | Pulse rate | one pulse per gallon in the selected project configuration |
@@ -40,6 +42,8 @@ Sources: [ENTS node hardware](https://github.com/jlab-sensing/ENTS-node-hardware
 | ENTS input | GPIO interrupt with internal or external pull-up |
 | Sensor power | none for the dry contact |
 | Firmware | debounce/count pulses and preserve cumulative count across resets |
+
+The photographed cable does not prove the exact pulse-switch model. Identify a D10-C-SRS label or matching packaging for each meter before relying on the one-pulse-per-gallon conversion.
 
 Sources: [D10 water meter](https://www.flows.com/vertical-installation-nsf-approved-water-meter-d10-series/), [D10 pulse switch](https://www.flows.com/pulse-output-switch-for-d10-water-meters/).
 
@@ -95,13 +99,15 @@ Source: [DFRobot SEN0257 documentation](https://wiki.dfrobot.com/Gravity__Water_
 
 Sources: [Irrometer sensors](https://www.irrometer.com/sensors.html), [Watermark 200SS](https://www.irrometer.com/200ss.html), [VA adapter documentation](https://www.irrometer.com/pdf/427.pdf).
 
+Three bagged assemblies were physically observed, but the labels and contents were not readable enough to prove three complete Watermark station sets. Count the 200SS-15, 200TS, and 200SS-VA3 components before station allocation.
+
 ## Valve and DC-latching actuation
 
 | Field | Specification |
 |---|---|
 | Phase I function | automated shutoff/control hardware path |
-| IH-01 recorded path | CP075 valve plus received-solenoid replacement path; exact received model is a gate |
-| IH-02 requested path | DIG 305DC-075 complete DC valve assembly |
+| IH-01 observed path | one CP075 valve body in the shared pool; exact installed or replacement solenoid is a gate |
+| IH-02 ordered path | DIG 305DC-075 complete DC valve assembly; not observed in the current photo set |
 | Latching supply | commonly 6-12 VDC depending on exact solenoid |
 | Node source | 3.7 V battery through a boost stage, nominal 9 V design |
 | Control | short open/close pulses only; zero sustained coil power |
@@ -125,12 +131,14 @@ Select the final driver only after the exact solenoid datasheet is attached to t
 | Soil external cables | solar and bundled VA3/sensor paths |
 | Gate | complete fit, condensation, strain-relief, and ingress test with exact parts |
 
+Multiple Polycase enclosures were observed, but their count and SKU remain open. `UN3481` cartons are shipment evidence only; open them and verify battery labels, count, voltage, capacity, connector, protection, and polarity before recording batteries as received.
+
 ## Gateway and network
 
 | Field | Specification |
 |---|---|
 | Gateway ID | GW-01 |
-| Planned unit | US915 gateway; exact model still to be selected |
+| Ordered unit | RAKwireless US915 gateway; exact model and physical label remain unverified |
 | Region | US915 only; reject EU868 substitutions |
 | Network server | ChirpStack working architecture |
 | Integration | gateway packet forwarder -> ChirpStack -> MQTT |
@@ -139,16 +147,57 @@ Select the final driver only after the exact solenoid datasheet is attached to t
 | Sub-band | match every node; test sub-band 2 against the gateway before locking configuration |
 | Acceptance | all seven ENTS nodes join, uplink, reconnect, and preserve unique station identity |
 
-## MET-01 baseline specifications
+## Ordered external integration paths
 
-Treat these as wiring baselines. Verify inventory against physical labels.
+These systems remain separate from the six ENTS stations. Vendor-order evidence does not prove delivery, activation, compatibility, or live data.
 
-| Baseline model | Measurement | Signal | Power | ENTS path | Gate |
-|---|---|---|---|---|---|
-| Campbell EE181-L | air temperature and RH | two 0-1 V analog outputs | 7-30 VDC, under about 1.2 mA | two ADC channels; filtered 12 V boost | verify exact label/suffix |
-| Campbell 05103 | wind speed and direction | AC/pulse speed plus ratiometric direction voltage | 5 V direction excitation; passive speed | GPIO counter plus ADC | later evidence says Met One sensors |
-| Campbell 014A-L | cup-anemometer speed | pulse/frequency | passive | GPIO counter | later evidence says Met One cup sensor |
-| T-PRO TD0030 PT100 | soil temperature | three-wire PT100 resistance | passive | MAX31865 to SPI | later evidence disputes PT100/soil use |
+### HOBO MX Gateway
+
+| Field | Specification |
+|---|---|
+| Ordered hardware | Onset MX Gateway `MXGTW1` |
+| Existing logger | Student Farm HOBO MX1104; serial and active channel configuration unverified |
+| Logger link | Bluetooth 5.0 Low Energy; approximately 30.5 m or 100 ft line-of-sight |
+| Backhaul | 2.4/5 GHz Wi-Fi or 10/100 Ethernet |
+| Power | AC adapter or Power over Ethernet |
+| Capacity | up to 100 compatible MX loggers |
+| Ordered service | API-capable annual data plan recorded in the protected purchasing thread |
+| API | HOBOlink Web Services V3 with OAuth client credentials and JSON observations |
+| Gate | verify delivery, account ownership, plan entitlement, MX1104 compatibility and upload, credentials, and one bounded readback |
+
+Sources: [Onset MX Gateway](https://www.onsetcomp.com/products/communications/mxgtw1), [HOBOlink Web Services V3](https://www.onsetcomp.com/resources/documentation/25113-hobolink-web-services-v3-developers-guide).
+
+### iPERL Signalizer pilot
+
+| Field | Specification |
+|---|---|
+| Ordered hardware | SCADAmetrics Signalizer `EMP v2` plus power adapter |
+| Intended meter | one existing Sensus iPERL or iPERL+; exact register and cable unverified |
+| Meter input | three-wire Sensus encoder protocol |
+| Flow output | active 4-20 mA; do not add an external loop supply |
+| Volume output | isolated solid-state dry contact with configured pulse resolution |
+| Alarm output | isolated solid-state dry contact |
+| Power | 9-36 VDC at about 1.25 W; manufacturer recommends isolated 24 VDC |
+| Enclosure | IP40; requires a protected field enclosure |
+| Gate | obtain meter-owner approval then verify register, cable, units, scalar, power, protected logger interface, and scaled pulse/analog readback |
+
+Source: [SCADAmetrics Sensus Signalizer datasheet](https://scadametrics.com/PDF/EMP_v2_SENSUS.pdf).
+
+## MET-01 Davis specifications
+
+The collaborator reports a wireless Davis Vantage Pro2 Plus 6162 with `TEMP HUM`, `WIND`, `RAIN`, `SUN`, and `UV` populated. A dated inventory artifact and exact replaceable-sensor labels are still required. MET-01 does not use an ENTS node.
+
+| Component | Signal and power | Data path | Gate |
+|---|---|---|---|
+| Vantage Pro2 Plus 6162 ISS | solar-powered suite with backup battery and Davis wireless RF | ISS to WeatherLink Live | record label, transmitter ID, condition, channels, and radio region |
+| temperature/RH assembly | dedicated `TEMP HUM` interface within ISS | WeatherLink source temperature and RH | verify physical assembly and compare with reference |
+| anemometer and vane | dedicated `WIND` interface within ISS | WeatherLink mph and direction degrees | verify revision, mechanical condition, and north alignment |
+| rain collector | dedicated `RAIN` interface within ISS | WeatherLink counts plus `rain_size` | verify collector revision, level, tip behavior, and count increment |
+| solar sensor | dedicated `SUN` interface within ISS | WeatherLink solar radiation | verify exact label, level, cleanliness, and channel |
+| UV sensor | dedicated `UV` interface within ISS | WeatherLink UV index | verify exact label, level, cleanliness, and channel |
+| WeatherLink Live | AC with optional AA backup; matching-region Davis RF; Ethernet/Wi-Fi | same-LAN Local API HTTP JSON to adapter | acquire matching region then verify RF, timestamps, units, fields, missing data, and restart behavior |
+
+The adapter maps the Local API response `ts` to `observed_at` and records a separate `received_at`. It converts degrees Fahrenheit to degrees Celsius, miles per hour to meters per second, and rain counts with the reported `rain_size`. It retains the source values for diagnosis. The WeatherLink response timestamp is not a per-sensor sample timestamp.
 
 ## Johan WX-CANDIDATE specifications
 

@@ -2,8 +2,8 @@
 
 Status: verified index
 Owner: Nicholas Melnichenko
-Updated: 2026-07-27
-Evidence: local FieldWorks workspace
+Updated: 2026-08-24
+Evidence: local FieldWorks workspace and protected purchasing/inventory sources
 
 This index names the private and historical sources behind the repository. Protected content stays outside Git.
 
@@ -34,6 +34,8 @@ This index names the private and historical sources behind the repository. Prote
 | FieldWorks `00-control/procurement/PURCHASE-LEDGER.csv` | request/order/accounting state |
 | Gmail and OPP metadata | message IDs, request IDs, and administrative status |
 | private transaction reports dated 2026-07-27 | posted totals only |
+| protected purchaser-state readback through 2026-08-20 | vendor-order state for replication hardware, gateway, external integrations, and installation materials |
+| protected inventory photo set dated 2026-08-20 | conservative physical count, visible labels, and unresolved compatibility checks |
 
 ## Precedence
 
