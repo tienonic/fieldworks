@@ -1,23 +1,30 @@
 station_id,item,model_or_spec,quantity,procurement_state,allocation_confidence,acceptance_evidence_needed
-IH-01,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
-IH-01,flow meter,D10 + D10-C-SRS,1,opp_complete,high,receipt delivery and pulse test
-IH-01,pressure sensor,DFRobot SEN0257,1,opp_complete,high,receipt delivery divider and calibration test
-IH-01,valve and solenoid,CP075 + recorded replacement solenoid,1,opp_complete,medium,exact received SKUs and bidirectional latch test
-IH-01,enclosure and power,Polycase + solar + LiPo,1 set,opp_complete,low,exact SKUs fit polarity and charging test
-IH-02,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
-IH-02,flow meter,D10 + D10-C-SRS,1,submitted_approver,high,vendor order receipt and pulse test
-IH-02,pressure sensor,DFRobot SEN0257,1,submitted_approver,high,vendor order receipt divider and calibration test
-IH-02,valve assembly,DIG 305DC-075,1,submitted_approver,high,vendor order receipt and bidirectional latch test
-IH-02,enclosure and power,remaining-station requests,1 set,submitted_approver,low,allocation exact SKUs and fit test
-SM-01,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
-SM-01,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,opp_complete,high,receipt delivery and four-channel test
-SM-01,enclosure and power,remaining hardware path,1 set,mixed,low,allocation and charging test
-SM-02,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
-SM-02,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,submitted_approver,medium,vendor order receipt and four-channel test
-SM-03,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
-SM-03,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,submitted_approver,medium,vendor order receipt and four-channel test
-SM-04,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
-SM-04,Watermark set,3x 200SS-15 + 200TS + 200SS-VA3,1 set,submitted_approver,medium,vendor order receipt and four-channel test
-MET-01,ENTS node,ENTS / Wio-E5,1,received_unbilled,medium,board serial and power-on record
-MET-01,loaned instrument set,physical models unresolved,1 set,loan_unverified,low,labels serials cables calibration loan and return record
-GW-01,LoRaWAN gateway,RAKwireless US915,1,submitted_approver,high,vendor order US915 label and packet-forward test
+IH-01,ENTS node,ENTS / Wio-E5,1,received_assignment_pending,medium,board serial revision and power-on record
+IH-01,flow meter,D10-NSF-050 plus required D10-C-SRS,1,received_pool_allocation_unverified,low,station allocation body and port size switch label and pulse test
+IH-01,pressure sensor,DFRobot SEN0257,1,vendor_ordered_not_observed,low,receipt exact label divider and calibration test
+IH-01,valve body and solenoid,Rain Bird CP075 plus compatible DC-latching solenoid,1,received_body_solenoid_unverified,low,station allocation exact solenoid and bidirectional latch test
+IH-01,enclosure and power,Polycase plus solar plus protected LiPo,1 set,mixed_pool_evidence_allocation_unverified,low,exact SKUs count allocation fit polarity and charging test
+IH-02,ENTS node,ENTS / Wio-E5,1,received_assignment_pending,medium,board serial revision and power-on record
+IH-02,flow meter,D10-NSF-050 plus required D10-C-SRS,1,received_pool_allocation_unverified,low,station allocation body and port size switch label and pulse test
+IH-02,pressure sensor,DFRobot SEN0257,1,vendor_ordered_not_observed,low,receipt exact label divider and calibration test
+IH-02,valve assembly,DIG 305DC-075,1,vendor_ordered_not_observed,low,receipt exact label and bidirectional latch test
+IH-02,enclosure and power,Polycase plus solar plus protected LiPo,1 set,mixed_pool_evidence_allocation_unverified,low,exact SKUs count allocation fit polarity and charging test
+SM-01,ENTS node,ENTS / Wio-E5,1,received_assignment_pending,medium,board serial revision and power-on record
+SM-01,Watermark set,3x 200SS-15 plus 200TS plus 200SS-VA3,1 set,received_pool_model_completeness_unverified,low,read every label count complete set allocate station and run four-channel test
+SM-01,enclosure and power,Polycase plus solar plus protected LiPo,1 set,mixed_pool_evidence_allocation_unverified,low,exact SKUs count allocation fit polarity and charging test
+SM-02,ENTS node,ENTS / Wio-E5,1,received_assignment_pending,medium,board serial revision and power-on record
+SM-02,Watermark set,3x 200SS-15 plus 200TS plus 200SS-VA3,1 set,ordered_pool_allocation_unverified,low,SM-01 acceptance then complete physical set and four-channel test
+SM-02,enclosure and power,Polycase plus solar plus protected LiPo,1 set,mixed_pool_evidence_allocation_unverified,low,SM-01 acceptance then exact SKUs and station allocation
+SM-03,ENTS node,ENTS / Wio-E5,1,received_assignment_pending,medium,board serial revision and power-on record
+SM-03,Watermark set,3x 200SS-15 plus 200TS plus 200SS-VA3,1 set,ordered_pool_allocation_unverified,low,SM-01 acceptance then complete physical set and four-channel test
+SM-03,enclosure and power,Polycase plus solar plus protected LiPo,1 set,mixed_pool_evidence_allocation_unverified,low,SM-01 acceptance then exact SKUs and station allocation
+SM-04,ENTS node,ENTS / Wio-E5,1,received_assignment_pending,medium,board serial revision and power-on record
+SM-04,Watermark set,3x 200SS-15 plus 200TS plus 200SS-VA3,1 set,ordered_pool_allocation_unverified,low,SM-01 acceptance then complete physical set and four-channel test
+SM-04,enclosure and power,Polycase plus solar plus protected LiPo,1 set,mixed_pool_evidence_allocation_unverified,low,SM-01 acceptance then exact SKUs and station allocation
+MET-01,Davis weather station,Davis Vantage Pro2 Plus 6162,1,in_kind_reported_evidence_pending,medium,dated inventory artifact ID transmitter ID sensor labels condition and 24-hour test
+MET-01,weather receiver,Davis WeatherLink Live matching transmitter region,1,required_not_purchased,high,purchase receipt regional SKU pairing network API mapping and restart test
+MET-01,weather mounting,mast clamps alignment and cable protection,1 set,inventory_unverified,medium,site approval physical inventory and installation record
+SPARE-01,ENTS node,ENTS / Wio-E5,1,received_assignment_pending,medium,board serial revision and power-on record; retain outside MET-01
+GW-01,LoRaWAN gateway,RAKwireless US915 exact model unverified,1,vendor_ordered_delivery_unverified,medium,delivery exact model US915 label site backhaul and packet-forward test
+HOBO-EXT-01,MX cloud path,MXGTW1 plus API-capable annual plan,1 path,vendor_ordered_activation_unverified,low,delivery account entitlement MX1104 upload credentials and bounded API readback
+IPERL-PILOT-01,meter interface pilot,Signalizer EMP v2 plus power adapter,1 path,vendor_ordered_compatibility_unverified,low,delivery meter register cable owner approval protected interface and scaled output test

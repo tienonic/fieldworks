@@ -2,7 +2,8 @@
 
 Status: verified
 Owner: Nicholas Melnichenko
-Updated: 2026-07-27
+Updated: 2026-08-24
+Evidence: original migration record plus later Davis integration and purchaser-state corrections
 
 ## What was reformatted
 
@@ -34,8 +35,8 @@ Those sources remain in protected workspaces. This repository links only the sta
 
 - Current award: $8,749. Earlier proposal request: $5,689.
 - Phase I is two irrigation stations plus four soil stations.
-- The seventh ENTS node belongs to the Phase II sandbox; Phase I contains six field stations.
-- Later meteorological inventory evidence conflicts with the April 19 assumed models.
-- July 27 OPP submissions remain at the Approver request stage.
+- Phase I contains six ENTS field stations. The later Davis correction removed ENTS from MET-01 and retained the seventh board as a spare/development node.
+- Later meteorological evidence replaced the April 19 assumed models with a collaborator-reported Davis Vantage Pro2 Plus 6162 path; dated inventory evidence is still pending.
+- July 27 OPP requests later advanced to vendor orders. Delivery still requires physical receiving evidence.
 - Delivery requires receiving evidence beyond OPP Complete.
 - Johan's new weather instruments remain design candidates awaiting approval.

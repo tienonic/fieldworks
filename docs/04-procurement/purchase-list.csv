@@ -1,11 +1,11 @@
 stage,target,item,quantity,action_state,release_gate,acceptance_test
-reference,IH-01,irrigation fittings and interface parts,verified deficit,inventory_then_fill_gap,physical inventory and frozen plumbing design,leak pressure pulse and valve-cycle tests
-reference,IH-01,enclosure and field power,1 set,inventory_then_fill_gap,compatible parts and final enclosure layout,fit polarity charge and runtime test
-reference,SM-01,enclosure and field power,1 set,inventory_then_fill_gap,compatible parts and final enclosure layout,fit polarity charge and runtime test
-reference,SM-01,soil sensor test setup,1 setup,borrow_or_fill_gap,defined reference method,four channels respond and temperature matches reference
-later,IH-02,irrigation replication package,1 set,planned_later,IH-01 passes and repeatable BOM is frozen,repeat the IH-01 acceptance test
-later,SM-02 SM-03 SM-04,soil replication packages,3 sets,planned_later,SM-01 passes and repeatable BOM is frozen,repeat the SM-01 acceptance test
-later,remaining nodes,enclosures and field power,verified deficit,planned_later,physical inventory and station allocation,fit ingress charge and runtime tests
-later,GW-01,US915 LoRaWAN gateway,1,planned_later,model location backhaul and owner are confirmed,all nodes join uplink and reconnect
-hold,MET-01,conditional interface and mounting parts,verified deficit,on_hold,physical instrument models and site are approved,model-specific bench and field tests
-hold,external systems,optional meter and cloud integrations,1 pilot each,on_hold,compatibility and read-only data access are proven,end-to-end data test
+inventory,IH-01 IH-02,D10 meters and D10-C-SRS switches,2 paths,received_pool_verify_before_request,body port size switch identity and station allocation,pulse volume leak and fitting tests
+reference,IH-01,pressure fitting divider driver enclosure and power,verified deficit,inventory_then_fill_gap,physical inventory and frozen plumbing/electrical design,pressure reference valve cycle fit charge and runtime tests
+reference,SM-01,complete Watermark set enclosure power and test setup,verified deficit,inventory_then_fill_gap,identified complete set and frozen ADC design,four channels reference fit charge and runtime tests
+later,IH-02,irrigation replication hardware,1 set,ordered_hold_for_reference_test,IH-01 passes and repeatable BOM is frozen,repeat IH-01 acceptance
+later,SM-02 SM-03 SM-04,soil replication hardware,3 sets,ordered_hold_for_reference_test,SM-01 passes and repeatable BOM is frozen,repeat SM-01 acceptance
+later,remaining field nodes,enclosures and field power,verified deficit,ordered_pool_allocation_unverified,exact pool inventory and station allocation,fit ingress charge and runtime tests
+later,GW-01,US915 LoRaWAN gateway,1,vendor_ordered_delivery_unverified,exact model site backhaul owner and sub-band,all nodes join uplink reconnect and retain identity
+hold,HOBO-EXT-01,MX Gateway and API-capable plan,1 path,vendor_ordered_activation_unverified,delivery account entitlement MX1104 upload credentials and sensor map,bounded API read normalizes into test dashboard
+hold,IPERL-PILOT-01,Signalizer EMP v2 and power adapter,1 path,vendor_ordered_compatibility_unverified,delivery meter-owner approval register cable power and protected logger,display volume timed flow alarm and power-loss comparison
+conditional,MET-01,matching-region WeatherLink Live,1,required_not_purchased,dated 6162 identity and transmitter region,RF pair every channel Local API mapping 24-hour and restart tests

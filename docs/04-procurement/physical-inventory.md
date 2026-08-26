@@ -1,7 +1,10 @@
 # Physical inventory checklist
 
 Status: partial physical count
+Owner: Nicholas Melnichenko
 Updated: 2026-08-20
+Evidence: current protected inventory photo set and prior direct ENTS board count
+
 Scope: hardware physically observed in the current inventory photo set, plus ENTS boards previously confirmed on hand. Procurement approval, order status, or shipping status alone does **not** count as received hardware.
 
 This checklist is intentionally conservative. A part is checked as received only when the physical item, packaging, or prior direct count supports it. Model/SKU mismatches and unreadable labels remain open checks.
