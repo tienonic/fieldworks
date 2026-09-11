@@ -14,6 +14,9 @@ ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_OUTPUT = ROOT / "deploy" / "grafana" / "dashboards" / "student-farm-sensors.json"
 DATASOURCE = {"type": "influxdb", "uid": "fieldworks-influxdb"}
 STATION_FILTER = '  |> filter(fn: (r) => r["station_id"] =~ /^${station_id:regex}$/)'
+REPOSITORY_URL = "https://github.com/tienonic/fieldworks"
+NO_DATA_TEXT = "No accepted records in selected window"
+SERIES_DISPLAY_NAME = "${__field.labels.station_id} ${__field.name}"
 
 
 def flux_query(
@@ -61,8 +64,8 @@ def row_panel(panel_id: int, title: str, y: int) -> dict[str, Any]:
     return panel
 
 
-def text_panel(panel_id: int, title: str, content: str, y: int) -> dict[str, Any]:
-    panel = base_panel(panel_id, title, "text", 0, y, 24, 4)
+def text_panel(panel_id: int, title: str, content: str, y: int, *, height: int = 4) -> dict[str, Any]:
+    panel = base_panel(panel_id, title, "text", 0, y, 24, height)
     panel.update({"options": {"content": content, "mode": "markdown"}, "transparent": True})
     panel.pop("datasource")
     return panel
@@ -90,7 +93,8 @@ def field_defaults(unit: str, *, minimum: float | None = None) -> dict[str, Any]
             "thresholdsStyle": {"mode": "off"},
         },
         "mappings": [],
-        "displayName": "${__field.labels.station_id} ${__field.name}",
+        "displayName": SERIES_DISPLAY_NAME,
+        "noValue": NO_DATA_TEXT,
         "thresholds": {
             "mode": "absolute",
             "steps": [{"color": "green", "value": None}, {"color": "red", "value": 80}],
@@ -152,6 +156,7 @@ def state_panel(
                         {"options": {"false": {"color": "green", "index": 0, "text": "clear"}, "true": {"color": "red", "index": 1, "text": "alarm"}}, "type": "value"},
                         {"options": {"closed": {"color": "blue", "index": 2, "text": "closed"}, "open": {"color": "green", "index": 3, "text": "open"}, "unknown": {"color": "orange", "index": 4, "text": "unknown"}}, "type": "value"},
                     ],
+                    "noValue": NO_DATA_TEXT,
                     "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": None}]},
                 },
                 "overrides": [],
@@ -170,7 +175,34 @@ def state_panel(
     return panel
 
 
-def table_panel(panel_id: int, title: str, description: str, query: str, x: int, y: int, w: int, h: int) -> dict[str, Any]:
+def table_column_override(
+    field_name: str,
+    display_name: str,
+    *,
+    width: int | None = None,
+    hidden: bool = False,
+) -> dict[str, Any]:
+    properties: list[dict[str, Any]] = [{"id": "displayName", "value": display_name}]
+    if width is not None:
+        properties.append({"id": "custom.width", "value": width})
+    if hidden:
+        properties.append({"id": "custom.hidden", "value": True})
+    return {"matcher": {"id": "byName", "options": field_name}, "properties": properties}
+
+
+def table_panel(
+    panel_id: int,
+    title: str,
+    description: str,
+    query: str,
+    x: int,
+    y: int,
+    w: int,
+    h: int,
+    *,
+    overrides: list[dict[str, Any]] | None = None,
+    cell_height: str = "sm",
+) -> dict[str, Any]:
     panel = base_panel(panel_id, title, "table", x, y, w, h)
     panel.update(
         {
@@ -180,14 +212,23 @@ def table_panel(panel_id: int, title: str, description: str, query: str, x: int,
                     "color": {"mode": "thresholds"},
                     "custom": {"align": "auto", "cellOptions": {"type": "auto"}, "inspect": False},
                     "mappings": [],
+                    "noValue": NO_DATA_TEXT,
                     "thresholds": {"mode": "absolute", "steps": [{"color": "green", "value": None}]},
                 },
-                "overrides": [],
+                "overrides": overrides or [],
             },
-            "options": {"cellHeight": "sm", "footer": {"enablePagination": False, "show": False}, "showHeader": True},
+            "options": {"cellHeight": cell_height, "footer": {"enablePagination": False, "show": False}, "showHeader": True},
             "targets": [{"datasource": DATASOURCE, "query": query, "refId": "A"}],
         }
     )
+    if overrides:
+        hidden_names = [item["matcher"]["options"] for item in overrides
+                        if any(p["id"] == "custom.hidden" and p["value"] for p in item["properties"])]
+        if hidden_names:
+            panel["transformations"] = [{"id": "organize", "options": {
+                "excludeByName": {name: True for name in hidden_names},
+                "indexByName": {"station_id": 0, "_time": 1, "_value": 2}, "renameByName": {}}}]
+            panel["fieldConfig"]["defaults"]["custom"]["wrapText"] = True
     return panel
 
 
@@ -200,6 +241,7 @@ def stat_panel(panel_id: int, title: str, description: str, query: str, x: int, 
                 "defaults": {
                     "color": {"mode": "thresholds"},
                     "mappings": [],
+                    "noValue": NO_DATA_TEXT,
                     "thresholds": {"mode": "absolute", "steps": [{"color": "red", "value": None}, {"color": "green", "value": 1}]},
                     "unit": "short",
                 },
@@ -234,12 +276,20 @@ def build_dashboard() -> dict[str, Any]:
     add(
         text_panel(
             panel_id,
-            "Data state",
-            "No station is treated as live until its physical identity, conversion, and end-to-end path pass the documented acceptance test. Synthetic records carry `example_not_live` and can enter only a test bucket.",
+            "Read first",
+            (
+                "**Review only.** This dashboard is not evidence of field deployment. Review **Quality state** flags before using a value; "
+                "a station becomes live only after documented acceptance.\n\n"
+                "`example_not_live` marks synthetic test data, not field observations. Keep fixture records in a test bucket. "
+                "Empty panels mean no accepted records in the time window.\n\n"
+                "Use **Station** to filter. Start with **System health**, then **Irrigation**, **Soil profile**, **External systems**, "
+                f"and **MET-01 weather**. [Repository record]({REPOSITORY_URL})"
+            ),
             y,
+            height=5,
         )
     )
-    y += 4
+    y += 5
 
     add(row_panel(panel_id, "System health", y))
     y += 1
@@ -255,7 +305,7 @@ def build_dashboard() -> dict[str, Any]:
             '  |> count(column: "_value")',
         ]
     )
-    add(stat_panel(panel_id, "Reporting stations", "Stations with at least one record in the selected time range.", reporting_query, 0, y, 6, 6))
+    add(stat_panel(panel_id, "Reporting stations", "Stations with at least one record in the selected time range.", reporting_query, 0, y, 6, 8))
     last_seen_query = "\n".join(
         [
             "from(bucket: v.defaultBucket)",
@@ -268,8 +318,25 @@ def build_dashboard() -> dict[str, Any]:
             "  |> group()",
         ]
     )
-    add(table_panel(panel_id, "Last observation by station", "Use the timestamp to identify silent or stale stations.", last_seen_query, 6, y, 18, 6))
-    y += 6
+    add(
+        table_panel(
+            panel_id,
+            "Last seen",
+            "Use the timestamp to identify silent or stale stations.",
+            last_seen_query,
+            6,
+            y,
+            18,
+            8,
+            overrides=[
+                table_column_override("_time", "Last observed", width=230),
+                table_column_override("station_id", "Station", width=150),
+                table_column_override("station_type", "Station type", width=160),
+                table_column_override("source_system", "Source", width=160),
+            ],
+        )
+    )
+    y += 8
     quality_query = "\n".join(
         [
             "from(bucket: v.defaultBucket)",
@@ -282,14 +349,33 @@ def build_dashboard() -> dict[str, Any]:
             "  |> group()",
         ]
     )
-    add(table_panel(panel_id, "Latest quality state", "Quality flags remain visible; the dashboard does not silently replace suspect values.", quality_query, 0, y, 24, 7))
-    y += 7
+    add(
+        table_panel(
+            panel_id,
+            "Quality state",
+            "Review flags before using a value. Station type and source are retained in the query but hidden here to keep the flags readable.",
+            quality_query,
+            0,
+            y,
+            24,
+            10,
+            overrides=[
+                table_column_override("_time", "Observed", width=230),
+                table_column_override("_value", "Quality flags", width=710),
+                table_column_override("station_id", "Station", width=180),
+                table_column_override("station_type", "Station type", hidden=True),
+                table_column_override("source_system", "Source", hidden=True),
+            ],
+            cell_height="md",
+        )
+    )
+    y += 10
     add(timeseries_panel(panel_id, "Battery voltage", "ENTS and supported external-source battery telemetry.", flux_query(["battery_v"], aggregate="mean"), "volt", 0, y, 8, 8, minimum=0))
     add(timeseries_panel(panel_id, "LoRaWAN RSSI", "NodeFlow LoRaWAN received signal strength.", flux_query(["rssi_dbm"], source_system="nodeflow_lorawan", aggregate="mean"), "dBm", 8, y, 8, 8))
     add(timeseries_panel(panel_id, "LoRaWAN SNR", "NodeFlow LoRaWAN signal-to-noise ratio.", flux_query(["snr_db"], source_system="nodeflow_lorawan", aggregate="mean"), "dB", 16, y, 8, 8))
     y += 8
 
-    add(row_panel(panel_id, "Irrigation head stations", y))
+    add(row_panel(panel_id, "Irrigation", y))
     y += 1
     add(timeseries_panel(panel_id, "Flow rate", "D10 pulse-derived flow after pulse resolution and timing are verified.", flux_query(["flow_rate_gpm"], station_type="irrigation_head"), "gpm", 0, y, minimum=0))
     add(timeseries_panel(panel_id, "Line pressure", "SEN0257 pressure after divider correction and reference calibration.", flux_query(["pressure_psi"], station_type="irrigation_head"), "pressurepsi", 12, y, minimum=0))
@@ -298,7 +384,7 @@ def build_dashboard() -> dict[str, Any]:
     add(state_panel(panel_id, "Valve command", "Command history only. The current design has no valve-position feedback.", flux_query(["valve_command"], station_type="irrigation_head", aggregate="last"), 12, y))
     y += 8
 
-    add(row_panel(panel_id, "Soil profile stations", y))
+    add(row_panel(panel_id, "Soil profile", y))
     y += 1
     add(timeseries_panel(panel_id, "Soil water tension by depth", "Three Watermark 200SS channels after VA3 conversion and bench calibration.", flux_query(["tension_shallow_kpa", "tension_middle_kpa", "tension_deep_kpa"], station_type="soil_profile"), "pressurekpa", 0, y, minimum=0))
     add(timeseries_panel(panel_id, "Soil temperature", "Watermark 200TS temperature after VA3 conversion and reference comparison.", flux_query(["soil_temp_c"], station_type="soil_profile"), "celsius", 12, y))
@@ -315,10 +401,10 @@ def build_dashboard() -> dict[str, Any]:
     add(timeseries_panel(panel_id, "Signalizer flow rate", "Active 4–20 mA flow after meter range and logger scaling are verified.", flux_query(["flow_rate_gpm"], source_system="signalizer"), "gpm", 0, y, minimum=0))
     add(timeseries_panel(panel_id, "Signalizer cumulative volume", "Pulse-derived volume after pulse resolution and reset handling are verified.", flux_query(["volume_total_gal"], source_system="signalizer", aggregate="last"), "gallons", 12, y, minimum=0))
     y += 8
-    add(state_panel(panel_id, "Signalizer meter alarm", "Alarm-contact state. This panel is separate from numeric flow and volume.", flux_query(["meter_alarm"], source_system="signalizer", aggregate="last"), 0, y, 24, 7))
+    add(state_panel(panel_id, "Signalizer alarm", "Alarm-contact state. This panel is separate from numeric flow and volume.", flux_query(["meter_alarm"], source_system="signalizer", aggregate="last"), 0, y, 24, 7))
     y += 7
 
-    add(row_panel(panel_id, "MET-01 Davis weather station", y))
+    add(row_panel(panel_id, "MET-01 weather", y))
     y += 1
     add(timeseries_panel(panel_id, "MET-01 air temperature", "Davis 6162 temperature converted from the retained WeatherLink source value.", flux_query(["air_temp_c"], station_type="met_sandbox", source_system="weatherlink"), "celsius", 0, y))
     add(timeseries_panel(panel_id, "MET-01 relative humidity", "Davis 6162 relative humidity after channel verification.", flux_query(["relative_humidity_pct"], station_type="met_sandbox", source_system="weatherlink"), "percent", 12, y, minimum=0))

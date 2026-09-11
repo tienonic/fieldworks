@@ -11,16 +11,16 @@
   "panels": [
     {
       "gridPos": {
-        "h": 4,
+        "h": 5,
         "w": 24,
         "x": 0,
         "y": 0
       },
       "id": 1,
-      "title": "Data state",
+      "title": "Read first",
       "type": "text",
       "options": {
-        "content": "No station is treated as live until its physical identity, conversion, and end-to-end path pass the documented acceptance test. Synthetic records carry `example_not_live` and can enter only a test bucket.",
+        "content": "**Review only.** This dashboard is not evidence of field deployment. Review **Quality state** flags before using a value; a station becomes live only after documented acceptance.\n\n`example_not_live` marks synthetic test data, not field observations. Keep fixture records in a test bucket. Empty panels mean no accepted records in the time window.\n\nUse **Station** to filter. Start with **System health**, then **Irrigation**, **Soil profile**, **External systems**, and **MET-01 weather**. [Repository record](https://github.com/tienonic/fieldworks)",
         "mode": "markdown"
       },
       "transparent": true
@@ -30,7 +30,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 4
+        "y": 5
       },
       "id": 2,
       "title": "System health",
@@ -44,10 +44,10 @@
         "uid": "fieldworks-influxdb"
       },
       "gridPos": {
-        "h": 6,
+        "h": 8,
         "w": 6,
         "x": 0,
-        "y": 5
+        "y": 6
       },
       "id": 3,
       "title": "Reporting stations",
@@ -59,6 +59,7 @@
             "mode": "thresholds"
           },
           "mappings": [],
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -109,13 +110,13 @@
         "uid": "fieldworks-influxdb"
       },
       "gridPos": {
-        "h": 6,
+        "h": 8,
         "w": 18,
         "x": 6,
-        "y": 5
+        "y": 6
       },
       "id": 4,
-      "title": "Last observation by station",
+      "title": "Last seen",
       "type": "table",
       "description": "Use the timestamp to identify silent or stale stations.",
       "fieldConfig": {
@@ -131,6 +132,7 @@
             "inspect": false
           },
           "mappings": [],
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -141,7 +143,72 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_time"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Last observed"
+              },
+              {
+                "id": "custom.width",
+                "value": 230
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "station_id"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Station"
+              },
+              {
+                "id": "custom.width",
+                "value": 150
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "station_type"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Station type"
+              },
+              {
+                "id": "custom.width",
+                "value": 160
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "source_system"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source"
+              },
+              {
+                "id": "custom.width",
+                "value": 160
+              }
+            ]
+          }
+        ]
       },
       "options": {
         "cellHeight": "sm",
@@ -168,15 +235,15 @@
         "uid": "fieldworks-influxdb"
       },
       "gridPos": {
-        "h": 7,
+        "h": 10,
         "w": 24,
         "x": 0,
-        "y": 11
+        "y": 14
       },
       "id": 5,
-      "title": "Latest quality state",
+      "title": "Quality state",
       "type": "table",
-      "description": "Quality flags remain visible; the dashboard does not silently replace suspect values.",
+      "description": "Review flags before using a value. Station type and source are retained in the query but hidden here to keep the flags readable.",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -187,9 +254,11 @@
             "cellOptions": {
               "type": "auto"
             },
-            "inspect": false
+            "inspect": false,
+            "wrapText": true
           },
           "mappings": [],
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -200,10 +269,91 @@
             ]
           }
         },
-        "overrides": []
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_time"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Observed"
+              },
+              {
+                "id": "custom.width",
+                "value": 230
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "_value"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Quality flags"
+              },
+              {
+                "id": "custom.width",
+                "value": 710
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "station_id"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Station"
+              },
+              {
+                "id": "custom.width",
+                "value": 180
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "station_type"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Station type"
+              },
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "source_system"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "Source"
+              },
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          }
+        ]
       },
       "options": {
-        "cellHeight": "sm",
+        "cellHeight": "md",
         "footer": {
           "enablePagination": false,
           "show": false
@@ -219,6 +369,23 @@
           "query": "from(bucket: v.defaultBucket)\n  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)\n  |> filter(fn: (r) => r[\"_measurement\"] == \"station_metrics\" and r[\"_field\"] == \"quality_state\")\n  |> filter(fn: (r) => r[\"station_id\"] =~ /^${station_id:regex}$/)\n  |> group(columns: [\"station_id\", \"station_type\", \"source_system\"])\n  |> last()\n  |> keep(columns: [\"_time\", \"_value\", \"station_id\", \"station_type\", \"source_system\"])\n  |> group()",
           "refId": "A"
         }
+      ],
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "station_type": true,
+              "source_system": true
+            },
+            "indexByName": {
+              "station_id": 0,
+              "_time": 1,
+              "_value": 2
+            },
+            "renameByName": {}
+          }
+        }
       ]
     },
     {
@@ -230,7 +397,7 @@
         "h": 8,
         "w": 8,
         "x": 0,
-        "y": 18
+        "y": 24
       },
       "id": 6,
       "title": "Battery voltage",
@@ -272,6 +439,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -325,7 +493,7 @@
         "h": 8,
         "w": 8,
         "x": 8,
-        "y": 18
+        "y": 24
       },
       "id": 7,
       "title": "LoRaWAN RSSI",
@@ -367,6 +535,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -419,7 +588,7 @@
         "h": 8,
         "w": 8,
         "x": 16,
-        "y": 18
+        "y": 24
       },
       "id": 8,
       "title": "LoRaWAN SNR",
@@ -461,6 +630,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -509,10 +679,10 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 32
       },
       "id": 9,
-      "title": "Irrigation head stations",
+      "title": "Irrigation",
       "type": "row",
       "collapsed": false,
       "panels": []
@@ -526,7 +696,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 27
+        "y": 33
       },
       "id": 10,
       "title": "Flow rate",
@@ -568,6 +738,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -621,7 +792,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 27
+        "y": 33
       },
       "id": 11,
       "title": "Line pressure",
@@ -663,6 +834,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -716,7 +888,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 35
+        "y": 41
       },
       "id": 12,
       "title": "Cumulative volume",
@@ -758,6 +930,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -811,7 +984,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 35
+        "y": 41
       },
       "id": 13,
       "title": "Valve command",
@@ -864,6 +1037,7 @@
               "type": "value"
             }
           ],
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -907,10 +1081,10 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 43
+        "y": 49
       },
       "id": 14,
-      "title": "Soil profile stations",
+      "title": "Soil profile",
       "type": "row",
       "collapsed": false,
       "panels": []
@@ -924,7 +1098,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 44
+        "y": 50
       },
       "id": 15,
       "title": "Soil water tension by depth",
@@ -966,6 +1140,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1019,7 +1194,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 44
+        "y": 50
       },
       "id": 16,
       "title": "Soil temperature",
@@ -1061,6 +1236,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1109,7 +1285,7 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 52
+        "y": 58
       },
       "id": 17,
       "title": "External systems",
@@ -1126,7 +1302,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 53
+        "y": 59
       },
       "id": 18,
       "title": "HOBO air temperature",
@@ -1168,6 +1344,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1220,7 +1397,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 53
+        "y": 59
       },
       "id": 19,
       "title": "HOBO relative humidity",
@@ -1262,6 +1439,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1315,7 +1493,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 61
+        "y": 67
       },
       "id": 20,
       "title": "HOBO light",
@@ -1357,6 +1535,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1410,7 +1589,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 61
+        "y": 67
       },
       "id": 21,
       "title": "HOBO external analog input",
@@ -1452,6 +1631,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1505,7 +1685,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 69
+        "y": 75
       },
       "id": 22,
       "title": "Signalizer flow rate",
@@ -1547,6 +1727,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1600,7 +1781,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 69
+        "y": 75
       },
       "id": 23,
       "title": "Signalizer cumulative volume",
@@ -1642,6 +1823,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1695,10 +1877,10 @@
         "h": 7,
         "w": 24,
         "x": 0,
-        "y": 77
+        "y": 83
       },
       "id": 24,
-      "title": "Signalizer meter alarm",
+      "title": "Signalizer alarm",
       "type": "state-timeline",
       "description": "Alarm-contact state. This panel is separate from numeric flow and volume.",
       "fieldConfig": {
@@ -1748,6 +1930,7 @@
               "type": "value"
             }
           ],
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1791,10 +1974,10 @@
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 84
+        "y": 90
       },
       "id": 25,
-      "title": "MET-01 Davis weather station",
+      "title": "MET-01 weather",
       "type": "row",
       "collapsed": false,
       "panels": []
@@ -1808,7 +1991,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 85
+        "y": 91
       },
       "id": 26,
       "title": "MET-01 air temperature",
@@ -1850,6 +2033,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1902,7 +2086,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 85
+        "y": 91
       },
       "id": 27,
       "title": "MET-01 relative humidity",
@@ -1944,6 +2128,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -1997,7 +2182,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 93
+        "y": 99
       },
       "id": 28,
       "title": "MET-01 wind speed",
@@ -2039,6 +2224,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2092,7 +2278,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 93
+        "y": 99
       },
       "id": 29,
       "title": "MET-01 wind direction",
@@ -2134,6 +2320,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2187,7 +2374,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 101
+        "y": 107
       },
       "id": 30,
       "title": "MET-01 daily rainfall",
@@ -2229,6 +2416,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2282,7 +2470,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 101
+        "y": 107
       },
       "id": 31,
       "title": "MET-01 rain rate",
@@ -2324,6 +2512,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2377,7 +2566,7 @@
         "h": 8,
         "w": 12,
         "x": 0,
-        "y": 109
+        "y": 115
       },
       "id": 32,
       "title": "MET-01 solar radiation",
@@ -2419,6 +2608,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -2472,7 +2662,7 @@
         "h": 8,
         "w": 12,
         "x": 12,
-        "y": 109
+        "y": 115
       },
       "id": 33,
       "title": "MET-01 UV index",
@@ -2514,6 +2704,7 @@
           },
           "mappings": [],
           "displayName": "${__field.labels.station_id} ${__field.name}",
+          "noValue": "No accepted records in selected window",
           "thresholds": {
             "mode": "absolute",
             "steps": [

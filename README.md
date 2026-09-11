@@ -4,6 +4,12 @@ Station-by-station design record for the FieldWorks Green Grid deployment at the
 
 > Current design basis: TGIF project `S26-214`, six Phase I ENTS field stations, one Phase II Davis Vantage Pro2 Plus meteorological subsystem, and one LoRaWAN gateway. Site locations await Student Farm approval.
 
+## Dashboard preview
+
+[Open the dashboard screenshot guide](docs/09-dashboard/screenshots.md) for system health, irrigation, soil, external systems, and weather views. The images show the real local dashboard with **synthetic test data**, not field observations.
+
+![Local dashboard preview with synthetic test data](docs/09-dashboard/screenshots/00-overview.png)
+
 ## Pick a station
 
 Start with the [visual station atlas](docs/02-stations/station-atlas.md). Each entry covers one physical package, its expected data, and its deployment blockers.
