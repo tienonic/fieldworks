@@ -2,10 +2,36 @@
 
 Status: working
 Owner: Nicholas Melnichenko
-Updated: 2026-10-23
+Updated: 2026-10-26
 Evidence: dated local build checkpoints, the October 2026 accessory delivery readback, and Nicholas's bench reports
 
-**Next test: identify one ENTS board and read a valid controller ID.** Nothing has been powered and measured yet. There is no saved controller ID, soil reading, or radio packet. The last recorded SWD attempt returned `0x000` with `ENTER_SWD error (0x09)`.
+**Next test: identify one ENTS board and read a valid controller ID.** An October 26 attempt with Luis got no signal; the setup was not recorded. Nothing has been powered and measured with a saved result yet. There is no saved controller ID, soil reading, or radio packet. The last recorded SWD attempt returned `0x000` with `ENTER_SWD error (0x09)`.
+
+## With no power supply on hand
+
+Most of the first check needs no power. The ENTS board's documented bench supply is its USB-C port, so a laptop and a USB-C cable are enough for steps 3 and 4 below; the solar panels and their plug adapter are only needed in the field. Photos of each part are in the [parts photo atlas](../03-hardware/parts-atlas.md).
+
+```mermaid
+flowchart LR
+  subgraph off[No power needed]
+    A[Photograph board,<br/>ST-Link, Treedix adapter] --> B[Match revision and<br/>map GND SWDIO SWCLK NRST]
+    B --> C[Continuity check<br/>with the meter]
+    D[Count soil-sensor bags,<br/>VA3 terminals, antennas]
+    E[Measure the solar<br/>receiving socket]
+  end
+  subgraph on[Board powered from USB-C]
+    F[Measure 3.3 V rail] --> G[Read controller ID<br/>at 100 kHz]
+  end
+  C --> F
+  G --> H[One Watermark probe<br/>through one VA3]
+```
+
+1. **Identify and map.** Photograph both board faces, the revision text, the ST-Link pin labels and both faces of the Treedix adapter. Record where each signal lands at all three.
+2. **Check continuity.** Trace GND, SWDIO, SWCLK and NRST end to end with the meter. Check that power is not shorted to ground.
+3. **Count the small parts.** Record what is inside each soil-sensor bag (probes, temperature probes, VA3 adapters, leads), the VA3 terminal labels, and the antenna connectors' center contacts.
+4. **Measure the solar receiving socket.** The panel plug is 3.5 x 1.1 mm. Record the socket's outer and pin diameter and its polarity before buying an adapter.
+
+When a USB-C supply is available, continue with steps 3 and 4 of the first check.
 
 ## Two separate paths
 
@@ -46,12 +72,14 @@ Allow 60 to 120 minutes after the controller check, if the matching firmware alr
 | 2026-09-25 | First bench attempt on the other laptop with female-to-female leads. | Debugger and serial attempts failed. No controller ID. |
 | 2026-10-01 to 10-02 | Parts arrival review. Nicholas reported the solar adapter, batteries, and resistors in hand. | Inventory reconciled; no hardware test. |
 | 2026-10-13 | Document and receipt review after Nicholas reported the parts arrived and the connections were confusing. | First-check procedure written. No hardware connected. |
+| 2026-10-26 | Bench handed to Luis. No power supply on hand for the solar path. | No signal; setup, power and tool output were not recorded. Parts photo atlas added. |
 | 2026-10-22 to 10-23 | Order reconciliation and workspace recovery. All seven accessory lines confirmed delivered. Gateway present, original antenna missing. Meter and jumper leads confirmed missing and selected for purchase. Older `pending` rows found superseded by later order summaries. | Checkpoint saved; the next test is unchanged. |
 
 ## What is still unknown
 
 | Owner | Missing evidence | What it unlocks |
 |---|---|---|
+| Nicholas and Luis | what "no signal" meant on October 26: no USB device, probe found but no target, or no serial output |  the failed link to recheck first |
 | Nicholas | board revision, header markings, continuity, rail voltage | a valid controller ID and an exact wiring map |
 | Nicholas | antenna center contacts against the gateway and node sockets | which antenna pack fits where |
 | Nicholas | ENTS charging socket diameter and polarity | the solar plug adapter purchase |

@@ -8,7 +8,7 @@ Station-by-station design record for the FieldWorks Green Grid deployment at the
 
 - No station is assembled or tested. No controller ID, soil reading, or radio packet has been saved.
 - Seven ENTS boards, the gateway, the bench accessories, and part of the field hardware are on hand. The gateway's original antenna is missing; its replacement pack is here.
-- The first test is to identify one ENTS board and read its controller ID. The [bench log](docs/05-installation/bench-log.md) gives the procedure and the open questions.
+- The first test is to identify one ENTS board and read its controller ID. The [bench log](docs/05-installation/bench-log.md) gives the procedure and the open questions. The [parts photo atlas](docs/03-hardware/parts-atlas.md) shows each part, grouped by what it does.
 - A multimeter and jumper leads are the only confirmed purchases. The solar plug adapter waits on a socket check. Everything else is a count, not a purchase.
 
 ## Dashboard preview
