@@ -6,10 +6,12 @@ IH-01 valve path,IH-01,received_body_solenoid_driver_unverified,allocate CP075 b
 IH-02 valve path,IH-02,vendor_ordered_not_observed,inspect remaining inventory for exact DIG 305DC-075 assembly
 Watermark hardware pool,SM-01 SM-02 SM-03 SM-04,received_model_completeness_allocation_unverified,read labels count 200SS-15 200TS and VA3 parts then assign only after SM-01 test
 Polycase enclosure pool,field stations,received_model_count_allocation_unverified,count units identify SKU and test final gland and ingress layout
-solar panels,field stations,vendor_ordered_not_observed,inspect remaining inventory then verify voltage polarity power and fit
+solar panels,field stations,four_photographed_of_six_requested,locate the other two panels then confirm the ENTS charging socket before buying the 3.5 x 1.1 to 5.5 x 2.1 mm plug adapter
 LiPo batteries,field stations,shipment_cartons_only,open cartons and verify count labels voltage capacity protection connector and polarity
-LoRaWAN gateway,GW-01,vendor_ordered_delivery_unverified,verify exact RAKwireless US915 model serial site backhaul owner and sub-band
+LoRaWAN gateway,GW-01,reported_on_hand_original_antenna_missing,read the model label and antenna socket then fit the RP-SMA replacement and record site backhaul owner and sub-band
 HOBO cloud path,HOBO-EXT-01,vendor_ordered_activation_unverified,verify MX Gateway delivery plan entitlement account ownership MX1104 upload and API readback
 iPERL Signalizer pilot,IPERL-PILOT-01,vendor_ordered_compatibility_unverified,verify delivery meter-owner approval register cable power protected logger and scaled outputs
 bench and installation materials,reference stations,partially_received_inventory_unverified,count support items and assign only after the build plan is frozen
 MET-01 receiver,MET-01,required_not_purchased,select a WeatherLink Live regional SKU that matches the reported 6162 transmitter
+bench accessories,reference stations,received_seven_lines,record the SWD adapter signal map and match both antenna packs to their sockets
+bench tools,reference stations,purchase_pending,buy one multimeter and one 2.54 mm jumper assortment before the first continuity check

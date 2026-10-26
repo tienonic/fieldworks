@@ -2,7 +2,7 @@
 
 Status: verified index
 Owner: Nicholas Melnichenko
-Updated: 2026-08-24
+Updated: 2026-10-23
 Evidence: local FieldWorks workspace and protected purchasing/inventory sources
 
 This index names the private and historical sources behind the repository. Protected content stays outside Git.
@@ -16,6 +16,9 @@ This index names the private and historical sources behind the repository. Prote
 | `projects/student-farm/tgif/ents-met-compatibility.md` | April 19 meteorological baseline | superseded where later inventory evidence conflicts |
 | `projects/student-farm/tgif/data-flow-diagram.md` | gateway/cloud design | architecture record; deployment evidence absent |
 | `projects/student-farm/tgif/award-reporting-2026/` | post-award execution and procurement context | current local execution evidence |
+| `projects/student-farm/build-sessions/` | dated bench checkpoints from September 25 to October 23, 2026 | current local build evidence; the October 23 checkpoint supersedes earlier wiring advice |
+| `projects/student-farm/ACTION-ITEMS.md` | open project actions and purchase decisions | current local action record |
+| `outputs/parts-recovery-2026-10-23/` | order reconciliation and recovered Remy bench sessions | protected; prices and receipts stay there |
 
 ## Johan sources
 

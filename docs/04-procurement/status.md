@@ -2,8 +2,8 @@
 
 Status: working
 Owner: Nicholas Melnichenko
-Updated: 2026-08-24
-Evidence: protected purchaser-state readback and partial physical inventory dated 2026-08-20
+Updated: 2026-10-23
+Evidence: protected purchaser-state readback, partial physical inventory dated 2026-08-20, October 2026 accessory delivery readback, and Nicholas's bench reports
 
 The hardware pool is partially received, but no complete sensor station is recorded as allocated, bench-accepted, or working.
 
@@ -14,9 +14,10 @@ The hardware pool is partially received, but no complete sensor station is recor
 | `SM-01` | ENTS board available; three bagged soil assemblies observed in shared pool; labels, completeness, allocation, ADC map, and four-channel test open |
 | `SM-02`-`SM-04` | hardware ordered; shared pool is not proven complete or allocated; builds remain gated on SM-01 |
 | `MET-01` | Davis 6162 is collaborator-reported; dated inventory evidence and matching-region WeatherLink Live remain open; ENTS is not part of this path |
-| `GW-01` | RAKwireless US915 unit ordered; exact model, delivery, site, backhaul, owner, and configuration unverified |
+| `GW-01` | RAK gateway reported on hand with its original antenna missing; RP-SMA replacement received; exact model, site, backhaul, owner, and configuration unverified |
 | `HOBO-EXT-01` | MX Gateway and plan ordered; delivery, activation, entitlement, credentials, MX1104 upload, and API readback unverified |
 | `IPERL-PILOT-01` | Signalizer and power ordered; delivery, owner approval, meter/register/cable compatibility, protected interface, and scaled outputs unverified |
+| Bench | SWD adapter kit, antennas, DRV8871, ADS1115, resistors, and CR123A cells received; multimeter and jumper leads pending purchase; no controller ID or soil reading saved, last SWD attempt returned `0x000` |
 | Dashboard | isolated post-teardown runtime acceptance passed on 2026-08-24; production host, owner, ingestion, backup, and recovery gates remain open |
 
 ## Status meanings

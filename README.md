@@ -4,6 +4,13 @@ Station-by-station design record for the FieldWorks Green Grid deployment at the
 
 > Current design basis: TGIF project `S26-214`, six Phase I ENTS field stations, one Phase II Davis Vantage Pro2 Plus meteorological subsystem, and one LoRaWAN gateway. Site locations await Student Farm approval.
 
+## Current state, October 23, 2026
+
+- No station is assembled or tested. No controller ID, soil reading, or radio packet has been saved.
+- Seven ENTS boards, the gateway, the bench accessories, and part of the field hardware are on hand. The gateway's original antenna is missing; its replacement pack is here.
+- The first test is to identify one ENTS board and read its controller ID. The [bench log](docs/05-installation/bench-log.md) gives the procedure and the open questions.
+- A multimeter and jumper leads are the only confirmed purchases. The solar plug adapter waits on a socket check. Everything else is a count, not a purchase.
+
 ## Dashboard preview
 
 [Open the dashboard screenshot guide](docs/09-dashboard/screenshots.md) for system health, irrigation, soil, external systems, and weather views. The images show the real local dashboard with **synthetic test data**, not field observations.
@@ -55,11 +62,12 @@ The six Phase I field nodes use ENTS boards with Wio-E5 LoRa radios. They send U
 18. [Controlled hardware plan](docs/04-procurement/purchase-list.md)
 19. [Machine-readable controlled hardware plan](docs/04-procurement/purchase-list.csv)
 20. [Equipment readiness](docs/04-procurement/status.md)
-21. [Assembly and test plan](docs/05-installation/assembly-and-test.md)
-22. [Grafana dashboard](docs/09-dashboard/grafana.md)
-23. [Dashboard telemetry schema](docs/09-dashboard/telemetry-schema.md)
-24. [Open decisions](docs/07-decisions/open-decisions.md)
-25. [Source index](docs/08-sources/source-index.md)
+21. [Bench log](docs/05-installation/bench-log.md)
+22. [Assembly and test plan](docs/05-installation/assembly-and-test.md)
+23. [Grafana dashboard](docs/09-dashboard/grafana.md)
+24. [Dashboard telemetry schema](docs/09-dashboard/telemetry-schema.md)
+25. [Open decisions](docs/07-decisions/open-decisions.md)
+26. [Source index](docs/08-sources/source-index.md)
 
 ## Evidence rules
 

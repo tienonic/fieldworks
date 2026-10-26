@@ -13,3 +13,15 @@ support,liquid-tight whip,not individual station-BOM line,1 package,Southwire Ul
 support,waterproof sealant,not individual station-BOM line,1 package,Loctite Clear Silicone 2.7 fl oz,received,support_item,high,none,weatherproofing consumable
 support,glue sticks,not individual station-BOM line,1 pack / 24 sticks,Arrow MG24,received,support_item,high,none,4 in x 5/16 in mini glue sticks
 support,brass threaded fittings and adapters,not individually itemized,several count pending,unlabeled brass fittings,received_model_pending,thread_standard_unverified,medium,count fittings and verify sizes plus BSP/NPT thread type,do not allocate to SEN0257 plumbing until threads are confirmed
+bench_accessory,Treedix 1.27 mm SWD adapter kit,1,1,Treedix adapter with 200 mm ribbon,received,match,high,record the signal map through adapter and ribbon,bridges ST-Link 2.54 mm header to the ENTS programming header
+bench_accessory,resistor assortment,1,1,assorted,received,candidate,medium,confirm 22k and 47k values and counts,SEN0257 pressure-divider candidates
+bench_accessory,CR123A 3 V lithium cells,2,2 advertised,Duracell CR123A,received,match,medium,confirm the Davis transmitter holder is empty before installing,Davis ISS backup battery not the ENTS supply
+radio,RP-SMA antenna pack,2,2 advertised,RP-SMA male,received,conditional,medium,match center contact and thread to the actual gateway socket,replacement for the missing gateway antenna
+radio,SMA antenna pack with U.FL pigtails,2,2 advertised,SMA male,received,conditional,medium,match the node socket and count existing antennas,direct SMA node socket needs no pigtail
+irrigation_valve,DRV8871 motor-driver breakout,1,1,Adafruit DRV8871,received,candidate,medium,prove coil supply and pulse timing against the exact solenoid,reversing driver candidate only
+node,ADS1115 ADC module,1,unverified,HiLetgo ADS1115,received,conditional,low,map the soil-input channels first,not needed to read the controller ID
+radio,RAK LoRaWAN gateway,1,1 reported,RAK US915 model unverified,reported_on_hand,family_match,medium,read the model label region and antenna socket,Nicholas reports the original antenna missing
+power,solar panels,6,4 photographed,Adafruit 5366 family,partially_received,match,medium,locate the other two or match receiving records,panel plug is 3.5 x 1.1 mm
+bench_tool,multimeter,1,0,none,not_on_hand,n/a,high,purchase pending,needed for continuity and rail checks
+bench_tool,2.54 mm jumper leads,1,0,none,not_on_hand,n/a,high,purchase pending,September female-female leads are not confirmed usable
+power,solar plug adapter 3.5 x 1.1 female to 5.5 x 2.1 male,1,0,Adafruit 4287 or Voltaic A106,not_purchased,conditional,medium,confirm the ENTS charging socket diameter and polarity first,changes plug size not voltage

@@ -2,8 +2,8 @@
 
 Status: working
 Owner: Nicholas Melnichenko
-Updated: 2026-08-24
-Evidence: protected OPP and purchaser records read through 2026-08-20; partial physical inventory dated 2026-08-20
+Updated: 2026-10-23
+Evidence: protected OPP and purchaser records read through 2026-08-20, later institutional order summaries, the October 2026 accessory delivery readback, and Nicholas's reports of October 22 and 23
 
 This public record omits dates of purchase, order numbers, request IDs, prices, receipts, account data, and private attachments. A vendor order is not a receipt. A shared-pool observation is not a station allocation or a bench acceptance.
 
@@ -15,6 +15,10 @@ This public record omits dates of purchase, order numbers, request IDs, prices, 
 - Three bagged assemblies consistent with the Watermark order were observed. Labels and contents do not prove three complete station sets.
 - Multiple Polycase enclosures were observed. Count and model are unverified.
 - Field cable, liquid-tight whip, sealant, glue sticks, and brass fittings were observed. Fitting sizes and thread standards remain open.
+
+- A seven-line bench accessory order is delivered in full: SWD adapter kit, resistor assortment, CR123A cells, an RP-SMA antenna pack, an SMA antenna pack, a DRV8871 breakout, and an ADS1115 module. None of it makes a complete station.
+- Nicholas reports the RAK gateway present with its original antenna missing. The RP-SMA pack is its replacement, pending a socket check.
+- Four solar panels are photographed against six requested.
 
 Two `UN3481` cartons are shipment evidence only. They do not prove the battery model, count, voltage, capacity, connector, protection, or polarity.
 
@@ -32,7 +36,15 @@ The protected purchasing record shows vendor orders for:
 - one Signalizer interface and power adapter;
 - programming, bench, weatherproofing, and installation materials.
 
+An older tracking sheet still marks several of these lines `pending`. Later institutional order summaries record that they were placed. Treat the older sheet as superseded: find the unconfirmed deliveries before ordering replacements.
+
 Where a photo matches only a family or package, the physical checklist overrides the broader order description. Items not observed remain `vendor_ordered_delivery_unverified` or a more specific gated state.
+
+## Pending purchases
+
+- One multimeter and one 2.54 mm jumper-lead assortment, needed before the first continuity and rail checks. Selected, not ordered.
+- One solar plug adapter, 3.5 x 1.1 mm female to 5.5 x 2.1 mm male, after the ENTS charging socket diameter and polarity are confirmed. It changes plug size, not voltage. Do not substitute a 3.5 x 1.35 mm part.
+- Nothing else. Every other apparent shortage is a count or delivery check, not a purchase.
 
 ## Release gates
 

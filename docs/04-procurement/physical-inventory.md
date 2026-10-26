@@ -2,8 +2,8 @@
 
 Status: partial physical count
 Owner: Nicholas Melnichenko
-Updated: 2026-08-20
-Evidence: current protected inventory photo set and prior direct ENTS board count
+Updated: 2026-10-23
+Evidence: protected inventory photo set, prior direct ENTS board count, October 2026 accessory delivery readback, and Nicholas's bench reports of October 22 and 23
 
 Scope: hardware physically observed in the current inventory photo set, plus ENTS boards previously confirmed on hand. Procurement approval, order status, or shipping status alone does **not** count as received hardware.
 
@@ -85,6 +85,40 @@ These items are physically on hand but are not currently represented as individu
   - Several fittings are physically visible.
   - Exact quantity, thread size, and BSP/NPT type are not yet verified.
   - Do not allocate them to the SEN0257 plumbing path until thread standards are confirmed.
+
+## Bench accessories received in October 2026
+
+One accessory order for the bench was confirmed delivered in full. Pack contents are advertised quantities; counted units are recorded only where someone opened the pack.
+
+- [x] **Treedix 1.27 mm SWD adapter kit with 200 mm ribbon — 1 kit**
+  - Role: bridges the ST-Link's 2.54 mm header to the ENTS board's small programming header.
+  - Open check: the signal map through the adapter and ribbon is not recorded. A keyed plug or a red stripe does not establish the electrical map.
+- [x] **Resistor assortment — 1 pack**
+  - Role: 22 kOhm and 47 kOhm candidates for the SEN0257 pressure divider.
+  - Open check: loose counts and exact values uninspected.
+- [x] **CR123A 3 V lithium cells — 2 advertised**
+  - Role: Davis ISS backup battery. Not the ENTS LiPo supply.
+- [x] **RP-SMA antenna pack — 2 advertised**
+  - Role: replacement for the gateway's original antenna, which Nicholas reports missing.
+  - Open check: match the center contact and thread to the actual gateway socket before fitting.
+- [x] **SMA antenna pack with U.FL pigtails — 2 advertised**
+  - Role: candidate node antennas for the Wio-E5 radio.
+  - Open check: match the node socket; a direct SMA socket does not need the pigtail. SMA and RP-SMA look alike, so inspect the center contact.
+- [x] **Adafruit DRV8871 motor-driver breakout — 1**
+  - Role: candidate reversing driver for the latching solenoid. Coil, supply, and pulse timing remain unproved.
+- [x] **ADS1115 16-bit ADC module — 1 line, module count unverified**
+  - Role: conditional analog expansion. Not needed to read the controller ID. Allocation waits for the soil-input channel map.
+
+## Reported by Nicholas, October 2026
+
+These are owner reports, not photographed counts.
+
+- The RAK gateway is present. Its original antenna is missing.
+- Four solar panels have been photographed; six were requested institutionally. Locate the other two or match receiving records before buying replacements.
+- One WIND lead fits the Davis ISS; another is too large. UV, SUN, RAIN, and TEMP/HUM are connected.
+- Usable jumper leads and a working multimeter are not on hand. One meter and one 2.54 mm jumper assortment are selected for purchase and not yet ordered.
+- The solar panel plug is 3.5 x 1.1 mm. The matching 5.5 x 2.1 mm adapter is identified but not bought, because the ENTS charging socket diameter is unconfirmed.
+- No controller ID or soil reading has been saved. The last recorded SWD attempt returned `0x000` with `ENTER_SWD error (0x09)`.
 
 ## Not counted from procurement status alone
 

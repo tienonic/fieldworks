@@ -2,10 +2,16 @@
 
 Status: working
 Owner: Nicholas Melnichenko
-Updated: 2026-08-24
-Evidence: station acceptance gates, protected order-state readback, and partial physical inventory
+Updated: 2026-10-23
+Evidence: station acceptance gates, protected order-state readback, partial physical inventory, and the October 2026 bench reconciliation
 
 Do not buy from this page. First identify the shared hardware pool, allocate complete reference kits, and bench-test IH-01 and SM-01. Only a verified deficit can become a new purchase request.
+
+## Immediate bench needs
+
+- One multimeter and one 2.54 mm jumper-lead assortment. Both are confirmed missing and block the first continuity and rail checks.
+- One solar plug adapter, 3.5 x 1.1 mm female to 5.5 x 2.1 mm male, only after the ENTS charging socket is measured and confirmed center-positive.
+- Nothing else is a confirmed purchase. Antenna packs, the ADS1115, and the DRV8871 are already on hand as conditional parts. Open the three soil-sensor bags and count the solar panels before buying any sensor-side lead or panel.
 
 ## IH-01 reference build
 
