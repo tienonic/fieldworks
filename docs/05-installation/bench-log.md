@@ -5,9 +5,11 @@ Owner: Nicholas Melnichenko
 Updated: 2026-10-26
 Evidence: dated local build checkpoints, the October 2026 accessory delivery readback, and Nicholas's bench reports
 
-**Next test: identify one ENTS board and read a valid controller ID.** An October 26 attempt with Luis got no signal. Photos taken the same day show a likely cause: the Treedix breakout's pin row was never soldered, so the jumpers had no reliable contact. Solder that row first. Nothing has been powered and measured with a saved result yet. There is no saved controller ID, soil reading, or radio packet. The last recorded SWD attempt returned `0x000` with `ENTER_SWD error (0x09)`.
+**Next test: identify one ENTS board and read a valid controller ID.** An October 26 attempt with Luis got no signal. Photos taken the same day show a likely cause: the Treedix breakout's pin row was never soldered, so the jumpers had no reliable contact. Wire to the Treedix 20-pin box header instead, which is already fitted. Nothing has been powered and measured with a saved result yet. There is no saved controller ID, soil reading, or radio packet. The last recorded SWD attempt returned `0x000` with `ENTER_SWD error (0x09)`.
 
 ## Wiring map from the October 26 photos
+
+The step-by-step version without project history is [ENTS 3.1.0 programming setup](ents-programming-setup.md). It uses the Treedix 20-pin box header, so no soldering is needed.
 
 The photographed board is **ENTS node 3.1.0, unit `3.1.0-046`**. Each link below is read from a photo in the [parts photo atlas](../03-hardware/parts-atlas.md). The ENTS firmware setup guide places the `D2` SWD header near the `J4` three-position SDI-12 screw terminal; confirm it on the board front, which has not been photographed yet.
 
@@ -33,8 +35,8 @@ flowchart LR
 
 The Treedix row reads, from the square pad: V, DIO, SCK, G, G, SWO, RES, G, NC, V.
 
-1. **Solder one supplied 10-pin strip** into the Treedix row. With power off, check continuity from each row pin to its pin in the 2x5 socket.
-2. Wire the four jumpers in the table. Plug the 10-pin ribbon into the Treedix 2x5 socket and the ENTS `D2` header with the red stripe on pin 1 at both ends.
+1. **Use the fitted 20-pin box header, not the bare row:** ST-Link pin 4 to header pin 7, pin 2 to pin 9, pin 6 to pin 4, and optionally pin 1 to pin 15. Beep-test each wire against the labelled row hole in the table. Soldering a strip into the row is the fallback.
+2. Confirm the four wires. Plug the 10-pin ribbon into the Treedix 2x5 socket and the ENTS `D2` header with the red stripe on pin 1 at both ends.
 3. Power the ENTS board from USB-C, switch toward the board edge, and measure the 3.3 V rail.
 4. Connect at low speed (`st-info --probe --hot-plug --freq=100`, or STM32CubeProgrammer). If it fails, hold the board's RESET button, click Connect, then release.
 
