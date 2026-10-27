@@ -3,15 +3,30 @@
 Status: working
 Owner: Nicholas Melnichenko
 Updated: 2026-10-26
-Evidence: September 24, 2026 inventory photo set (42 photos after removing four duplicate enclosure views); labels read from the photos
+Evidence: September 24, 2026 inventory photo set (42 photos after removing four duplicate enclosure views) and eleven October 26, 2026 close-ups; labels read from the photos
 
-**Use this page to find a part by what it does.** Each section matches one part of the station: programming, soil, weather, water, power, small electronics, enclosures, supplies, and unidentified items. Click a thumbnail for the full photo. The [physical inventory](../04-procurement/physical-inventory.md) holds counts and receiving status; this page shows what the parts look like.
+**Use this page to find a part by what it does.** Each section matches one part of the station: controller, programming, soil, weather, water, power, small electronics, enclosures, supplies, and unidentified items. Click a thumbnail for the full photo. The [physical inventory](../04-procurement/physical-inventory.md) holds counts and receiving status; the [bench log](../05-installation/bench-log.md) uses these photos for the wiring map.
 
-A photo shows that a package was on the table. It does not prove the part works, how many pieces are inside, or which station it belongs to. "Needs check" means the model or size is not readable yet.
+A photo shows that a part was on the table. It does not prove the part works, how many pieces are inside, or which station it belongs to. "Needs check" means the model or size is not readable yet.
+
+## What the October 26 photos settled
+
+- **Board revision:** the photographed ENTS node is version 3.1.0, unit label `3.1.0-046`, dated 2026-04-06. Its back is marked "Solar Input, Voc max 18 V, typical 6 V, center positive" and has a direct SMA antenna jack.
+- **Programmer pinout:** the ST-Link V2 label gives pin 2 SWCLK, pin 4 SWDIO, pins 5 and 6 GND, pin 1 RST, and 3.3 V and 5.0 V outputs on pins 7 to 10.
+- **Treedix adapter:** its 10-hole breakout row has no pins soldered. The two supplied pin strips are still loose. Jumper wires pushed into bare holes make no reliable contact, which can explain a "no signal" result.
+- **ADS1115 and DRV8871:** both delivered. The ADS1115 header is also unsoldered.
 
 ## Not photographed yet
 
-The October accessory delivery has no photos in this set: the Treedix 1.27 mm programming adapter and ribbon, the two antenna packs (RP-SMA for the gateway, SMA for the nodes), CR123A batteries, DRV8871 motor driver, ADS1115 analog-input board and the resistor assortment. The seven ENTS boards and the RAK gateway also need their own photos with revision and model labels readable. Add them under the matching section when they are taken.
+The whole front of an ENTS board (D2 programming header, J1 and J4 screw terminals, USB-C port and power switch), the other six boards' labels, the RAK gateway, both antenna packs, the CR123A batteries, the resistor assortment and the inside of the soil-sensor bags.
+
+## Controller board
+
+The ENTS node itself. Seven are on hand; one has been photographed so far.
+
+| Photo | Item | Label | Next check |
+|---|---|---|---|
+| [<img src="parts-photos/00-controller-board/P54-ents-node-3-1-0-unit-046-back.jpg" width="140" alt="ENTS node 3.1.0, unit 046, back">](parts-photos/00-controller-board/P54-ents-node-3-1-0-unit-046-back.jpg) | **ENTS node 3.1.0, unit 046, back** (P54) | ents-node 3.1.0; 2026-04-06; label 3.1.0-046; Solar Input Voc max 18 V, typical 6 V, center positive; Li-Ion Battery; SDI-12; SMA antenna jack (label read) | Record the other six boards the same way. Photograph the front. |
 
 ## Programming chain
 
@@ -19,7 +34,12 @@ Connects the computer to the ENTS controller. Needed for the first bench check.
 
 | Photo | Item | Label | Next check |
 |---|---|---|---|
+| [<img src="parts-photos/01-programming/P47-st-link-v2-pin-label-october-26.jpg" width="140" alt="ST-Link V2 pin label (October 26)">](parts-photos/01-programming/P47-st-link-v2-pin-label-october-26.jpg) | **ST-Link V2 pin label (October 26)** (P47) | 1 RST, 2 SWCLK, 3 SWIM, 4 SWDIO, 5-6 GND, 7-8 3.3V, 9-10 5.0V (label read) | Use pin 4 SWDIO, pin 2 SWCLK, pin 6 GND, and pin 1 RST only if connect-under-reset is needed. Leave 3.3V and 5.0V unconnected. |
 | [<img src="parts-photos/01-programming/P35-adafruit-st-link-stm8-stm32-v2-emulator-p2548.jpg" width="140" alt="Adafruit ST-Link STM8/STM32 v2 Emulator P2548">](parts-photos/01-programming/P35-adafruit-st-link-stm8-stm32-v2-emulator-p2548.jpg) | **Adafruit ST-Link STM8/STM32 v2 Emulator P2548** (P35) | ST-Link STM8/STM32 v2 Emulator; P2548; P2548B (label read) | Keep with programming cables. Verify target board and connector pinout before use. |
+| [<img src="parts-photos/01-programming/P56-treedix-breakouts-2-pin-labels.jpg" width="140" alt="Treedix breakouts (2), pin labels">](parts-photos/01-programming/P56-treedix-breakouts-2-pin-labels.jpg) | **Treedix breakouts (2), pin labels** (P56) | Row from square pad: V, DIO, SCK, G, G, SWO, RES, G, NC, V (label read) | Pins are not soldered. Jumpers pushed into bare holes give no reliable contact. |
+| [<img src="parts-photos/01-programming/P57-treedix-breakouts-with-loose-pin-strips.jpg" width="140" alt="Treedix breakouts with loose pin strips">](parts-photos/01-programming/P57-treedix-breakouts-with-loose-pin-strips.jpg) | **Treedix breakouts with loose pin strips** (P57) | Two boards, two 10-pin strips (label read) | Solder a strip to one board, then continuity-test each row pin to the 2x5 socket. |
+| [<img src="parts-photos/01-programming/P55-10-pin-1-27-mm-swd-ribbon.jpg" width="140" alt="10-pin 1.27 mm SWD ribbon">](parts-photos/01-programming/P55-10-pin-1-27-mm-swd-ribbon.jpg) | **10-pin 1.27 mm SWD ribbon** (P55) | 2x5 1.27 mm sockets; red stripe marks pin 1 (label read) | Treedix 2x5 socket to the ENTS D2 SWD header. Match the red stripe to pin 1 at both ends. |
+| [<img src="parts-photos/01-programming/P53-treedix-adapter-with-20-pin-ribbon.jpg" width="140" alt="Treedix adapter with 20-pin ribbon">](parts-photos/01-programming/P53-treedix-adapter-with-20-pin-ribbon.jpg) | **Treedix adapter with 20-pin ribbon** (P53) | Treedix: SWDIO, SWCLK, SWO, NC/TDI, nRESET; 2x5 and 2x10 sockets (label read) | The 2x5 box header is fitted. The 10-hole row has no pins: solder one supplied pin strip before using jumpers. |
 | [<img src="parts-photos/01-programming/P25-adafruit-usb-to-ttl-serial-cable-p954.jpg" width="140" alt="Adafruit USB to TTL Serial Cable P954">](parts-photos/01-programming/P25-adafruit-usb-to-ttl-serial-cable-p954.jpg) | **Adafruit USB to TTL Serial Cable P954** (P25) | USB to TTL Serial Cable; P954 (label read) | Verify P954 logic voltage and wire mapping before connecting. |
 
 ## Soil sensing
@@ -32,6 +52,7 @@ Watermark probes and related sensor parts for the soil monitoring stations.
 | [<img src="parts-photos/02-soil-sensing/P05-soil-probe-sets-green-and-red-leads.jpg" width="140" alt="Soil probe sets, green and red leads">](parts-photos/02-soil-sensing/P05-soil-probe-sets-green-and-red-leads.jpg) | **Soil probe sets, green and red leads** (P05) | not visible (needs check) | Lay one complete set beside its label; photograph both probe ends. |
 | [<img src="parts-photos/02-soil-sensing/P06-soil-probe-sets-green-and-red-leads.jpg" width="140" alt="Soil probe sets, green and red leads">](parts-photos/02-soil-sensing/P06-soil-probe-sets-green-and-red-leads.jpg) | **Soil probe sets, green and red leads** (P06) | not visible (needs check) | Lay one complete set beside its label; photograph both probe ends. |
 | [<img src="parts-photos/02-soil-sensing/P07-soil-probe-sets-green-and-red-leads.jpg" width="140" alt="Soil probe sets, green and red leads">](parts-photos/02-soil-sensing/P07-soil-probe-sets-green-and-red-leads.jpg) | **Soil probe sets, green and red leads** (P07) | not visible (needs check) | Lay one complete set beside its label; photograph both probe ends. |
+| [<img src="parts-photos/02-soil-sensing/P52-ads1115-16-bit-i2c-adc-board.jpg" width="140" alt="ADS1115 16-bit I2C ADC board">](parts-photos/02-soil-sensing/P52-ads1115-16-bit-i2c-adc-board.jpg) | **ADS1115 16-bit I2C ADC board** (P52) | ADS1115; VDD, GND, SCL, SDA, ADDR, ALRT, A0-A3 (label read) | Header pins are loose; solder before use. Connect only after the soil channel map is decided. |
 | [<img src="parts-photos/02-soil-sensing/P20-adafruit-pt100-rtd-temp-amplifier-p3328.jpg" width="140" alt="Adafruit PT100 RTD Temp Amplifier P3328">](parts-photos/02-soil-sensing/P20-adafruit-pt100-rtd-temp-amplifier-p3328.jpg) | **Adafruit PT100 RTD Temp Amplifier P3328** (P20) | Adafruit PT100 RTD Temp Amplifier; P3328; P3328D (label read) | Keep sealed with label. Match probe type before wiring. |
 
 ## Weather station
@@ -81,6 +102,9 @@ Resistors and breakout boards for the sensor and valve circuits.
 
 | Photo | Item | Label | Next check |
 |---|---|---|---|
+| [<img src="parts-photos/06-small-electronics/P49-drv8871-motor-driver-back.jpg" width="140" alt="DRV8871 motor driver, back">](parts-photos/06-small-electronics/P49-drv8871-motor-driver-back.jpg) | **DRV8871 motor driver, back** (P49) | DC Motor H-Bridge; VMotor 6.5-45V; PWM Vlogic 3-5V; 3.6A peak (label read) | Check the latching-solenoid pulse voltage against the 6.5 V minimum before choosing it for IH stations. |
+| [<img src="parts-photos/06-small-electronics/P50-drv8871-beside-the-ents-board-front.jpg" width="140" alt="DRV8871 beside the ENTS board front">](parts-photos/06-small-electronics/P50-drv8871-beside-the-ents-board-front.jpg) | **DRV8871 beside the ENTS board front** (P50) | ENTS: SW2 BOOT, SW1 RESET, D8 TXT, D9 RXT, I2C Port 1 (J9), I2C Port 2 (J8) (partly read) | Photograph the whole ENTS front so D2, J1, J4 and the USB-C port are visible. |
+| [<img src="parts-photos/06-small-electronics/P48-drv8871-motor-driver-front.jpg" width="140" alt="DRV8871 motor driver, front">](parts-photos/06-small-electronics/P48-drv8871-motor-driver-front.jpg) | **DRV8871 motor driver, front** (P48) | DRV8871; MOTOR and POWER terminals; IN2, IN1, VM, GND (label read) | Valve driver for later. Header not fitted. Not part of the first bench check. |
 | [<img src="parts-photos/06-small-electronics/P15-adafruit-resistor-packs-p2782-and-p2783.jpg" width="140" alt="Adafruit resistor packs P2782 and P2783">](parts-photos/06-small-electronics/P15-adafruit-resistor-packs-p2782-and-p2783.jpg) | **Adafruit resistor packs P2782 and P2783** (P15) | CF Axial Resistors -2.2Kohm -25 Pack; P2782; Through-Hole Resistors; P2783 (label read) | Keep each value in its original labelled bag. Confirm P2783 value before use. |
 | [<img src="parts-photos/06-small-electronics/P33-adafruit-through-hole-resistors-p2784.jpg" width="140" alt="Adafruit through-hole resistors P2784">](parts-photos/06-small-electronics/P33-adafruit-through-hole-resistors-p2784.jpg) | **Adafruit through-hole resistors P2784** (P33) | Through-Hole Resistors; P2784; P2784A (label read) | Confirm resistance value from product label or meter before use. |
 | [<img src="parts-photos/06-small-electronics/P24-adafruit-stemma-relay-p4409.jpg" width="140" alt="Adafruit STEMMA Relay P4409">](parts-photos/06-small-electronics/P24-adafruit-stemma-relay-p4409.jpg) | **Adafruit STEMMA Relay P4409** (P24) | Adafruit STEMMA Relay; P4409; P4409C (label read) | Keep sealed with label; verify P4409 instructions before wiring. |
@@ -102,6 +126,7 @@ Consumables and items that are not station hardware.
 
 | Photo | Item | Label | Next check |
 |---|---|---|---|
+| [<img src="parts-photos/08-supplies/P51-20-pin-2-54-mm-ribbon.jpg" width="140" alt="20-pin 2.54 mm ribbon">](parts-photos/08-supplies/P51-20-pin-2-54-mm-ribbon.jpg) | **20-pin 2.54 mm ribbon** (P51) | AWM 2651 28AWG 105C 300V (label read) | For 20-pin JTAG probes. Not needed with the ST-Link V2 and jumpers. |
 | [<img src="parts-photos/08-supplies/P26-loctite-clear-silicone-sealant.jpg" width="140" alt="Loctite clear silicone sealant">](parts-photos/08-supplies/P26-loctite-clear-silicone-sealant.jpg) | **Loctite clear silicone sealant** (P26) | LOCTITE; CLEAR SILICONE; WATERPROOF SEALANT; 2.7 fl oz (80ml) (label read) | Keep capped; confirm suitable material and use before applying. |
 | [<img src="parts-photos/08-supplies/P28-hot-glue-sticks.jpg" width="140" alt="Hot glue sticks">](parts-photos/08-supplies/P28-hot-glue-sticks.jpg) | **Hot glue sticks** (P28) | not visible (needs check) | Keep bag closed; confirm stick diameter matches the glue gun. |
 | [<img src="parts-photos/08-supplies/P10-oxygen-absorber-packets.jpg" width="140" alt="Oxygen absorber packets">](parts-photos/08-supplies/P10-oxygen-absorber-packets.jpg) | **Oxygen absorber packets** (P10) | Oxygen Absorber; DO NOT EAT (label read) | Keep sealed and separate from parts. Do not label as silica-gel desiccant. |

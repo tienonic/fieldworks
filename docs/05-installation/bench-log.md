@@ -5,7 +5,40 @@ Owner: Nicholas Melnichenko
 Updated: 2026-10-26
 Evidence: dated local build checkpoints, the October 2026 accessory delivery readback, and Nicholas's bench reports
 
-**Next test: identify one ENTS board and read a valid controller ID.** An October 26 attempt with Luis got no signal; the setup was not recorded. Nothing has been powered and measured with a saved result yet. There is no saved controller ID, soil reading, or radio packet. The last recorded SWD attempt returned `0x000` with `ENTER_SWD error (0x09)`.
+**Next test: identify one ENTS board and read a valid controller ID.** An October 26 attempt with Luis got no signal. Photos taken the same day show a likely cause: the Treedix breakout's pin row was never soldered, so the jumpers had no reliable contact. Solder that row first. Nothing has been powered and measured with a saved result yet. There is no saved controller ID, soil reading, or radio packet. The last recorded SWD attempt returned `0x000` with `ENTER_SWD error (0x09)`.
+
+## Wiring map from the October 26 photos
+
+The photographed board is **ENTS node 3.1.0, unit `3.1.0-046`**. Each link below is read from a photo in the [parts photo atlas](../03-hardware/parts-atlas.md). The ENTS firmware setup guide places the `D2` SWD header near the `J4` three-position SDI-12 screw terminal; confirm it on the board front, which has not been photographed yet.
+
+```mermaid
+flowchart LR
+  PC[Remy USB port] --> SL[ST-Link V2]
+  SL -- "pin 4 SWDIO" --> TX[Treedix row<br/>DIO]
+  SL -- "pin 2 SWCLK" --> TS[Treedix row<br/>SCK]
+  SL -- "pin 6 GND" --> TG[Treedix row<br/>G]
+  SL -. "pin 1 RST, optional" .-> TR[Treedix row<br/>RES]
+  TX & TS & TG & TR --> BOX[Treedix 2x5<br/>1.27 mm socket]
+  BOX -- "10-pin ribbon,<br/>red stripe = pin 1" --> D2[ENTS D2<br/>SWD header]
+  USB[USB-C cable] --> ENTS[ENTS power<br/>switch toward edge]
+```
+
+| ST-Link V2 pin | Signal | Treedix row hole | Notes |
+|---|---|---|---|
+| 4 | SWDIO | DIO (2nd from square pad) | required |
+| 2 | SWCLK | SCK (3rd) | required |
+| 6 (or 5) | GND | G (4th, 5th or 8th) | required |
+| 1 | RST | RES (7th) | only for connect-under-reset |
+| 7 to 10 | 3.3 V, 5.0 V | V | leave unconnected; the board runs from USB-C |
+
+The Treedix row reads, from the square pad: V, DIO, SCK, G, G, SWO, RES, G, NC, V.
+
+1. **Solder one supplied 10-pin strip** into the Treedix row. With power off, check continuity from each row pin to its pin in the 2x5 socket.
+2. Wire the four jumpers in the table. Plug the 10-pin ribbon into the Treedix 2x5 socket and the ENTS `D2` header with the red stripe on pin 1 at both ends.
+3. Power the ENTS board from USB-C, switch toward the board edge, and measure the 3.3 V rail.
+4. Connect at low speed (`st-info --probe --hot-plug --freq=100`, or STM32CubeProgrammer). If it fails, hold the board's RESET button, click Connect, then release.
+
+**A new board can report `Error: data read failed`.** The ENTS setup guide says this is expected: the factory firmware is read-protected, and the connection is working. Its next step removes read protection, which erases the factory firmware. Record the controller ID and output first, and treat the erase as a separate, deliberate step.
 
 ## With no power supply on hand
 
@@ -72,7 +105,7 @@ Allow 60 to 120 minutes after the controller check, if the matching firmware alr
 | 2026-09-25 | First bench attempt on the other laptop with female-to-female leads. | Debugger and serial attempts failed. No controller ID. |
 | 2026-10-01 to 10-02 | Parts arrival review. Nicholas reported the solar adapter, batteries, and resistors in hand. | Inventory reconciled; no hardware test. |
 | 2026-10-13 | Document and receipt review after Nicholas reported the parts arrived and the connections were confusing. | First-check procedure written. No hardware connected. |
-| 2026-10-26 | Bench handed to Luis. No power supply on hand for the solar path. | No signal; setup, power and tool output were not recorded. Parts photo atlas added. |
+| 2026-10-26 | Bench handed to Luis. No power supply on hand for the solar path. Eleven close-up photos taken. | No signal. Photos identify board 3.1.0-046, the ST-Link pinout, and an unsoldered Treedix pin row as the likely cause. Wiring map added. |
 | 2026-10-22 to 10-23 | Order reconciliation and workspace recovery. All seven accessory lines confirmed delivered. Gateway present, original antenna missing. Meter and jumper leads confirmed missing and selected for purchase. Older `pending` rows found superseded by later order summaries. | Checkpoint saved; the next test is unchanged. |
 
 ## What is still unknown
@@ -80,9 +113,9 @@ Allow 60 to 120 minutes after the controller check, if the matching firmware alr
 | Owner | Missing evidence | What it unlocks |
 |---|---|---|
 | Nicholas and Luis | what "no signal" meant on October 26: no USB device, probe found but no target, or no serial output |  the failed link to recheck first |
-| Nicholas | board revision, header markings, continuity, rail voltage | a valid controller ID and an exact wiring map |
+| Nicholas | ENTS board front (D2 location and pin 1), continuity after soldering, rail voltage | a valid controller ID |
 | Nicholas | antenna center contacts against the gateway and node sockets | which antenna pack fits where |
-| Nicholas | ENTS charging socket diameter and polarity | the solar plug adapter purchase |
+| Nicholas | ENTS solar socket diameter (center positive and 18 V maximum are printed on the board) | the solar plug adapter purchase |
 | Nicholas | counts inside the three soil-sensor bags and the remaining panels | exact shortages without duplicate orders |
 | purchasing owner | receiving readback for the HOBO gateway, Signalizer, and panels | delivery questions closed or the order investigated |
 | Nicholas and station owner | Davis transmitter and receiver region; valve coil and supply | the receiver choice and a compatible valve design |

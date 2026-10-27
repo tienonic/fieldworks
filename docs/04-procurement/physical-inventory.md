@@ -2,12 +2,22 @@
 
 Status: partial physical count
 Owner: Nicholas Melnichenko
-Updated: 2026-10-23
+Updated: 2026-10-26
 Evidence: protected inventory photo set, prior direct ENTS board count, October 2026 accessory delivery readback, and Nicholas's bench reports of October 22 and 23
 
 Scope: hardware physically observed in the current inventory photo set, plus ENTS boards previously confirmed on hand. Procurement approval, order status, or shipping status alone does **not** count as received hardware.
 
 This checklist is intentionally conservative. A part is checked as received only when the physical item, packaging, or prior direct count supports it. Model/SKU mismatches and unreadable labels remain open checks.
+
+## October 26 photo check
+
+Photos are in the [parts photo atlas](../03-hardware/parts-atlas.md).
+
+- ENTS node `3.1.0-046`: revision 3.1.0, dated 2026-04-06, direct SMA antenna jack, solar input marked center positive, 18 V maximum. The other six boards are not yet recorded.
+- Treedix 1.27 mm SWD adapter: two breakout boards, two loose 10-pin strips, one 10-pin 1.27 mm ribbon and one 20-pin 2.54 mm ribbon. The breakout pin rows are unsoldered.
+- ST-Link V2 programmer: pin label read; three jumper leads attached.
+- DRV8871 motor driver: one, received. VMotor 6.5 to 45 V.
+- ADS1115 ADC board: one, received; header unsoldered.
 
 ## BOM-matched hardware
 
