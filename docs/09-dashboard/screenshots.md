@@ -1,5 +1,17 @@
 # Dashboard screenshots
 
+## First field data, November 19–20, 2026
+
+The same dashboard with the first real readings: 56 soil-temperature values from one ENTS node at the Student Farm, labeled `SM-PILOT`, for 5 p.m. November 19 to 8 a.m. November 20. Times are estimated (`time_estimated` quality flag) because the board has no clock. Panels for sensors not yet connected show "No data". Data and limits: [field data, November 20](../../data/field/2026-11-20/README.md).
+
+![Soil temperature from the first field night, 10.1 °C falling to 6.0 °C](screenshots/field-2026-11-20/soil-temperature.png)
+
+![System health with one reporting station, SM-PILOT](screenshots/field-2026-11-20/overview.png)
+
+The [full dashboard](screenshots/field-2026-11-20/full-dashboard.png) shows every panel for the same window.
+
+## Synthetic test data, September 2026
+
 These screenshots show the working local Grafana dashboard with five existing synthetic test records from September 2, 2026. They are not field measurements or evidence of installed stations. Single points show fixture values, not measured trends. Green Grid is funded by The Green Initiative Fund at UC Davis.
 
 Use the Station filter to inspect one source. Check the quality flags and observation time before interpreting a value. An empty panel means no accepted records in the selected window, not necessarily a failed sensor.

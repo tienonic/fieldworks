@@ -4,18 +4,18 @@ Station-by-station design record for the FieldWorks Green Grid deployment at the
 
 > Current design basis: TGIF project `S26-214`, six Phase I ENTS field stations, one Phase II Davis Vantage Pro2 Plus meteorological subsystem, and one LoRaWAN gateway. Site locations await Student Farm approval.
 
-## Current state, October 23, 2026
+## Current state, November 20, 2026
 
-- No station is assembled or tested. No controller ID, soil reading, or radio packet has been saved.
-- Seven ENTS boards, the gateway, the bench accessories, and part of the field hardware are on hand. The gateway's original antenna is missing; its replacement pack is here.
-- The first test is to identify one ENTS board and read its controller ID. The [bench log](docs/05-installation/bench-log.md) gives the procedure and the open questions. [ENTS 3.1.0 programming setup](docs/05-installation/ents-programming-setup.md) is the instructions-only version to hand to a builder. The [parts photo atlas](docs/03-hardware/parts-atlas.md) shows each part, grouped by what it does.
-- A multimeter and jumper leads are the only confirmed purchases. The solar plug adapter waits on a socket check. Everything else is a count, not a purchase.
+- **First field data.** One ENTS node with the Watermark VA3 adapter was installed at the Student Farm on November 16. Its first export holds 56 soil-temperature readings from the night of November 19–20, falling from 10.1 °C to 6.0 °C. See [field data, November 20](data/field/2026-11-20/README.md).
+- Only the temperature channel is reporting. The three soil-tension (moisture) channels, node power, and the radio link are the next steps. The board has no clock, so times are estimated.
+- Seven ENTS boards, the gateway and the bench accessories are on hand. A WeatherLink Live receiver for the Davis weather station was requested on November 20.
+- The [bench log](docs/05-installation/bench-log.md) records each test. [ENTS 3.1.0 programming setup](docs/05-installation/ents-programming-setup.md) is the builder's guide; the [parts photo atlas](docs/03-hardware/parts-atlas.md) shows each part.
 
 ## Dashboard preview
 
-[Open the dashboard screenshot guide](docs/09-dashboard/screenshots.md) for system health, irrigation, soil, external systems, and weather views. The images show the real local dashboard with **synthetic test data**, not field observations.
+The local Grafana dashboard with the **first field readings**, November 19–20: soil temperature from one node at the Student Farm. The [screenshot guide](docs/09-dashboard/screenshots.md) also has the earlier synthetic-data views of every section.
 
-![Local dashboard preview with synthetic test data](docs/09-dashboard/screenshots/00-overview.png)
+![Soil temperature from the first field night](docs/09-dashboard/screenshots/field-2026-11-20/soil-temperature.png)
 
 ## Pick a station
 
