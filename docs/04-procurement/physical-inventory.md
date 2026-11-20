@@ -2,7 +2,7 @@
 
 Status: partial physical count
 Owner: Nicholas Melnichenko
-Updated: 2026-10-26
+Updated: 2026-11-20
 Evidence: protected inventory photo set, prior direct ENTS board count, October 2026 accessory delivery readback, and Nicholas's bench reports of October 22 and 23
 
 Scope: hardware physically observed in the current inventory photo set, plus ENTS boards previously confirmed on hand. Procurement approval, order status, or shipping status alone does **not** count as received hardware.
@@ -118,6 +118,16 @@ One accessory order for the bench was confirmed delivered in full. Pack contents
   - Role: candidate reversing driver for the latching solenoid. Coil, supply, and pulse timing remain unproved.
 - [x] **ADS1115 16-bit ADC module — 1 line, module count unverified**
   - Role: conditional analog expansion. Not needed to read the controller ID. Allocation waits for the soil-input channel map.
+
+## Student Farm equipment seen November 20, 2026
+
+Farm-owned equipment photographed during the November 20 farm walk. It is not Green Grid property; it can be used with the farm's agreement.
+
+| Item | What it is | Use for Green Grid | Open check |
+|---|---|---|---|
+| Main farm water meter | Sensus OMNI+ C2 compound meter, installed on the farm-wide line; register reads cubic feet | Farm-wide water use. The register keeps 180 days of hourly data and has encoder and optional pulse outputs | Which grey cable is the pulse output, and whether pulse is enabled |
+| Two spare water meters | Sensus iPERL 3/4-inch, not installed | Greenhouse inlet (not covered by the main meter) or the wash-station line | Needs the Signalizer path in [external integrations](../02-stations/external-integrations.md); choose the first line |
+| Irrigation controllers | DIG LEIT-1 ILV: single-valve timers powered by ambient light, with a factory-wired DC latching solenoid on an inline valve. One boxed, one used on a larger valve | Run irrigation schedules while Green Grid measures flow and pressure on the same line, so no ENTS valve driver is needed at first | Valve size of each unit and target lines |
 
 ## Reported by Nicholas, October 2026
 

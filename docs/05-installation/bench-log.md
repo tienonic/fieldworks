@@ -11,7 +11,7 @@ Evidence: dated local build checkpoints, the October 2026 accessory delivery rea
 
 Luis Blas installed one ENTS node with the Watermark VA3 adapter at the Student Farm on November 16. On November 20 he exported its first readings: 56 soil-temperature values from 5:45 p.m. November 19 to 7:12 a.m. November 20, falling from 10.1 °C to 6.0 °C. The file holds the temperature channel only; the three soil-tension channels are not in it yet. The board has no clock, so times are estimated within about 16 minutes. Luis reported power problems over the previous three days, which were rainy. Data and notes: [field data, November 20](../../data/field/2026-11-20/README.md).
 
-Next: confirm the probe's burial depth, fix node power, read back the three tension channels, and register the gateway so readings arrive by radio. A WeatherLink Live receiver for the Davis station was requested on November 20.
+Next: confirm the probe's burial depth, fix node power, read back the three tension channels, and register the gateway so readings arrive by radio. A WeatherLink Live receiver for the Davis station was requested on November 20. MicroSD cards were requested the same day; the boards save to the card, so readings can survive radio and gateway gaps (not power loss).
 
 ## Wiring map from the October 26 photos
 

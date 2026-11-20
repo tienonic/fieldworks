@@ -8,7 +8,8 @@ Station-by-station design record for the FieldWorks Green Grid deployment at the
 
 - **First field data.** One ENTS node with the Watermark VA3 adapter was installed at the Student Farm on November 16. Its first export holds 56 soil-temperature readings from the night of November 19–20, falling from 10.1 °C to 6.0 °C. See [field data, November 20](data/field/2026-11-20/README.md).
 - Only the temperature channel is reporting. The three soil-tension (moisture) channels, node power, and the radio link are the next steps. The board has no clock, so times are estimated.
-- Seven ENTS boards, the gateway and the bench accessories are on hand. A WeatherLink Live receiver for the Davis weather station was requested on November 20.
+- Seven ENTS boards, the gateway and the bench accessories are on hand. A WeatherLink Live receiver for the Davis weather station and microSD cards for local logging were requested on November 20.
+- **Farm priorities, November 20:** soil temperature for planting decisions, farm-wide and greenhouse water in one place, wash-station water use, and drainage. The farm already owns a main meter, two spare 3/4-inch meters and light-powered irrigation controllers that Green Grid can use. See [Student Farm priorities](docs/06-operations/student-farm-priorities-2026-11-20.md).
 - The [bench log](docs/05-installation/bench-log.md) records each test. [ENTS 3.1.0 programming setup](docs/05-installation/ents-programming-setup.md) is the builder's guide; the [parts photo atlas](docs/03-hardware/parts-atlas.md) shows each part.
 
 ## Dashboard preview
