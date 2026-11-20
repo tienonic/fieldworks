@@ -10,7 +10,7 @@ The first readings from a Green Grid node at the UC Davis Student Farm. Luis Bla
 ## What the readings show
 
 - Soil temperature fell from 10.1 °C at dusk to a low of 6.0 °C around 1 a.m., then held near 6.6 °C until morning.
-- The readings stay within 0.8 °C on average of the modeled surface (0 cm) soil temperature and read about 1.6 °C cooler than the 6 cm model. The probe is probably shallow; its burial depth is not yet recorded.
+- The readings stay within 0.8 °C on average of the modeled surface (0 cm) soil temperature and read about 1.6 °C cooler than the 6 cm model. The probe is buried about 2 inches (5 cm) deep, per Luis.
 - A small rise near 5 a.m. matches a short modeled rain shower.
 
 ## Limits
