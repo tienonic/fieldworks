@@ -19,7 +19,7 @@ The farm wants a few stations that answer practical questions, data from the wat
 ## What this changes in the plan
 
 - Start with a weather station and a few soil stations, and ask for interface feedback early.
-- Use farm-owned equipment first: the main meter, two spare 3/4-inch iPERL meters and DIG LEIT-1 ILV controllers ([physical inventory](../04-procurement/physical-inventory.md)).
+- Use farm-owned equipment first: the main meter, four 3/4-inch iPERL meters (read by hand until a supported reader is confirmed) and DIG LEIT-1 ILV controllers ([physical inventory](../04-procurement/physical-inventory.md)).
 - Add local logging on each board so readings survive radio gaps.
 
 Some lines are 3/4 inch; confirm sizes with the farm team before choosing flow meters.

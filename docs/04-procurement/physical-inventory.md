@@ -126,7 +126,7 @@ Farm-owned equipment photographed during the November 20 farm walk. It is not Gr
 | Item | What it is | Use for Green Grid | Open check |
 |---|---|---|---|
 | Main farm water meter | Sensus OMNI+ C2 compound meter, installed on the farm-wide line; register reads cubic feet | Farm-wide water use. The register keeps 180 days of hourly data and has encoder and optional pulse outputs | Which grey cable is the pulse output, and whether pulse is enabled |
-| Two spare water meters | Sensus iPERL 3/4-inch, not installed | Greenhouse inlet (not covered by the main meter) or the wash-station line | Needs the Signalizer path in [external integrations](../02-stations/external-integrations.md); choose the first line |
+| Small water meters | Four Sensus iPERL 3/4-inch meters (two photographed), not installed | Greenhouse inlet (not covered by the main meter) or the wash-station line, read by hand at first | The photographed unit has no exposed cable or standard output, so it cannot be wired to the Signalizer or an ENTS board; electronic reads need Sensus reading equipment, not yet confirmed for this older model. Bench-test in a flooded line before use |
 | Irrigation controllers | DIG LEIT-1 ILV: single-valve timers powered by ambient light, with a factory-wired DC latching solenoid on an inline valve. One boxed, one used on a larger valve | Run irrigation schedules while Green Grid measures flow and pressure on the same line, so no ENTS valve driver is needed at first | Valve size of each unit and target lines |
 
 ## Reported by Nicholas, October 2026
